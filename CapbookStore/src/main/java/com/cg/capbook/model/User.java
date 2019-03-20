@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
+@Entity
 public class User {
 	@Id
 	private String emailId;
@@ -17,7 +18,6 @@ public class User {
 	private Profile profile;
 	@OneToMany
 	private List<Photo> photos;
-	//private String securityQuestion;
 
 	@OneToMany(mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)  //mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
 	private Map<String, Friend> friends;
