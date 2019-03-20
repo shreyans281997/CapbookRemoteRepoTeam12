@@ -1,19 +1,21 @@
 package com.cg.capbook.model;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 @Entity
 public class UserAccount {
 	@Id
 	private String emailId;
 	private String password;
-	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
-	private Profile profile;
+	
 	@OneToMany(mappedBy="user")
 	private List<Photo> photos;
 
@@ -24,20 +26,50 @@ public class UserAccount {
 	private List<Post> posts ;
 
 	private String gender;
-	public UserAccount() {}
+	private String firstName;
+	private String secondName;
+	private String bio;
+	private String status;
+	private String mobileNo;
+	private Date dateOfBirth;
 	
-	public UserAccount(String emailId, String password, Profile profile, List<Photo> photos, Map<String, Friend> friends,
-			List<Post> posts, String gender) {
+	private String userName;
+	@Column(columnDefinition="BLOB")
+	private byte[] profilePic;
+	@Embedded
+	private Address address;
+	public UserAccount() {}
+	public UserAccount(String emailId, String password, List<Photo> photos, Map<String, Friend> friends,
+			List<Post> posts, String gender, String firstName, String secondName, String bio, String status,
+			String mobileNo, Date dateOfBirth, String userName, byte[] profilePic, Address address) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
-		this.profile = profile;
 		this.photos = photos;
 		this.friends = friends;
 		this.posts = posts;
 		this.gender = gender;
+		this.firstName = firstName;
+		this.secondName = secondName;
+		this.bio = bio;
+		this.status = status;
+		this.mobileNo = mobileNo;
+		this.dateOfBirth = dateOfBirth;
+		this.userName = userName;
+		this.profilePic = profilePic;
+		this.address = address;
 	}
-
+	public UserAccount(String emailId, String password, String gender, String firstName, String secondName,
+			String mobileNo, Date dateOfBirth) {
+		super();
+		this.emailId = emailId;
+		this.password = password;
+		this.gender = gender;
+		this.firstName = firstName;
+		this.secondName = secondName;
+		this.mobileNo = mobileNo;
+		this.dateOfBirth = dateOfBirth;
+	}
 	public String getEmailId() {
 		return emailId;
 	}
@@ -49,12 +81,6 @@ public class UserAccount {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public Profile getProfile() {
-		return profile;
-	}
-	public void setProfile(Profile profile) {
-		this.profile = profile;
 	}
 	public List<Photo> getPhotos() {
 		return photos;
@@ -80,27 +106,89 @@ public class UserAccount {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getSecondName() {
+		return secondName;
+	}
+	public void setSecondName(String secondName) {
+		this.secondName = secondName;
+	}
+	public String getBio() {
+		return bio;
+	}
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getMobileNo() {
+		return mobileNo;
+	}
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public byte[] getProfilePic() {
+		return profilePic;
+	}
+	public void setProfilePic(byte[] profilePic) {
+		this.profilePic = profilePic;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	@Override
 	public String toString() {
-		return "User [emailId=" + emailId + ", password=" + password + ", profile=" + profile + ", photos=" + photos
-				+ ", friends=" + friends + ", posts=" + posts + ", gender=" + gender + "]";
+		return "UserAccount [emailId=" + emailId + ", password=" + password + ", photos=" + photos + ", friends="
+				+ friends + ", posts=" + posts + ", gender=" + gender + ", firstName=" + firstName + ", secondName="
+				+ secondName + ", bio=" + bio + ", status=" + status + ", mobileNo=" + mobileNo + ", dateOfBirth="
+				+ dateOfBirth + ", userName=" + userName + ", profilePic=" + Arrays.toString(profilePic) + ", address="
+				+ address + "]";
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((bio == null) ? 0 : bio.hashCode());
+		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
 		result = prime * result + ((emailId == null) ? 0 : emailId.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((friends == null) ? 0 : friends.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result + ((mobileNo == null) ? 0 : mobileNo.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((photos == null) ? 0 : photos.hashCode());
 		result = prime * result + ((posts == null) ? 0 : posts.hashCode());
-		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
+		result = prime * result + Arrays.hashCode(profilePic);
+		result = prime * result + ((secondName == null) ? 0 : secondName.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -110,10 +198,30 @@ public class UserAccount {
 		if (getClass() != obj.getClass())
 			return false;
 		UserAccount other = (UserAccount) obj;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
+		if (bio == null) {
+			if (other.bio != null)
+				return false;
+		} else if (!bio.equals(other.bio))
+			return false;
+		if (dateOfBirth == null) {
+			if (other.dateOfBirth != null)
+				return false;
+		} else if (!dateOfBirth.equals(other.dateOfBirth))
+			return false;
 		if (emailId == null) {
 			if (other.emailId != null)
 				return false;
 		} else if (!emailId.equals(other.emailId))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
 			return false;
 		if (friends == null) {
 			if (other.friends != null)
@@ -124,6 +232,11 @@ public class UserAccount {
 			if (other.gender != null)
 				return false;
 		} else if (!gender.equals(other.gender))
+			return false;
+		if (mobileNo == null) {
+			if (other.mobileNo != null)
+				return false;
+		} else if (!mobileNo.equals(other.mobileNo))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -140,10 +253,22 @@ public class UserAccount {
 				return false;
 		} else if (!posts.equals(other.posts))
 			return false;
-		if (profile == null) {
-			if (other.profile != null)
+		if (!Arrays.equals(profilePic, other.profilePic))
+			return false;
+		if (secondName == null) {
+			if (other.secondName != null)
 				return false;
-		} else if (!profile.equals(other.profile))
+		} else if (!secondName.equals(other.secondName))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
 			return false;
 		return true;
 	}

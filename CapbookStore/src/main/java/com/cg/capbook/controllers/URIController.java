@@ -13,7 +13,6 @@ private Friend friend;
 private Post post;
 private Comments comments;
 private Notification notification;
-private Profile profile;
 private Photo photo;
 
 @RequestMapping("/")
