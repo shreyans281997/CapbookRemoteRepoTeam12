@@ -12,4 +12,5 @@ public class CapBookExceptionAspect {
 	public ModelAndView handleEmailAlreadyRegisteredException(Exception e) {
 		return new ModelAndView("errorPage", "errorMessage", e.getMessage());
 	}
+	
 }

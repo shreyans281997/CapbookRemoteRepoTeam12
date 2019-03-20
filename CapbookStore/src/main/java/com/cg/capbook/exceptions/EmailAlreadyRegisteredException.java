@@ -6,7 +6,6 @@ public class EmailAlreadyRegisteredException extends Exception {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public EmailAlreadyRegisteredException(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
