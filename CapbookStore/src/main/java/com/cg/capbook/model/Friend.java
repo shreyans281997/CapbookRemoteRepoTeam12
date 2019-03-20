@@ -1,18 +1,16 @@
 package com.cg.capbook.model;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
 @Entity
 public class Friend {
 @Id
 private String emailId;
 private String firstName,lastName;
 @ManyToOne
-private User user;
+private UserAccount user;
 public Friend () {}
-public Friend(String emailId, String firstName, String lastName, User user) {
+public Friend(String emailId, String firstName, String lastName, UserAccount user) {
 	super();
 	this.emailId = emailId;
 	this.firstName = firstName;
@@ -37,10 +35,10 @@ public String getLastName() {
 public void setLastName(String lastName) {
 	this.lastName = lastName;
 }
-public User getUser() {
+public UserAccount getUser() {
 	return user;
 }
-public void setUser(User user) {
+public void setUser(UserAccount user) {
 	this.user = user;
 }
 @Override

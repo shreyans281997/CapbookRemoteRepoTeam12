@@ -10,13 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 @Entity
-public class User {
+public class UserAccount {
 	@Id
 	private String emailId;
 	private String password;
 	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
 	private Profile profile;
-	@OneToMany
+	@OneToMany(mappedBy="user")
 	private List<Photo> photos;
 
 	@OneToMany(mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)  //mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
@@ -25,13 +25,11 @@ public class User {
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,orphanRemoval=true)  //mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<Post> posts ;
 
-	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,orphanRemoval=true) 
-	private List<Notification> notes ;
 	private String gender;
-	public User() {}
+	public UserAccount() {}
 	
-	public User(String emailId, String password, Profile profile, List<Photo> photos, Map<String, Friend> friends,
-			List<Post> posts, List<Notification> notes, String gender) {
+	public UserAccount(String emailId, String password, Profile profile, List<Photo> photos, Map<String, Friend> friends,
+			List<Post> posts, String gender) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
@@ -39,7 +37,6 @@ public class User {
 		this.photos = photos;
 		this.friends = friends;
 		this.posts = posts;
-		this.notes = notes;
 		this.gender = gender;
 	}
 
@@ -79,12 +76,6 @@ public class User {
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
-	public List<Notification> getNotes() {
-		return notes;
-	}
-	public void setNotes(List<Notification> notes) {
-		this.notes = notes;
-	}
 	public String getGender() {
 		return gender;
 	}
@@ -95,7 +86,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [emailId=" + emailId + ", password=" + password + ", profile=" + profile + ", photos=" + photos
-				+ ", friends=" + friends + ", posts=" + posts + ", notes=" + notes + ", gender=" + gender + "]";
+				+ ", friends=" + friends + ", posts=" + posts + ", gender=" + gender + "]";
 	}
 
 	@Override
@@ -105,7 +96,6 @@ public class User {
 		result = prime * result + ((emailId == null) ? 0 : emailId.hashCode());
 		result = prime * result + ((friends == null) ? 0 : friends.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
-		result = prime * result + ((notes == null) ? 0 : notes.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((photos == null) ? 0 : photos.hashCode());
 		result = prime * result + ((posts == null) ? 0 : posts.hashCode());
@@ -121,7 +111,7 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		UserAccount other = (UserAccount) obj;
 		if (emailId == null) {
 			if (other.emailId != null)
 				return false;
@@ -136,11 +126,6 @@ public class User {
 			if (other.gender != null)
 				return false;
 		} else if (!gender.equals(other.gender))
-			return false;
-		if (notes == null) {
-			if (other.notes != null)
-				return false;
-		} else if (!notes.equals(other.notes))
 			return false;
 		if (password == null) {
 			if (other.password != null)

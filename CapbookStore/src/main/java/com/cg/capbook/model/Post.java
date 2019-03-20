@@ -23,21 +23,21 @@ public class Post {
 	private int postId;
 	private String postContent;
 	@ManyToOne
-	private User user;
+	private UserAccount user;
 	@Column(columnDefinition="BLOB")
 	private byte[] postPic;
 	private int noOfPostLikes;
 	private int noOfPostDislikes;
-	@OneToMany(mappedBy="post",cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+	@OneToMany(mappedBy="posts",cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
 	@MapKey
-	private Map<Integer, Comment> comments;
+	private Map<Integer, Comments> comments;
 	@OneToMany(mappedBy="post",cascade=CascadeType.ALL,orphanRemoval=true)
 	@MapKey
 	private Map<Integer,Notification> notifications;
 	public Post() {}
 
-	public Post(int postId, String postContent, User user, byte[] postPic, int noOfPostLikes, int noOfPostDislikes,
-			Map<Integer, Comment> comments) {
+	public Post(int postId, String postContent, UserAccount user, byte[] postPic, int noOfPostLikes, int noOfPostDislikes,
+			Map<Integer, Comments> comments) {
 		super();
 		this.postId = postId;
 		this.postContent = postContent;
@@ -64,11 +64,11 @@ public class Post {
 		this.postContent = postContent;
 	}
 
-	public User getUser() {
+	public UserAccount getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserAccount user) {
 		this.user = user;
 	}
 
@@ -96,11 +96,11 @@ public class Post {
 		this.noOfPostDislikes = noOfPostDislikes;
 	}
 
-	public Map<Integer, Comment> getComments() {
+	public Map<Integer, Comments> getComments() {
 		return comments;
 	}
 
-	public void setComments(Map<Integer, Comment> comments) {
+	public void setComments(Map<Integer, Comments> comments) {
 		this.comments = comments;
 	}
 

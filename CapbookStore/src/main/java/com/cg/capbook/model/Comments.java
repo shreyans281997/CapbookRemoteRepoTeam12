@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapKey;
 
 @Entity
-public class Comment {
+public class Comments {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int commentId;
@@ -19,10 +19,10 @@ public class Comment {
 	@MapKey
 	@JoinColumn(name="postId")
 	private Post posts;
-	public Comment() {
+	public Comments() {
 		super();
 	}
-	public Comment(int commentId, String commentContent, String commentPerson, Post posts) {
+	public Comments(int commentId, String commentContent, String commentPerson, Post posts) {
 		super();
 		this.commentId = commentId;
 		this.commentContent = commentContent;
@@ -71,7 +71,7 @@ public class Comment {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Comment other = (Comment) obj;
+		Comments other = (Comments) obj;
 		if (commentContent == null) {
 			if (other.commentContent != null)
 				return false;

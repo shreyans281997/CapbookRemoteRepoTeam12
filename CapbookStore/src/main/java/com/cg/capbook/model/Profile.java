@@ -3,8 +3,10 @@ import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+@Entity
 public class Profile {
 private String firstName;
 private String secondName;
@@ -18,11 +20,11 @@ private byte[] profilePic;
 @Embedded
 private Address address;
 @OneToOne(mappedBy="profile")
-private User user;
+private UserAccount user;
 public Profile() {}
 
 public Profile(String firstName, String secondName, String bio, String status, String mobileNo, String userName,
-		byte[] profilePic, Address address, User user) {
+		byte[] profilePic, Address address, UserAccount user) {
 	super();
 	this.firstName = firstName;
 	this.secondName = secondName;
@@ -83,10 +85,10 @@ public Address getAddress() {
 public void setAddress(Address address) {
 	this.address = address;
 }
-public User getUser() {
+public UserAccount getUser() {
 	return user;
 }
-public void setUser(User user) {
+public void setUser(UserAccount user) {
 	this.user = user;
 }
 

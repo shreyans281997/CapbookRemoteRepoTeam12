@@ -1,11 +1,11 @@
 package com.cg.capbook.model;
-
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-
+@Entity
 public class Notification {
 @Id
 @SequenceGenerator(name="notification",initialValue=50000,allocationSize=50000,sequenceName="notificationSequence")
@@ -14,6 +14,7 @@ private int notificationId;
 private String notificationContent;
 @ManyToOne
 private Post post;
+public Notification() {}
 public Notification(String notificationContent, Post post) {
 	super();
 	this.notificationContent = notificationContent;
