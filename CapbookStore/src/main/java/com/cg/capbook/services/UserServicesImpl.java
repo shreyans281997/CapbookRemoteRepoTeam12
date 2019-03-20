@@ -16,15 +16,16 @@ public class UserServicesImpl implements IUserService{
 	@Override
 	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, Date dateOfBirth, String gender, String mobileNo)
 			throws EmailAlreadyRegisteredException {
-		UserAccount userAccount=new UserAccount(emailId, password, gender, firstName, secondName, mobileNo, dateOfBirth);
+		UserAccount userAccount=userDao.findById(emailId).orElse(null);
+		if(userAccount!=null)
+		throw new EmailAlreadyRegisteredException("Email is already in use.");
 		return userDao.save(userAccount);
 	}
 
 	@Override
 	public UserAccount getUserDetails(String emailId) {
-		//userDao.findById(emailId).orElseThrow(arg0)
 		return null;
-	}
+		}
 
 	@Override
 	public UserAccount loginUser(String email, String password) {
