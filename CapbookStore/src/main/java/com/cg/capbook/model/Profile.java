@@ -1,6 +1,5 @@
 package com.cg.capbook.model;
 import java.util.Arrays;
-
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;

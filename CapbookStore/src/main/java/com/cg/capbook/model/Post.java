@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-
 @Entity
 public class Post {
 	@Id

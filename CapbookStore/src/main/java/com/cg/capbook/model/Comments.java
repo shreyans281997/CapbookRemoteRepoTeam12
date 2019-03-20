@@ -1,5 +1,4 @@
 package com.cg.capbook.model;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,7 +6,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKey;
-
 @Entity
 public class Comments {
 	@Id
@@ -96,4 +94,5 @@ public class Comments {
 		return "Comment [commentId=" + commentId + ", commentContent=" + commentContent + ", commentPerson="
 				+ commentPerson + "]";
 	}
+	
 }
