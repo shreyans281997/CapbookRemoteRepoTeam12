@@ -6,7 +6,6 @@ public class UserAccountNotFoundException extends Exception{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public UserAccountNotFoundException(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
