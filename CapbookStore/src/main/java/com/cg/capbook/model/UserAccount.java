@@ -37,6 +37,14 @@ public class UserAccount {
 		this.posts = posts;
 		this.gender = gender;
 	}
+	
+
+	public UserAccount(String emailId, String password, Profile profile) {
+		super();
+		this.emailId = emailId;
+		this.password = password;
+		this.profile = profile;
+	}
 
 	public String getEmailId() {
 		return emailId;

@@ -1,5 +1,7 @@
 package com.cg.capbook.model;
 import java.util.Arrays;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ private String secondName;
 private String bio;
 private String status;
 private String mobileNo;
+private Date dateOfBirth;
 @Id
 private String userName;
 @Column(columnDefinition="BLOB")
@@ -22,18 +25,26 @@ private Address address;
 private UserAccount user;
 public Profile() {}
 
-public Profile(String firstName, String secondName, String bio, String status, String mobileNo, String userName,
-		byte[] profilePic, Address address, UserAccount user) {
+public Profile(String firstName, String secondName, String bio, String status, String mobileNo, Date dateOfBirth,
+		String userName, byte[] profilePic, Address address, UserAccount user) {
 	super();
 	this.firstName = firstName;
 	this.secondName = secondName;
 	this.bio = bio;
 	this.status = status;
 	this.mobileNo = mobileNo;
+	this.dateOfBirth = dateOfBirth;
 	this.userName = userName;
 	this.profilePic = profilePic;
 	this.address = address;
 	this.user = user;
+}
+
+public Profile(String firstName, String secondName, Date dateOfBirth) {
+	super();
+	this.firstName = firstName;
+	this.secondName = secondName;
+	this.dateOfBirth = dateOfBirth;
 }
 
 public String getFirstName() {
@@ -91,12 +102,15 @@ public void setUser(UserAccount user) {
 	this.user = user;
 }
 
+
+
 @Override
 public int hashCode() {
 	final int prime = 31;
 	int result = 1;
 	result = prime * result + ((address == null) ? 0 : address.hashCode());
 	result = prime * result + ((bio == null) ? 0 : bio.hashCode());
+	result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
 	result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 	result = prime * result + ((mobileNo == null) ? 0 : mobileNo.hashCode());
 	result = prime * result + Arrays.hashCode(profilePic);
@@ -125,6 +139,11 @@ public boolean equals(Object obj) {
 		if (other.bio != null)
 			return false;
 	} else if (!bio.equals(other.bio))
+		return false;
+	if (dateOfBirth == null) {
+		if (other.dateOfBirth != null)
+			return false;
+	} else if (!dateOfBirth.equals(other.dateOfBirth))
 		return false;
 	if (firstName == null) {
 		if (other.firstName != null)
@@ -164,10 +183,17 @@ public boolean equals(Object obj) {
 @Override
 public String toString() {
 	return "Profile [firstName=" + firstName + ", secondName=" + secondName + ", bio=" + bio + ", status=" + status
-			+ ", mobileNo=" + mobileNo + ", userName=" + userName + ", profilePic=" + Arrays.toString(profilePic)
-			+ ", address=" + address + ", user=" + user + "]";
+			+ ", mobileNo=" + mobileNo + ", dateOfBirth=" + dateOfBirth + ", userName=" + userName + ", profilePic="
+			+ Arrays.toString(profilePic) + ", address=" + address + ", user=" + user + "]";
 }
 
+public Date getDateOfBirth() {
+	return dateOfBirth;
+}
+
+public void setDateOfBirth(Date dateOfBirth) {
+	this.dateOfBirth = dateOfBirth;
+}
 
 
 }

@@ -1,8 +1,8 @@
 package com.cg.capbook.daoservice;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.cg.capbook.model.Comment;
+import com.cg.capbook.model.Comments;
 
-public interface CommentDAO extends JpaRepository<Comment, Integer> {
+public interface CommentDAO extends JpaRepository<Comments, Integer> {
 
 }
