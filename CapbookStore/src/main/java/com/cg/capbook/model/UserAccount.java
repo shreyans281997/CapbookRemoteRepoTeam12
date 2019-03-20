@@ -25,7 +25,6 @@ public class UserAccount {
 
 	private String gender;
 	public UserAccount() {}
-	
 	public UserAccount(String emailId, String password, Profile profile, List<Photo> photos, Map<String, Friend> friends,
 			List<Post> posts, String gender) {
 		super();

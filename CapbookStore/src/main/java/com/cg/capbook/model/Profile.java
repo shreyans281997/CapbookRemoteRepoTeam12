@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 @Entity
+
 public class Profile {
 private String firstName;
 private String secondName;
