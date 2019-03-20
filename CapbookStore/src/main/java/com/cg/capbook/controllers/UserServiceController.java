@@ -16,24 +16,24 @@ import com.cg.capbook.services.IUserService;
 @Controller
 public class UserServiceController {
 @Autowired
-IUserService iUserService; 
+IUserService userService; 
 
 @RequestMapping("/showSignup")
 public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,Date dateOfBirth, String gender, String mobileNo) throws EmailAlreadyRegisteredException {
-	iUserService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo);
-	String otpMessage="Please Enter OTP You Receive At Your Email";
-	return new ModelAndView("OtpPage","otpMessage",otpMessage); 
+	userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo);
+	return new ModelAndView("loginPage","success","Successfully registered"); 
 }
-@RequestMapping("/successfulRegister")
-public ModelAndView successfulRegister(@RequestParam int otp) throws invalidOTPException {
-	String message=iUserService.verifyOtp(otp);
-	return new ModelAndView("otpPage","message",message); 
-}
+	/*
+	 * @RequestMapping("/successfulRegister") public ModelAndView
+	 * successfulRegister(@RequestParam int otp) throws invalidOTPException { String
+	 * message=iUserService.verifyOtp(otp); return new
+	 * ModelAndView("otpPage","message",message); }
+	 */
 
-@RequestMapping("/showLogin")
-public ModelAndView login(@RequestParam String emailId,String password) throws InvalidUsernameOrPasswordException{
-	
-	return null;
-	
-}
+	/*
+	 * @RequestMapping("/showLogin") public ModelAndView login(@RequestParam String
+	 * emailId,String password) throws InvalidUsernameOrPasswordException{
+	 * 
+	 * }
+	 */
 }

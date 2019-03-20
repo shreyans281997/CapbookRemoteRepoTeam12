@@ -10,7 +10,6 @@ import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.invalidOTPException;
 import com.cg.capbook.model.UserAccount;
 
-@Component("userService")
 public interface IUserService {
 	public UserAccount getUserDetails(String emailId) throws UserAccountNotFoundException;
 	public UserAccount loginUser(String email, String password) throws InvalidUsernameOrPasswordException;

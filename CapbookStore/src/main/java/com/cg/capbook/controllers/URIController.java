@@ -17,7 +17,8 @@ private Photo photo;
 
 @RequestMapping("/")
 public String getIndexPage() {
-return "IndexPage";}
+return "indexPage";
+}
 
 @RequestMapping("/getSignUp")
 public String getSignUp() {
@@ -26,10 +27,6 @@ public String getSignUp() {
 @RequestMapping("/getLogin")
 public String getLogin() {
 	return "getLogin";}
-
-
-
-
 
 @ModelAttribute
 public UserAccount getUserAccount() {

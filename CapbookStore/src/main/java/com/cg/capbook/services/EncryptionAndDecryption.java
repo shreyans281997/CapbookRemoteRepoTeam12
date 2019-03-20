@@ -4,9 +4,12 @@ import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import org.springframework.stereotype.Component;
      /**
 	 * Program to Encrypt/Decrypt String Using AES 128 bit Encryption Algorithm
 	 */
+@Component
 public class EncryptionAndDecryption {
 private static final String encryptionKey           = "ABCDEFGHIJKLMNOP";
 private static final String characterEncoding       = "UTF-8";

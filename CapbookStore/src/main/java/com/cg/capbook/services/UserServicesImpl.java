@@ -3,13 +3,14 @@ package com.cg.capbook.services;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.cg.capbook.daoservice.UserDAO;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.invalidOTPException;
 import com.cg.capbook.model.UserAccount;
-
+@Component("userService")
 public class UserServicesImpl implements IUserService{
 	@Autowired
 	private UserDAO userDao;
