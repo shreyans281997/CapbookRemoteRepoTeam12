@@ -17,7 +17,7 @@ public class UserServicesImpl implements IUserService{
 	@Autowired
 	private EncryptionAndDecryption encryptionAndDecryption;
 	@Override
-	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, Date dateOfBirth, String gender, String mobileNo)
+	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, String dateOfBirth, String gender, String mobileNo)
 			throws EmailAlreadyRegisteredException {
 		UserAccount userAccount=userDao.findById(emailId).orElse(null);
 		if(userAccount!=null)

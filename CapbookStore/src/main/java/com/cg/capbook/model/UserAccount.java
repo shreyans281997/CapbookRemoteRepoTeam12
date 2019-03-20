@@ -31,7 +31,7 @@ public class UserAccount {
 	private String bio;
 	private String status;
 	private String mobileNo;
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	
 	private String userName;
 	@Column(columnDefinition="BLOB")
@@ -41,7 +41,7 @@ public class UserAccount {
 	public UserAccount() {}
 	public UserAccount(String emailId, String password, List<Photo> photos, Map<String, Friend> friends,
 			List<Post> posts, String gender, String firstName, String secondName, String bio, String status,
-			String mobileNo, Date dateOfBirth, String userName, byte[] profilePic, Address address) {
+			String mobileNo, String dateOfBirth, String userName, byte[] profilePic, Address address) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
@@ -60,7 +60,7 @@ public class UserAccount {
 		this.address = address;
 	}
 	public UserAccount(String emailId, String password, String gender, String firstName, String secondName,
-			String mobileNo, Date dateOfBirth) {
+			String mobileNo, String dateOfBirth) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
@@ -136,10 +136,10 @@ public class UserAccount {
 	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getUserName() {
