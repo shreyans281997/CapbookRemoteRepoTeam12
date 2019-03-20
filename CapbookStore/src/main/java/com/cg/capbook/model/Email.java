@@ -9,8 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class EmailChat {
-
+public class Email {
 	@Id
 	@SequenceGenerator(name="email_seq",sequenceName="email_seq",initialValue=1001,allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="email_seq")
@@ -20,10 +19,10 @@ public class EmailChat {
 	private String subject;
 	private String messageBody;
 	private Date dateOfMail;
-	public EmailChat() {
+	public Email() {
 		super();
 	}
-	public EmailChat(int emailChatId, String fromAddress, String toAddress, String subject, String messageBody, Date dateOfMail) {
+	public Email(int emailChatId, String fromAddress, String toAddress, String subject, String messageBody, Date dateOfMail) {
 		super();
 		this.emailChatId = emailChatId;
 		this.fromAddress = fromAddress;
@@ -32,7 +31,7 @@ public class EmailChat {
 		this.messageBody = messageBody;
 		this.dateOfMail = dateOfMail;
 	}
-	
+
 	public int getEmailChatId() {
 		return emailChatId;
 	}
@@ -63,14 +62,14 @@ public class EmailChat {
 	public void setMessageBody(String messageBody) {
 		this.messageBody = messageBody;
 	}
-	
+
 	public Date getDateOfMail() {
 		return dateOfMail;
 	}
 	public void setDateOfMail(Date dateOfMail) {
 		this.dateOfMail = dateOfMail;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "EmailChat [emailChatId=" + emailChatId + ", fromAddress=" + fromAddress + ", toAddress=" + toAddress
@@ -96,7 +95,7 @@ public class EmailChat {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EmailChat other = (EmailChat) obj;
+		Email other = (Email) obj;
 		if (dateOfMail == null) {
 			if (other.dateOfMail != null)
 				return false;
@@ -126,8 +125,8 @@ public class EmailChat {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
+
+
+
 }
