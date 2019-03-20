@@ -18,8 +18,8 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class Post {
 	@Id
-	@SequenceGenerator(name="post_seq",sequenceName="post_seq",initialValue=101,allocationSize=10000)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="post_seq")
+	@SequenceGenerator(name="post",sequenceName="post_seq",initialValue=101,allocationSize=10000)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="post")
 	private int postId;
 	private String postContent;
 	@ManyToOne
@@ -28,10 +28,12 @@ public class Post {
 	private byte[] postPic;
 	private int noOfPostLikes;
 	private int noOfPostDislikes;
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="post",cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
 	@MapKey
 	private Map<Integer, Comment> comments;
-	
+	@OneToMany(mappedBy="post",cascade=CascadeType.ALL,orphanRemoval=true)
+	@MapKey
+	private Map<Integer,Notification> notifications;
 	public Post() {}
 
 	public Post(int postId, String postContent, User user, byte[] postPic, int noOfPostLikes, int noOfPostDislikes,
