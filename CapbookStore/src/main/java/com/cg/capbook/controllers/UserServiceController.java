@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
+import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.invalidOTPException;
 import com.cg.capbook.model.UserAccount;
 import com.cg.capbook.services.IUserService;
@@ -31,10 +32,12 @@ public ModelAndView signUp(@RequestParam String emailId,String password,String f
 	 * ModelAndView("otpPage","message",message); }
 	 */
 
-	/*
-	 * @RequestMapping("/showLogin") public ModelAndView login(@RequestParam String
-	 * emailId,String password) throws InvalidUsernameOrPasswordException{
-	 * 
-	 * }
-	 */
+	
+	  @RequestMapping("/showLogin") public ModelAndView login(@RequestParam String
+	  emailId,String password) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException {
+		UserAccount user=userService.loginUser(emailId, password);
+		return new ModelAndView("profilePage","user",user);
+	  
+	  }
+	 
 }

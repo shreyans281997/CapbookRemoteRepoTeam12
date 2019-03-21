@@ -26,7 +26,7 @@ public String getSignUp() {
 
 @RequestMapping("/getLogin")
 public String getLogin() {
-	return "getLogin";}
+	return "loginPage";}
 
 @ModelAttribute
 public UserAccount getUserAccount() {
