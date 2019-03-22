@@ -51,6 +51,6 @@ public class FriendRequestImpl implements IFriendRequestServices {
 	}
 	@Override
 	public void showAllFriendRequest(String emailId) {
-	List<FriendRequest> friendRequests= friendRequestDao.findAll(); 	
+	List<FriendRequest> friendRequests= friendRequestDao.findAllPendingRequest(emailId);	
 	}	
 }
