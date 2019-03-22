@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Login Page</title>
+<title>Forgot Password</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -130,7 +130,7 @@ div.c {
 
 						<article class="card-body mx-auto" style="max-width: 400px">
 
-							<h4 class="card-title mt-3 text-center">Login</h4>
+							<h4 class="card-title mt-3 text-center">Forgot Password</h4>
 
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
@@ -144,13 +144,39 @@ div.c {
 							</div>
 							<!-- form-group// -->
 
+
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"> <i class="fa fa-key"></i>
 									</span>
 								</div>
-								<input name="password" class="form-control"
-									placeholder="Password" type="password">
+								<input name="newPassword" class="form-control"
+									placeholder="New Password" type="password">
+							</div>
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i
+										class="fa fa-question-circle" style="font-size: 24px"></i>
+									</span> </span>
+								</div>
+
+								<select name="securityQue" class="form-control">
+									<option selected="">Security Ques</option>
+									<option value="schoolName">Your first School Name</option>
+									<option value="petName">Your Pet Name</option>
+									<option value="food">Your Favourite Food</option>
+								</select>
+							</div>
+							<!-- form-group// -->
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-reply"
+										style="font-size: 24px"></i>
+									</span>
+								</div>
+								<input name="answer" class="form-control" placeholder="Answer"
+									type="text">
+								<!-- form-group// -->
 							</div>
 
 							<!-- form-group// -->
@@ -158,13 +184,14 @@ div.c {
 								<div class="form-group">
 
 									<button type="submit" class="btn btn-primary btn-md">
-										LogIn</button>
+										Submit</button>
 								</div>
 							</div>
 							<!-- form-group// -->
+
 							<div class="d-flex justify-content-center">
 
-								<a href="getChangePassword">Forgot your password?</a>
+								<a href="loginPage">LogIn now!</a>
 
 							</div>
 

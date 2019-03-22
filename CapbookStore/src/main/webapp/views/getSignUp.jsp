@@ -20,6 +20,7 @@
 	color: red;
 	font-weight: bold;
 }
+
 footer {
 	position: fixed;
 	left: 0;
@@ -30,21 +31,25 @@ footer {
 	padding: 15px;
 	text-align: center;
 }
+
 .row.content {
 	height: 100px
 }
+
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #000000;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #000000;
 }
+
 li {
-  float: left;
+	float: left;
 }
+
 li a:hover {
-  background-color: #111;
+	background-color: #111;
 }
 
 div.a {
@@ -54,16 +59,17 @@ div.a {
 div.b {
 	font-size: 300%;
 	font-weight: bold;
-    color: white;
+	color: white;
 }
 </style>
 </head>
 <body>
 	<ul>
-  <li><div class="b">CapBook</div></li>
- 
-</ul>
-    <br><br>
+		<li><div class="b">CapBook</div></li>
+
+	</ul>
+	<br>
+	<br>
 	<div class="container">
 		<div class="card bg-light">
 			<article class="card-body mx-auto" style="max-width: 400px;">
@@ -84,17 +90,17 @@ div.b {
 							<span class="input-group-text"> <i class="fa fa-user"></i>
 							</span>
 						</div>
-						<input name="secondName" class="form-control"
+						<input name="lastName" class="form-control"
 							placeholder="Last name" type="text">
 					</div>
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-user"></i>
-							</span>
+							</span> </span>
 						</div>
 
-						<select name="gender" class="form-control">
+						<select class="form-control">
 							<option selected="">Select Gender</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
@@ -143,13 +149,15 @@ div.b {
 							<span class="input-group-text"> <i class="fa fa-lock"></i>
 							</span>
 						</div>
-						<input name="password" class="form-control" placeholder="Create password"
-							type="password">
+						<input name="password" class="form-control"
+							placeholder="Create password" type="password">
 					</div>
+					<!-- form-group// -->
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-question-circle" style="font-size:24px"></i>
+							<span class="input-group-text"> <i
+								class="fa fa-question-circle" style="font-size: 24px"></i>
 							</span> </span>
 						</div>
 
@@ -163,12 +171,12 @@ div.b {
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-reply" style="font-size:24px"></i>
+							<span class="input-group-text"> <i class="fa fa-reply"
+								style="font-size: 24px"></i>
 							</span>
 						</div>
 						<input name="answer" class="form-control" placeholder="Answer"
 							type="text">
-						<!-- form-group// -->
 					</div>
 					<!-- form-group// -->
 					<div class="form-group">
@@ -182,21 +190,21 @@ div.b {
 				</form>
 			</article>
 		</div>
-		</div>
-		<!-- card.// -->
-		<article>
-			<div>
-				<!--container end.//-->
+	</div>
+	<!-- card.// -->
+	<article>
+		<div>
+			<!--container end.//-->
 
-				<i class="fa fa-window-restore "></i>
-			</div>
-			<br> <br>
-		</article>
-        	<footer class="container-fluid text-center">
-<div class="a">
-	<p>@CapgeminiApp2019</p>
-</div>
-</footer>
-		
+			<i class="fa fa-window-restore "></i>
+		</div>
+		<br> <br>
+	</article>
+	<footer class="container-fluid text-center">
+		<div class="a">
+			<p>@CapgeminiApp2019</p>
+		</div>
+	</footer>
+
 </body>
 </html>
