@@ -1,8 +1,8 @@
 package com.cg.capbook.model;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -25,23 +25,17 @@ public class UserAccount {
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,orphanRemoval=true)  //mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<Post> posts ;
 
-	private String gender;
-	private String firstName;
-	private String secondName;
-	private String bio;
-	private String status;
-	private String mobileNo;
-	private String dateOfBirth;
-	
-	private String userName;
+	private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userName,securityQue;
 	@Column(columnDefinition="BLOB")
 	private byte[] profilePic;
 	@Embedded
 	private Address address;
 	public UserAccount() {}
+	
 	public UserAccount(String emailId, String password, List<Photo> photos, Map<String, Friend> friends,
 			List<Post> posts, String gender, String firstName, String secondName, String bio, String status,
-			String mobileNo, String dateOfBirth, String userName, byte[] profilePic, Address address) {
+			String mobileNo, String dateOfBirth, String userName, String securityQue, byte[] profilePic,
+			Address address) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
@@ -56,11 +50,13 @@ public class UserAccount {
 		this.mobileNo = mobileNo;
 		this.dateOfBirth = dateOfBirth;
 		this.userName = userName;
+		this.securityQue = securityQue;
 		this.profilePic = profilePic;
 		this.address = address;
 	}
+
 	public UserAccount(String emailId, String password, String gender, String firstName, String secondName,
-			String mobileNo, String dateOfBirth) {
+			String mobileNo, String dateOfBirth,String securityQue) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
@@ -69,6 +65,7 @@ public class UserAccount {
 		this.secondName = secondName;
 		this.mobileNo = mobileNo;
 		this.dateOfBirth = dateOfBirth;
+		this.securityQue = securityQue;
 	}
 	public String getEmailId() {
 		return emailId;
@@ -160,6 +157,13 @@ public class UserAccount {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	public String getSecurityQue() {
+		return securityQue;
+	}
+    public void setSecurityQue(String securityQue) {
+		this.securityQue = securityQue;
+	}
+
 	@Override
 	public String toString() {
 		return "UserAccount [emailId=" + emailId + ", password=" + password + ", photos=" + photos + ", friends="
@@ -168,6 +172,7 @@ public class UserAccount {
 				+ dateOfBirth + ", userName=" + userName + ", profilePic=" + Arrays.toString(profilePic) + ", address="
 				+ address + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -185,10 +190,12 @@ public class UserAccount {
 		result = prime * result + ((posts == null) ? 0 : posts.hashCode());
 		result = prime * result + Arrays.hashCode(profilePic);
 		result = prime * result + ((secondName == null) ? 0 : secondName.hashCode());
+		result = prime * result + ((securityQue == null) ? 0 : securityQue.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -259,6 +266,11 @@ public class UserAccount {
 			if (other.secondName != null)
 				return false;
 		} else if (!secondName.equals(other.secondName))
+			return false;
+		if (securityQue == null) {
+			if (other.securityQue != null)
+				return false;
+		} else if (!securityQue.equals(other.securityQue))
 			return false;
 		if (status == null) {
 			if (other.status != null)
