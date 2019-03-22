@@ -24,8 +24,7 @@ public class UserAccount {
 
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,orphanRemoval=true)  //mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<Post> posts ;
-
-	private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userName,securityQue,answer;
+private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userName,securityQue,answer;
 	private String profilePic;
 	@Embedded
 	private Address address;
