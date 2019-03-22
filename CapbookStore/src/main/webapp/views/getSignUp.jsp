@@ -101,7 +101,7 @@
 							<span class="input-group-text"> <i class="fa fa-lock"></i>
 							</span>
 						</div>
-						<input class="form-control" placeholder="Create password"
+						<input name="password" class="form-control" placeholder="Create password"
 							type="password">
 					</div>
 					<!-- form-group// -->
@@ -111,7 +111,7 @@
 					</div>
 					<!-- form-group// -->
 					<p class="text-center">
-						Have an account? <a href="">Log In</a>
+						Have an account? <a href="getLogin">Log In</a>
 					</p>
 				</form>
 			</article>
