@@ -191,7 +191,7 @@ div.c {
 
 							<div class="d-flex justify-content-center">
 
-								<a href="loginPage">LogIn now!</a>
+								<a href="getLoginPage">LogIn now!</a>
 
 							</div>
 

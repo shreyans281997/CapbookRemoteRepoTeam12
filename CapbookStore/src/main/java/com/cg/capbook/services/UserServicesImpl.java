@@ -28,7 +28,7 @@ public class UserServicesImpl implements IUserService{
 	@Override
 	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, String dateOfBirth, String gender, String mobileNo,String securityQue,String answer)
 			throws EmailAlreadyRegisteredException, FieldsEmptyException {
-		if(emailId==null && password==null && gender==null && firstName==null && secondName==null && mobileNo==null && dateOfBirth==null && securityQue==null && answer==null)
+		if(emailId==null || password==null || gender==null || firstName==null || secondName==null || mobileNo==null || dateOfBirth==null || securityQue==null || answer==null)
 			throw new FieldsEmptyException("Don't Keep the Required Fields Empty");
 
 		UserAccount userAccount=userDao.findById(emailId).orElse(null);

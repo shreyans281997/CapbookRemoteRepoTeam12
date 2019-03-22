@@ -15,7 +15,7 @@ private Comments comments;
 private Notification notification;
 private Photo photo;
 
-@RequestMapping("/")
+@RequestMapping(value= {"/","getLoginPage"})
 public String getIndexPage() {
 return "loginPage";
 }
@@ -27,6 +27,10 @@ public String getSignUp() {
 //@RequestMapping("/getLogin")
 //public String getLogin() {
 //	return "loginPage";}
+
+@RequestMapping("/getHomePage")
+public String getHomePage() {
+	return "homePage";}
 
 @RequestMapping("/getChangePassword")
 public String getChangePassword() {

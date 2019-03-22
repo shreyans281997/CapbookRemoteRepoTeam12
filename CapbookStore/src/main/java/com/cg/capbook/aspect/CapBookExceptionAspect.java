@@ -33,7 +33,7 @@ public class CapBookExceptionAspect {
 	}
 	@ExceptionHandler(FieldsEmptyException.class)
 	public ModelAndView handleFieldsEmptyException(Exception e) {
-		return new ModelAndView("getSignup", "errorMessage", e.getMessage());
+		return new ModelAndView("getSignUp", "errorMessage", e.getMessage());
 	}
 
 

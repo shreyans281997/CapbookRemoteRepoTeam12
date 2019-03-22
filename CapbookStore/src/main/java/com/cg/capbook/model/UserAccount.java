@@ -15,27 +15,30 @@ public class UserAccount {
 	@Id
 	private String emailId;
 	private String password;
-	
+	private String businessProfile;
+	private String workPlace;
+	private String workExperience;
 	@OneToMany(mappedBy="user")
 	private List<Photo> photos;
-
 	@OneToMany(mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)  //mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
 	private Map<String, Friend> friends;
-
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,orphanRemoval=true)  //mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<Post> posts ;
-private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userName,securityQue,answer;
+	private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userName,securityQue,answer;
 	private String profilePic;
 	@Embedded
 	private Address address;
 	public UserAccount() {}
-	public UserAccount(String emailId, String password, List<Photo> photos, Map<String, Friend> friends,
-			List<Post> posts, String gender, String firstName, String secondName, String bio, String status,
-			String mobileNo, String dateOfBirth, String userName, String securityQue, String answer, String profilePic,
-			Address address) {
+	public UserAccount(String emailId, String password, String businessProfile, String workPlace, String workExperience,
+			List<Photo> photos, Map<String, Friend> friends, List<Post> posts, String gender, String firstName,
+			String secondName, String bio, String status, String mobileNo, String dateOfBirth, String userName,
+			String securityQue, String answer, String profilePic, Address address) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
+		this.businessProfile = businessProfile;
+		this.workPlace = workPlace;
+		this.workExperience = workExperience;
 		this.photos = photos;
 		this.friends = friends;
 		this.posts = posts;
@@ -52,7 +55,8 @@ private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userN
 		this.profilePic = profilePic;
 		this.address = address;
 	}
-   public UserAccount(String emailId, String password, String gender, String firstName, String secondName,
+
+	public UserAccount(String emailId, String password, String gender, String firstName, String secondName,
 			String mobileNo, String dateOfBirth,String securityQue,String answer) {
 		super();
 		this.emailId = emailId;
@@ -143,7 +147,7 @@ private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userN
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+
 	public String getProfilePic() {
 		return profilePic;
 	}
@@ -159,26 +163,52 @@ private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userN
 	public String getSecurityQue() {
 		return securityQue;
 	}
-    public void setSecurityQue(String securityQue) {
+	public void setSecurityQue(String securityQue) {
 		this.securityQue = securityQue;
 	}
-    public String getAnswer() {
+	public String getAnswer() {
 		return answer;
 	}
-    public void setAnswer(String answer) {
+	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-   
+
+
+	public String getBusinessProfile() {
+		return businessProfile;
+	}
+
+	public void setBusinessProfile(String businessProfile) {
+		this.businessProfile = businessProfile;
+	}
+
+	public String getWorkPlace() {
+		return workPlace;
+	}
+
+	public void setWorkPlace(String workPlace) {
+		this.workPlace = workPlace;
+	}
+
+	public String getWorkExperience() {
+		return workExperience;
+	}
+
+	public void setWorkExperience(String workExperience) {
+		this.workExperience = workExperience;
+	}
 
 
 	@Override
 	public String toString() {
-		return "UserAccount [emailId=" + emailId + ", password=" + password + ", photos=" + photos + ", friends="
-				+ friends + ", posts=" + posts + ", gender=" + gender + ", firstName=" + firstName + ", secondName="
-				+ secondName + ", bio=" + bio + ", status=" + status + ", mobileNo=" + mobileNo + ", dateOfBirth="
-				+ dateOfBirth + ", userName=" + userName + ", securityQue=" + securityQue + ", answer=" + answer
-				+ ", profilePic=" + profilePic + ", address=" + address + "]";
+		return "UserAccount [emailId=" + emailId + ", password=" + password + ", businessProfile=" + businessProfile
+				+ ", workPlace=" + workPlace + ", workExperience=" + workExperience + ", photos=" + photos
+				+ ", friends=" + friends + ", posts=" + posts + ", gender=" + gender + ", firstName=" + firstName
+				+ ", secondName=" + secondName + ", bio=" + bio + ", status=" + status + ", mobileNo=" + mobileNo
+				+ ", dateOfBirth=" + dateOfBirth + ", userName=" + userName + ", securityQue=" + securityQue
+				+ ", answer=" + answer + ", profilePic=" + profilePic + ", address=" + address + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -186,6 +216,7 @@ private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userN
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((answer == null) ? 0 : answer.hashCode());
 		result = prime * result + ((bio == null) ? 0 : bio.hashCode());
+		result = prime * result + ((businessProfile == null) ? 0 : businessProfile.hashCode());
 		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
 		result = prime * result + ((emailId == null) ? 0 : emailId.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
@@ -200,8 +231,11 @@ private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userN
 		result = prime * result + ((securityQue == null) ? 0 : securityQue.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		result = prime * result + ((workExperience == null) ? 0 : workExperience.hashCode());
+		result = prime * result + ((workPlace == null) ? 0 : workPlace.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -225,6 +259,11 @@ private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userN
 			if (other.bio != null)
 				return false;
 		} else if (!bio.equals(other.bio))
+			return false;
+		if (businessProfile == null) {
+			if (other.businessProfile != null)
+				return false;
+		} else if (!businessProfile.equals(other.businessProfile))
 			return false;
 		if (dateOfBirth == null) {
 			if (other.dateOfBirth != null)
@@ -296,7 +335,16 @@ private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userN
 				return false;
 		} else if (!userName.equals(other.userName))
 			return false;
+		if (workExperience == null) {
+			if (other.workExperience != null)
+				return false;
+		} else if (!workExperience.equals(other.workExperience))
+			return false;
+		if (workPlace == null) {
+			if (other.workPlace != null)
+				return false;
+		} else if (!workPlace.equals(other.workPlace))
+			return false;
 		return true;
 	}
-	
 }

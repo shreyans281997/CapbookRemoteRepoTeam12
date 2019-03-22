@@ -1,11 +1,5 @@
 <html>
 <head>
-
-
-
-<!------ Include the above in your HEAD tag ---------->
-
-
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -90,7 +84,7 @@ div.b {
 							<span class="input-group-text"> <i class="fa fa-user"></i>
 							</span>
 						</div>
-						<input name="lastName" class="form-control"
+						<input name="secondName" class="form-control"
 							placeholder="Last name" type="text">
 					</div>
 					<!-- form-group// -->
@@ -193,10 +187,9 @@ div.b {
 	</div>
 	<!-- card.// -->
 	<article>
-		<div>
-			<!--container end.//-->
-
-			<i class="fa fa-window-restore "></i>
+		<div class="error" align="center">
+        ${errorMessage}
+			
 		</div>
 		<br> <br>
 	</article>
