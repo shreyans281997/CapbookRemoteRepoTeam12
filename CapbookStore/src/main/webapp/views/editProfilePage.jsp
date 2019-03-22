@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action=updateProfile method="post">
-UserName:
-<input type="text" name="userName">
+<form action=updatePic method="post" enctype="multipart/form-data">
+Select image to upload:
+<input type="file" name="file" />
 <input type="submit">
 </form>
 </body>
