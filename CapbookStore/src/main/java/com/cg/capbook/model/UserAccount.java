@@ -25,16 +25,15 @@ public class UserAccount {
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,orphanRemoval=true)  //mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<Post> posts ;
 
-	private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userName,securityQue;
+	private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userName,securityQue,answer;
 	@Column(columnDefinition="BLOB")
 	private byte[] profilePic;
 	@Embedded
 	private Address address;
 	public UserAccount() {}
-	
 	public UserAccount(String emailId, String password, List<Photo> photos, Map<String, Friend> friends,
 			List<Post> posts, String gender, String firstName, String secondName, String bio, String status,
-			String mobileNo, String dateOfBirth, String userName, String securityQue, byte[] profilePic,
+			String mobileNo, String dateOfBirth, String userName, String securityQue, String answer, byte[] profilePic,
 			Address address) {
 		super();
 		this.emailId = emailId;
@@ -51,12 +50,12 @@ public class UserAccount {
 		this.dateOfBirth = dateOfBirth;
 		this.userName = userName;
 		this.securityQue = securityQue;
+		this.answer = answer;
 		this.profilePic = profilePic;
 		this.address = address;
 	}
-
-	public UserAccount(String emailId, String password, String gender, String firstName, String secondName,
-			String mobileNo, String dateOfBirth,String securityQue) {
+   public UserAccount(String emailId, String password, String gender, String firstName, String secondName,
+			String mobileNo, String dateOfBirth,String securityQue,String answer) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
@@ -66,6 +65,7 @@ public class UserAccount {
 		this.mobileNo = mobileNo;
 		this.dateOfBirth = dateOfBirth;
 		this.securityQue = securityQue;
+		this.answer = answer;
 	}
 	public String getEmailId() {
 		return emailId;
@@ -163,8 +163,13 @@ public class UserAccount {
     public void setSecurityQue(String securityQue) {
 		this.securityQue = securityQue;
 	}
-
-	@Override
+    public String getAnswer() {
+		return answer;
+	}
+    public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+    @Override
 	public String toString() {
 		return "UserAccount [emailId=" + emailId + ", password=" + password + ", photos=" + photos + ", friends="
 				+ friends + ", posts=" + posts + ", gender=" + gender + ", firstName=" + firstName + ", secondName="
@@ -173,11 +178,14 @@ public class UserAccount {
 				+ address + "]";
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((answer == null) ? 0 : answer.hashCode());
 		result = prime * result + ((bio == null) ? 0 : bio.hashCode());
 		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
 		result = prime * result + ((emailId == null) ? 0 : emailId.hashCode());
@@ -196,6 +204,8 @@ public class UserAccount {
 		return result;
 	}
 
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -209,6 +219,11 @@ public class UserAccount {
 			if (other.address != null)
 				return false;
 		} else if (!address.equals(other.address))
+			return false;
+		if (answer == null) {
+			if (other.answer != null)
+				return false;
+		} else if (!answer.equals(other.answer))
 			return false;
 		if (bio == null) {
 			if (other.bio != null)
