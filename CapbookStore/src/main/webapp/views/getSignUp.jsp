@@ -84,7 +84,7 @@ div.b {
 							<span class="input-group-text"> <i class="fa fa-user"></i>
 							</span>
 						</div>
-						<input name="lastName" class="form-control"
+						<input name="secondName" class="form-control"
 							placeholder="Last name" type="text">
 					</div>
 					<!-- form-group// -->
@@ -94,7 +94,7 @@ div.b {
 							</span>
 						</div>
 
-						<select class="form-control">
+						<select name="gender" class="form-control">
 							<option selected="">Select Gender</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
@@ -145,6 +145,30 @@ div.b {
 						</div>
 						<input name="password" class="form-control" placeholder="Create password"
 							type="password">
+					</div>
+					<!-- form-group// -->
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-question-circle" style="font-size:24px"></i>
+							</span> </span>
+						</div>
+
+						<select name="securityQue" class="form-control">
+							<option selected="">Security Ques</option>
+							<option value="schoolName">Your first School Name</option>
+							<option value="petName">Your Pet Name</option>
+							<option value="food">Your Favourite Food</option>
+						</select>
+					</div>
+					<!-- form-group// -->
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-reply" style="font-size:24px"></i>
+							</span>
+						</div>
+						<input name="answer" class="form-control" placeholder="Answer"
+							type="text">
+						<!-- form-group// -->
 					</div>
 					<!-- form-group// -->
 					<div class="form-group">
