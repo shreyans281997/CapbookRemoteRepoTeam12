@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
+import com.cg.capbook.exceptions.FieldsEmptyException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
@@ -30,5 +31,10 @@ public class CapBookExceptionAspect {
 	public ModelAndView handleUserNameAlreadyExist(Exception e) {
 		return new ModelAndView("getSignUp", "errorMessage", e.getMessage());
 	}
+	@ExceptionHandler(FieldsEmptyException.class)
+	public ModelAndView handleFieldsEmptyException(Exception e) {
+		return new ModelAndView("getSignup", "errorMessage", e.getMessage());
+	}
+
 
 }

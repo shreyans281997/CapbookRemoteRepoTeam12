@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
+import com.cg.capbook.exceptions.FieldsEmptyException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
@@ -21,7 +22,7 @@ public class UserServiceController {
 	@Autowired
 	IUserService userService; 
 		@RequestMapping("/showSignup")
-	public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue) throws EmailAlreadyRegisteredException {
+	public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue) throws EmailAlreadyRegisteredException, FieldsEmptyException{
 		UserAccount user= userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue);
 		return new ModelAndView("loginPage","user",user); 
 	}

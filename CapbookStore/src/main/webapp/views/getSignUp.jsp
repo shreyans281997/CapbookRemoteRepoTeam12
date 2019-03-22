@@ -15,7 +15,7 @@
 <title>Registration</title>
 <style>
 .error {
-	color: red;
+	color: blue;
 	font-weight: bold;
 }
 </style>
@@ -26,8 +26,9 @@
 		<div class="card bg-light">
 			<article class="card-body mx-auto" style="max-width: 400px;">
 				<h4 class="card-title mt-3 text-center">Sign Up</h4>
-
+<div class="error">${errorMessage}</div>
 				<form action="showSignup" method="post">
+				
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-user"></i>

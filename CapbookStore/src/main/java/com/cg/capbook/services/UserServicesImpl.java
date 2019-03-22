@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import com.cg.capbook.daoservice.UserDAO;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
+import com.cg.capbook.exceptions.FieldsEmptyException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
@@ -18,7 +19,9 @@ public class UserServicesImpl implements IUserService{
 	private EncryptionAndDecryption encryptionAndDecryption;
 	@Override
 	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, String dateOfBirth, String gender, String mobileNo,String securityQue)
-			throws EmailAlreadyRegisteredException {
+			throws EmailAlreadyRegisteredException,FieldsEmptyException {
+		if(emailId==null|| password==null|| gender==null|| firstName==null|| secondName==null||mobileNo==null||dateOfBirth==null||securityQue==null)
+			throw new FieldsEmptyException("Don't Keep the Required Fields Empty");
 		UserAccount userAccount=userDao.findById(emailId).orElse(null);
 		if(userAccount!=null)
 			throw new EmailAlreadyRegisteredException("Email is already in use.");
