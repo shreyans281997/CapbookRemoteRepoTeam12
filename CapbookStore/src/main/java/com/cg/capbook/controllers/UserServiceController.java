@@ -26,7 +26,7 @@ public class UserServiceController {
 		UserAccount user= userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue);
 		return new ModelAndView("loginPage","user",user); 
 	}
-	@RequestMapping("/changePassword") public ModelAndView changePassword(@RequestParam String
+	@RequestMapping("/forgotPassword") public ModelAndView changePassword(@RequestParam String
 			emailId,String password, String securityQue) throws UserAccountNotFoundException, IncorrectOldPassword, InvalidQuestionOrAnswer {
 		userService.forgotPassword(emailId, password, securityQue);
 		return new ModelAndView("loginPage","success","Password changed Successfully");
@@ -39,5 +39,10 @@ public class UserServiceController {
 	@RequestMapping("/updateProfile") public ModelAndView editProfile( @RequestParam String userName ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
 		user=userService.updateDetails(user.getEmailId(), userName);
 		return new ModelAndView("profilePage","user",user);
+	}
+	@RequestMapping("/changePassword")
+	public ModelAndView changePassword(@RequestParam String oldPassword, String newPassword,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
+		boolean check=userService.changePassword(user.getEmailId(),oldPassword, newPassword);
+		return new ModelAndView("editProfilePage","success","Password changed Successfully");
 	}
 }

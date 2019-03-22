@@ -58,4 +58,10 @@ public class UserServicesImpl implements IUserService{
 		user.setUserName(userName);
 		return userDao.save(user);
 	}
+	@Override
+	public boolean changePassword(String emailId, String oldPassword, String newPassword) throws UserAccountNotFoundException {
+		UserAccount user=userDao.findById(emailId).orElseThrow(()->new UserAccountNotFoundException("User Account Not Found"));
+		
+		return false;
+	}
 }

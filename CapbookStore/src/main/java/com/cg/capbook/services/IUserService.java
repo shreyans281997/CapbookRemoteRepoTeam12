@@ -4,6 +4,7 @@ package com.cg.capbook.services;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
+import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
@@ -17,4 +18,5 @@ public interface IUserService {
 			String dateOfBirth, String gender, String mobileNo,String securityQue) throws EmailAlreadyRegisteredException;
 	String addProfilePic(MultipartFile photo);
 	public UserAccount updateDetails(String emailId,String userName) throws UserAccountNotFoundException;
+	public boolean changePassword(String emailId,String oldPassword,String newPassword) throws UserAccountNotFoundException, IncorrectOldPassword;
 }
