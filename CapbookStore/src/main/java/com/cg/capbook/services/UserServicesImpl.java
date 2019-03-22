@@ -18,7 +18,6 @@ public class UserServicesImpl implements IUserService{
 	private UserDAO userDao;
 	@Autowired
 	private EncryptionAndDecryption encryptionAndDecryption;
-	
 	@Override
 	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, String dateOfBirth, String gender, String mobileNo,String securityQue,String answer)
 			throws EmailAlreadyRegisteredException, FieldsEmptyException {
