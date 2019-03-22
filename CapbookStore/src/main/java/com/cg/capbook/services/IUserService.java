@@ -16,8 +16,7 @@ public interface IUserService {
 	public UserAccount loginUser(String emailId, String password) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException;
     public boolean forgotPassword(String emaildId, String password,String securityQue,String answer) throws UserAccountNotFoundException, InvalidQuestionOrAnswer;
 	UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName,	String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException;
-
-	String addProfilePic(MultipartFile photo);
 	public UserAccount updateDetails(String emailId,String userName) throws UserAccountNotFoundException;
 	public boolean changePassword(String emailId,String oldPassword,String newPassword) throws UserAccountNotFoundException, IncorrectOldPassword;
+	String addProfilePic(String emailId, MultipartFile file) throws UserAccountNotFoundException;
 }

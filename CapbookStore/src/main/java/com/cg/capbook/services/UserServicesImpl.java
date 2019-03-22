@@ -1,5 +1,10 @@
 package com.cg.capbook.services;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +19,7 @@ import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.model.UserAccount;
 @Component("userService")
 public class UserServicesImpl implements IUserService{
+	private static String UPLOADED_FOLDER = "D:/";
 	@Autowired
 	private UserDAO userDao;
 	@Autowired
@@ -56,9 +62,23 @@ public class UserServicesImpl implements IUserService{
 		else throw new InvalidQuestionOrAnswer();
 	}
 	@Override
-	public String addProfilePic(MultipartFile photo)  {
+	public String addProfilePic(String emailId,MultipartFile file) throws UserAccountNotFoundException  {
+		UserAccount user=userDao.findById(emailId).orElseThrow(()->new UserAccountNotFoundException("User Account Not Found"));
+		if(file.isEmpty()) {
+			return "Please enter file again";
+		}
+		try {
+			// Get the file and save it somewhere
+			byte[] bytes = file.getBytes();
+			Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+			user.setProfilePic(UPLOADED_FOLDER + file.getOriginalFilename());
+			userDao.save(user);
+			Files.write(path, bytes);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-		return null;
+		return "redirect:/uploadStatus";
 	}
 	public UserAccount updateDetails(String emailId,String userName) throws UserAccountNotFoundException {
 		UserAccount user=getUserDetails(emailId);

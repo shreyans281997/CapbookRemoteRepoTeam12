@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.FieldsEmptyException;
@@ -26,7 +27,7 @@ public class UserServiceController {
 	public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException {
 		UserAccount user= userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue,answer);
 
-		return new ModelAndView("loginPage","user",user); 
+		return new ModelAndView("indexPage","user",user); 
 	}
 	@RequestMapping("/forgotPassword") public ModelAndView changePassword(@RequestParam String
 			emailId,String password, String securityQue,String answer) throws UserAccountNotFoundException, IncorrectOldPassword, InvalidQuestionOrAnswer {
@@ -46,5 +47,9 @@ public class UserServiceController {
 	public ModelAndView changePassword(@RequestParam String oldPassword, String newPassword,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
 		boolean check=userService.changePassword(user.getEmailId(),oldPassword, newPassword);
 		return new ModelAndView("editProfilePage","success","Password changed Successfully");
+	}
+	@RequestMapping("/updatePic") public ModelAndView updatePic( @RequestParam MultipartFile file ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
+		userService.addProfilePic(user.getEmailId(), file);
+		return new ModelAndView("profilePage","success","File successfully uploaded");
 	}
 }
