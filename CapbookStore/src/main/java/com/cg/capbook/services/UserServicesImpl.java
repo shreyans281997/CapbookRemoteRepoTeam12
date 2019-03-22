@@ -1,13 +1,12 @@
 package com.cg.capbook.services;
 
 import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.cg.capbook.daoservice.UserDAO;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
+import com.cg.capbook.exceptions.IncorrectOldPassword;
+import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
-import com.cg.capbook.exceptions.invalidOTPException;
 import com.cg.capbook.model.UserAccount;
 
 public class UserServicesImpl implements IUserService{
@@ -15,6 +14,7 @@ public class UserServicesImpl implements IUserService{
 	private UserDAO userDao;
 	@Autowired
 	private EncryptionAndDecryption encryptionAndDecryption;
+	private static UserAccount userAccount;
 	@Override
 	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, Date dateOfBirth, String gender, String mobileNo)
 			throws EmailAlreadyRegisteredException {
@@ -33,14 +33,16 @@ public class UserServicesImpl implements IUserService{
 		}
 
 	@Override
-	public UserAccount loginUser(String email, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserAccount loginUser(String email, String password) throws UserAccountNotFoundException, InvalidUsernameOrPasswordException {
+		 if(password!=encryptionAndDecryption.decrypt(getUserDetails(email).getPassword()))
+		throw new InvalidUsernameOrPasswordException("Username or password is incorrect");
+		userAccount=getUserDetails(email);
+		return userAccount;
 	}
-
+	
 	@Override
-	public String verifyOtp(int otp) throws invalidOTPException {
-		
+	public String changePassword(String oldPassword, String newPassword) throws IncorrectOldPassword {
+		userAccount.
 		return null;
 	}
 }
