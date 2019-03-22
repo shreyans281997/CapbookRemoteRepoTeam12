@@ -28,6 +28,14 @@ public String getSignUp() {
 public String getLogin() {
 	return "loginPage";}
 
+@RequestMapping("/getChangePassword")
+public String getChangePassword() {
+	return "changePassword";}
+
+@RequestMapping("/getEditProfile")
+public String getEditProfile() {
+	return "editProfilePage";}
+
 @ModelAttribute
 public UserAccount getUserAccount() {
 	user=new UserAccount();

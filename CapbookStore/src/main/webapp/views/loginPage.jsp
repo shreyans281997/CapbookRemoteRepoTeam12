@@ -45,7 +45,7 @@
 							<span class="input-group-text"> <i class="fa fa-key"></i>
 							</span>
 						</div>
-						<input class="form-control" placeholder="Password" type="password">
+						<input name="password" class="form-control" placeholder="Password" type="password">
 					</div>
 					<!-- form-group// -->
 
@@ -55,7 +55,7 @@
 					</div>
 					<!-- form-group// -->
 					<div class="d-flex justify-content-center">
-						<a href="#">Forgot your password?</a>
+						<a href="getChangePassword">Forgot your password?</a>
 					</div>
 					</article>
 					</form>
@@ -67,7 +67,7 @@
 	
 	
 	<div>
-	
+	${success }
 
 	<i class="fa fa-window-restore "></i>
 	
