@@ -43,7 +43,7 @@
 							<span class="input-group-text"> <i class="fa fa-user"></i>
 							</span>
 						</div>
-						<input name="lastName" class="form-control"
+						<input name="secondName" class="form-control"
 							placeholder="Last name" type="text">
 					</div>
 					<!-- form-group// -->
@@ -53,7 +53,7 @@
 							</span> </span>
 						</div>
 
-						<select class="form-control">
+						<select name="gender" class="form-control">
 							<option selected="">Select Gender</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
@@ -112,7 +112,7 @@
 							</span> </span>
 						</div>
 
-						<select class="form-control">
+						<select name="securityQue" class="form-control">
 							<option selected="">Security Ques</option>
 							<option value="schoolName">Your first School Name</option>
 							<option value="petName">Your Pet Name</option>
