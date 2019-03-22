@@ -17,16 +17,16 @@ private Photo photo;
 
 @RequestMapping("/")
 public String getIndexPage() {
-return "indexPage";
+return "loginPage";
 }
 
 @RequestMapping("/getSignUp")
 public String getSignUp() {
 	return "getSignUp";}
 
-@RequestMapping("/getLogin")
-public String getLogin() {
-	return "loginPage";}
+//@RequestMapping("/getLogin")
+//public String getLogin() {
+//	return "loginPage";}
 
 @RequestMapping("/getChangePassword")
 public String getChangePassword() {
