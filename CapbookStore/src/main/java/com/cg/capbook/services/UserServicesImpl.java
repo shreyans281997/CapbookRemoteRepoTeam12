@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import com.cg.capbook.daoservice.UserDAO;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
+import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
@@ -59,9 +60,11 @@ public class UserServicesImpl implements IUserService{
 		return userDao.save(user);
 	}
 	@Override
-	public boolean changePassword(String emailId, String oldPassword, String newPassword) throws UserAccountNotFoundException {
+	public boolean changePassword(String emailId, String oldPassword, String newPassword) throws UserAccountNotFoundException, IncorrectOldPassword {
 		UserAccount user=userDao.findById(emailId).orElseThrow(()->new UserAccountNotFoundException("User Account Not Found"));
-		
-		return false;
+		if(oldPassword.equals(user.getPassword()))
+		{user.setPassword(newPassword);
+		return true;}
+		else throw new IncorrectOldPassword();
 	}
 }
