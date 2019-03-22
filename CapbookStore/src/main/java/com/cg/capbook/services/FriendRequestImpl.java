@@ -1,9 +1,7 @@
 package com.cg.capbook.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.cg.capbook.daoservice.FriendDAO;
 import com.cg.capbook.daoservice.FriendRequestDAO;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
