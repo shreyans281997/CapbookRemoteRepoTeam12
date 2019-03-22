@@ -1,6 +1,10 @@
 
 package com.cg.capbook.services;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
@@ -14,6 +18,6 @@ public interface IUserService {
     public boolean changePassword(String emaildId, String password) throws UserAccountNotFoundException;
 	UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName,
 			String dateOfBirth, String gender, String mobileNo) throws EmailAlreadyRegisteredException;
-	String addProfilePic(MultipartFile photo);
-	public UserAccount updateDetails(String emailId,String userName) throws UserAccountNotFoundException;
+	public UserAccount updateDetails(String emailId,String userName) throws UserAccountNotFoundException, FileNotFoundException, IOException, SQLException;
+	String addProfilePic(String emailId, MultipartFile file) throws UserAccountNotFoundException;
 }

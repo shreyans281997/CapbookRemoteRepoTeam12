@@ -503,12 +503,13 @@ p {
 }
 </style>
 </head>
+ 
 <aside class="profile-card">
+
   <header>
+  <img src="Lighthouse.jpeg" >
     <!-- here’s the avatar -->
-    <a target="_blank" href="#">
-      <img src="${user.profilePic }" class="hoverZoomLink">
-    </a>
+   
 
     <!-- the username -->
     <h1>

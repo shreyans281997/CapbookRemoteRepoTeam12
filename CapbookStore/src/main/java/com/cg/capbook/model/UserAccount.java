@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 @Entity
 public class UserAccount {
 	@Id
@@ -34,14 +37,13 @@ public class UserAccount {
 	private String dateOfBirth;
 	
 	private String userName;
-	@Column(columnDefinition="BLOB")
-	private byte[] profilePic;
+	private String profilePic;
 	@Embedded
 	private Address address;
 	public UserAccount() {}
 	public UserAccount(String emailId, String password, List<Photo> photos, Map<String, Friend> friends,
 			List<Post> posts, String gender, String firstName, String secondName, String bio, String status,
-			String mobileNo, String dateOfBirth, String userName, byte[] profilePic, Address address) {
+			String mobileNo, String dateOfBirth, String userName, String profilePic, Address address) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
@@ -148,10 +150,12 @@ public class UserAccount {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public byte[] getProfilePic() {
+
+	
+	public String getProfilePic() {
 		return profilePic;
 	}
-	public void setProfilePic(byte[] profilePic) {
+	public void setProfilePic(String profilePic) {
 		this.profilePic = profilePic;
 	}
 	public Address getAddress() {
@@ -160,13 +164,13 @@ public class UserAccount {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	
 	@Override
 	public String toString() {
 		return "UserAccount [emailId=" + emailId + ", password=" + password + ", photos=" + photos + ", friends="
 				+ friends + ", posts=" + posts + ", gender=" + gender + ", firstName=" + firstName + ", secondName="
 				+ secondName + ", bio=" + bio + ", status=" + status + ", mobileNo=" + mobileNo + ", dateOfBirth="
-				+ dateOfBirth + ", userName=" + userName + ", profilePic=" + Arrays.toString(profilePic) + ", address="
-				+ address + "]";
+				+ dateOfBirth + ", userName=" + userName + ", profilePic=" + profilePic + ", address=" + address + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -183,7 +187,7 @@ public class UserAccount {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((photos == null) ? 0 : photos.hashCode());
 		result = prime * result + ((posts == null) ? 0 : posts.hashCode());
-		result = prime * result + Arrays.hashCode(profilePic);
+		result = prime * result + ((profilePic == null) ? 0 : profilePic.hashCode());
 		result = prime * result + ((secondName == null) ? 0 : secondName.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
@@ -253,7 +257,10 @@ public class UserAccount {
 				return false;
 		} else if (!posts.equals(other.posts))
 			return false;
-		if (!Arrays.equals(profilePic, other.profilePic))
+		if (profilePic == null) {
+			if (other.profilePic != null)
+				return false;
+		} else if (!profilePic.equals(other.profilePic))
 			return false;
 		if (secondName == null) {
 			if (other.secondName != null)
@@ -272,4 +279,5 @@ public class UserAccount {
 			return false;
 		return true;
 	}
+	
 }
