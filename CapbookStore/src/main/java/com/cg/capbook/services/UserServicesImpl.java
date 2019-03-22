@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.cg.capbook.daoservice.UserDAO;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
+import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.invalidOTPException;
 import com.cg.capbook.model.UserAccount;
@@ -23,7 +24,7 @@ public class UserServicesImpl implements IUserService{
 		if(userAccount!=null)
 		throw new EmailAlreadyRegisteredException("Email is already in use.");
 		userAccount=new UserAccount(emailId, password, gender, firstName, secondName, mobileNo, dateOfBirth);
-		String encryptPassword=encryptionAndDecryption.encrypt(password);
+		String encryptPassword=EncryptionAndDecryption.encrypt(password);
 		userAccount.setPassword(encryptPassword);
 		return userDao.save(userAccount);
 	}
@@ -34,11 +35,22 @@ public class UserServicesImpl implements IUserService{
 		}
 
 	@Override
-	public UserAccount loginUser(String email, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserAccount loginUser(String emailId, String password) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException {
+		UserAccount userAccount=userDao.findById(emailId).orElseThrow(()->new UserAccountNotFoundException("User account not found"));
+		String depcryptPassword=EncryptionAndDecryption.decrypt(userAccount.getPassword());
+		System.out.println(depcryptPassword);
+		if(password.equals(depcryptPassword))
+			return userAccount;
+		else
+			throw new InvalidUsernameOrPasswordException();
 	}
-
+   public boolean changePassword(String emaildId, String password) throws UserAccountNotFoundException{
+UserAccount userAccount=userDao.findById(emaildId).orElseThrow(()->new UserAccountNotFoundException("Invalid email Id"));
+userAccount.setPassword(password);
+userDao.save(userAccount);
+return true;
+	   
+   }
 	@Override
 	public String verifyOtp(int otp) throws invalidOTPException {
 		
