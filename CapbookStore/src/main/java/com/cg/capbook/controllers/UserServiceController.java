@@ -39,5 +39,4 @@ public ModelAndView signUp(@RequestParam String emailId,String password,String f
 			  
 			  }
 	  
-	 
 }
