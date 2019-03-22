@@ -26,7 +26,6 @@ public class UserAccount {
 	private List<Post> posts ;
 
 	private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userName,securityQue,answer;
-	@Column(columnDefinition="BLOB")
 	private String profilePic;
 	@Embedded
 	private Address address;
