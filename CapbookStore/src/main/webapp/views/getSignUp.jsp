@@ -26,9 +26,9 @@
 		<div class="card bg-light">
 			<article class="card-body mx-auto" style="max-width: 400px;">
 				<h4 class="card-title mt-3 text-center">Sign Up</h4>
-<div class="error">${errorMessage}</div>
+
 				<form action="showSignup" method="post">
-				
+					<div class="error">${errorMessage}</div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-user"></i>
@@ -102,10 +102,34 @@
 							<span class="input-group-text"> <i class="fa fa-lock"></i>
 							</span>
 						</div>
-						<input name="password" class="form-control" placeholder="Create password"
-							type="password">
+						<input name="password" class="form-control"
+							placeholder="Create password" type="password">
 					</div>
 					<!-- form-group// -->
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-question-circle" style="font-size:24px"></i>
+							</span> </span>
+						</div>
+
+						<select class="form-control">
+							<option selected="">Security Ques</option>
+							<option value="schoolName">Your first School Name</option>
+							<option value="petName">Your Pet Name</option>
+							<option value="food">Your Favourite Food</option>
+						</select>
+					</div>
+					<!-- form-group// -->
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-reply" style="font-size:24px"></i>
+							</span>
+						</div>
+						<input name="answer" class="form-control" placeholder="Answer"
+							type="text">
+						<!-- form-group// -->
+					</div>
+					
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary btn-block">
 							Create Account</button>
@@ -117,16 +141,16 @@
 				</form>
 			</article>
 		</div>
-		</div>
-		<!-- card.// -->
-		<article>
-			<div>
-				<!--container end.//-->
+	</div>
+	<!-- card.// -->
+	<article>
+		<div>
+			<!--container end.//-->
 
-				<i class="fa fa-window-restore "></i>
-			</div>
-			<br> <br>
-		</article>
-		
+			<i class="fa fa-window-restore "></i>
+		</div>
+		<br> <br>
+	</article>
+
 </body>
 </html>
