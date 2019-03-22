@@ -47,6 +47,14 @@ public class Post {
 		this.comments = comments;
 	}
 
+	public Post(String postContent, UserAccount user, int noOfPostLikes, int noOfPostDislikes) {
+		super();
+		this.postContent = postContent;
+		this.user = user;
+		this.noOfPostLikes = noOfPostLikes;
+		this.noOfPostDislikes = noOfPostDislikes;
+	}
+
 	public int getPostId() {
 		return postId;
 	}
