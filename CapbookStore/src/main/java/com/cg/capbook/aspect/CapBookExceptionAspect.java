@@ -29,5 +29,4 @@ public class CapBookExceptionAspect {
 	public ModelAndView handleUserNameAlreadyExist(Exception e) {
 		return new ModelAndView("getSignUp", "errorMessage", e.getMessage());
 	}
-	
 }
