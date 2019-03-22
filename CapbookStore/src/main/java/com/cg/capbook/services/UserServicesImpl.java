@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cg.capbook.daoservice.UserDAO;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
@@ -37,9 +39,9 @@ public class UserServicesImpl implements IUserService{
 	@Override
 	public UserAccount loginUser(String emailId, String password) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException {
 		UserAccount userAccount=userDao.findById(emailId).orElseThrow(()->new UserAccountNotFoundException("User account not found"));
-		String depcryptPassword=EncryptionAndDecryption.decrypt(userAccount.getPassword());
-		System.out.println(depcryptPassword);
-		if(password.equals(depcryptPassword))
+		//String depcryptPassword=EncryptionAndDecryption.decrypt(userAccount.getPassword());
+		//System.out.println(depcryptPassword);
+		if(password.equals(userAccount.getPassword()))
 			return userAccount;
 		else
 			throw new InvalidUsernameOrPasswordException();
@@ -52,8 +54,21 @@ return true;
 	   
    }
 	@Override
-	public String verifyOtp(int otp) throws invalidOTPException {
+	public String addProfilePic(MultipartFile photo)  {
 		
+		return null;
+	}
+	public UserAccount updateDetails(String emailId,String userName) throws UserAccountNotFoundException {
+		UserAccount user=userDao.findById(emailId).orElseThrow(()->new UserAccountNotFoundException("User Account Not Found"));
+	    user.setUserName(userName);
+	    return userDao.save(user);
+
+		
+	}
+
+	@Override
+	public String verifyOtp(int otp) throws invalidOTPException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }
