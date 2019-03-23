@@ -94,7 +94,7 @@ div.b {
 							</span> </span>
 						</div>
 
-						<select class="form-control">
+						<select name="gender" class="form-control">
 							<option selected="">Select Gender</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>

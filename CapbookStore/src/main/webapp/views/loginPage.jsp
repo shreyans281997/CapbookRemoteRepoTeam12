@@ -170,7 +170,8 @@ div.c {
 
 						</article>
 					</form>
-					<div>${register}</div>
+					<div>${register}
+					${errorMessage }</div>
 				</div>
 			</div>
 		</div>

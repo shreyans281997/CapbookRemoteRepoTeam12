@@ -36,7 +36,7 @@ return new ModelAndView("loginPage","register","You have registered successfully
 	@RequestMapping("/showLogin") public ModelAndView login(@RequestParam String
 			emailId,String password) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException {
 		UserAccount user=userService.loginUser(emailId, password);
-		return new ModelAndView("profilePage","user",user);
+		return new ModelAndView("homePage","user",user);
 	}
 	@RequestMapping("/updateProfile") public ModelAndView editProfile( @RequestParam String userName ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
 		user=userService.updateDetails(user.getEmailId(), userName);

@@ -150,7 +150,7 @@ div.c {
 									<span class="input-group-text"> <i class="fa fa-key"></i>
 									</span>
 								</div>
-								<input name="newPassword" class="form-control"
+								<input name="password" class="form-control"
 									placeholder="New Password" type="password">
 							</div>
 							<div class="form-group input-group">
