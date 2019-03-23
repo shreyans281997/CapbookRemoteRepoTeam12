@@ -179,7 +179,7 @@ div.b {
 					</div>
 					<!-- form-group// -->
 					<p class="text-center">
-						Have an account? <a href="getLogin">Log In</a>
+						Have an account? <a href="getLoginPage">Log In</a>
 					</p>
 				</form>
 			</article>

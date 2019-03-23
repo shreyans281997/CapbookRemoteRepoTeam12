@@ -1,4 +1,4 @@
-!DOCTYPE html>
+
 <html lang="en">
 <head>
 <title>Login Page</title>
@@ -164,12 +164,13 @@ div.c {
 							<!-- form-group// -->
 							<div class="d-flex justify-content-center">
 
-								<a href="getChangePassword">Forgot your password?</a>
+								<a href="getForgotPassword">Forgot your password?</a>
 
 							</div>
 
 						</article>
 					</form>
+					<div>${register}</div>
 				</div>
 			</div>
 		</div>

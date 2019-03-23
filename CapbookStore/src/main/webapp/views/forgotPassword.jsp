@@ -125,7 +125,7 @@ div.c {
 				<br> <br>
 
 				<div class="card bg-light">
-					<form action="showLogin" method="post">
+					<form action="forgotPassword" method="post">
 
 
 						<article class="card-body mx-auto" style="max-width: 400px">
@@ -198,6 +198,8 @@ div.c {
 						</article>
 					</form>
 				</div>
+				<div>${success }
+				${errorMessage }</div>
 			</div>
 		</div>
 	</div>

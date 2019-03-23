@@ -32,9 +32,9 @@ public String getSignUp() {
 public String getHomePage() {
 	return "homePage";}
 
-@RequestMapping("/getChangePassword")
+@RequestMapping("/getForgotPassword")
 public String getChangePassword() {
-	return "changePassword";}
+	return "forgotPassword";}
 
 @RequestMapping("/getEditProfile")
 public String getEditProfile() {
@@ -69,7 +69,4 @@ public Comments getCommnets() {
 public Notification getNotification() {
 	notification=new Notification();
 	return notification;}
-
-
-
 }

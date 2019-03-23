@@ -25,13 +25,13 @@ public class UserServiceController {
 	IUserService userService; 
 	@RequestMapping("/showSignup")
 public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException {
-		UserAccount user= userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue,answer);
-return new ModelAndView("loginPage","user",user); 
+		userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue,answer);
+return new ModelAndView("loginPage","register","You have registered successfully"); 
 	}
 	@RequestMapping("/forgotPassword") public ModelAndView changePassword(@RequestParam String
 			emailId,String password, String securityQue,String answer) throws UserAccountNotFoundException, IncorrectOldPassword, InvalidQuestionOrAnswer {
 		userService.forgotPassword(emailId, password, securityQue,answer);
-		return new ModelAndView("loginPage","success","Password changed Successfully");
+		return new ModelAndView("forgotPassword","success","Password changed Successfully");
 	}
 	@RequestMapping("/showLogin") public ModelAndView login(@RequestParam String
 			emailId,String password) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException {

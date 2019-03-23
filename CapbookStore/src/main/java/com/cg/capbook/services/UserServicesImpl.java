@@ -28,9 +28,8 @@ public class UserServicesImpl implements IUserService{
 	@Override
 	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, String dateOfBirth, String gender, String mobileNo,String securityQue,String answer)
 			throws EmailAlreadyRegisteredException, FieldsEmptyException {
-		if(emailId==null || password==null || gender==null || firstName==null || secondName==null || mobileNo==null || dateOfBirth==null || securityQue==null || answer==null)
-			throw new FieldsEmptyException("Don't Keep the Required Fields Empty");
-
+		//if(emailId==null || password==null || firstName==null || secondName==null || dateOfBirth==null || gender==null || mobileNo==null || securityQue==null || answer==null)
+			//throw new FieldsEmptyException("Don't Keep the Required Fields Empty");
 		UserAccount userAccount=userDao.findById(emailId).orElse(null);
 		if(userAccount!=null)
 			throw new EmailAlreadyRegisteredException("Email is already in use.");
@@ -55,11 +54,11 @@ public class UserServicesImpl implements IUserService{
 	}
 	public boolean forgotPassword(String emailId, String password, String securityQue,String answer) throws UserAccountNotFoundException, InvalidQuestionOrAnswer{
 		UserAccount userAccount=getUserDetails(emailId);
-		if(securityQue.equals(userAccount.getSecurityQue()))
+		if(securityQue.equals(userAccount.getSecurityQue())&& answer.equals(userAccount.getAnswer()))
 		{userAccount.setPassword(password);
 		userDao.save(userAccount);
 		return true;}
-		else throw new InvalidQuestionOrAnswer();
+		else throw new InvalidQuestionOrAnswer("Question Or Answer is wrong.");
 	}
 	@Override
 	public String addProfilePic(String emailId,MultipartFile file) throws UserAccountNotFoundException  {
@@ -77,8 +76,7 @@ public class UserServicesImpl implements IUserService{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		return "redirect:/uploadStatus";
+       return "redirect:/uploadStatus";
 	}
 	public UserAccount updateDetails(String emailId,String userName) throws UserAccountNotFoundException {
 		UserAccount user=getUserDetails(emailId);
