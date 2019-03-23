@@ -10,6 +10,7 @@ import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNameAlreadyExist;
+import com.cg.capbook.exceptions.UserNotAFriendException;
 @ControllerAdvice(basePackages= {"com.cg.capbook.controllers"})
 public class CapBookExceptionAspect {
 	@ExceptionHandler(EmailAlreadyRegisteredException.class)
@@ -39,5 +40,9 @@ public class CapBookExceptionAspect {
     @ExceptionHandler(InvalidQuestionOrAnswer.class)
      public ModelAndView handleInvalidQuestionOrAnswer(Exception e) {
     	return new ModelAndView("forgotPassword", "errorMessage", e.getMessage());
+    }
+    @ExceptionHandler(UserNotAFriendException.class)
+    public ModelAndView handleUserNotAFriendException(Exception e) {
+    	return new ModelAndView("sendEmail", "errorMessage", e.getMessage());
     }
 }

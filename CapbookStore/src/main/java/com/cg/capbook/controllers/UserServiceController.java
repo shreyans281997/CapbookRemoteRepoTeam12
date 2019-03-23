@@ -14,19 +14,23 @@ import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
+import com.cg.capbook.exceptions.UserNotAFriendException;
 import com.cg.capbook.model.UserAccount;
+import com.cg.capbook.services.IEmailService;
 import com.cg.capbook.services.IUserService;
 
 @Controller
 @SessionAttributes("user")
 public class UserServiceController {
-	
+
 	@Autowired
 	IUserService userService; 
+	@Autowired
+	IEmailService emailService;
 	@RequestMapping("/showSignup")
-public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException {
+	public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException {
 		userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue,answer);
-return new ModelAndView("loginPage","register","You have registered successfully"); 
+		return new ModelAndView("loginPage","register","You have registered successfully"); 
 	}
 	@RequestMapping("/forgotPassword") public ModelAndView changePassword(@RequestParam String
 			emailId,String password, String securityQue,String answer) throws UserAccountNotFoundException, IncorrectOldPassword, InvalidQuestionOrAnswer {
@@ -50,5 +54,10 @@ return new ModelAndView("loginPage","register","You have registered successfully
 	@RequestMapping("/updatePic") public ModelAndView updatePic( @RequestParam MultipartFile file ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
 		userService.addProfilePic(user.getEmailId(), file);
 		return new ModelAndView("profilePage","success","File successfully uploaded");
+	}
+	@RequestMapping("/sendEmail")
+	public ModelAndView sendEmail(@RequestParam @SessionAttribute("user") UserAccount user, String toAddress, String subject, String messageBody) throws UserAccountNotFoundException, UserNotAFriendException {
+		emailService.saveEmail(user.getEmailId(), toAddress, subject, messageBody);
+		return new ModelAndView("sendEmail", "success", "Email Sent Successfully");
 	}
 }

@@ -1,7 +1,5 @@
 package com.cg.capbook.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,11 +16,11 @@ public class Email {
 	private String toAddress;
 	private String subject;
 	private String messageBody;
-	private Date dateOfMail;
+	private String dateOfMail;
 	public Email() {
 		super();
 	}
-	public Email(int emailChatId, String fromAddress, String toAddress, String subject, String messageBody, Date dateOfMail) {
+	public Email(int emailChatId, String fromAddress, String toAddress, String subject, String messageBody, String dateOfMail) {
 		super();
 		this.emailChatId = emailChatId;
 		this.fromAddress = fromAddress;
@@ -32,6 +30,14 @@ public class Email {
 		this.dateOfMail = dateOfMail;
 	}
 
+	public Email(String fromAddress, String toAddress, String subject, String messageBody, String dateOfMail) {
+		super();
+		this.fromAddress = fromAddress;
+		this.toAddress = toAddress;
+		this.subject = subject;
+		this.messageBody = messageBody;
+		this.dateOfMail = dateOfMail;
+	}
 	public int getEmailChatId() {
 		return emailChatId;
 	}
@@ -63,10 +69,10 @@ public class Email {
 		this.messageBody = messageBody;
 	}
 
-	public Date getDateOfMail() {
+	public String getDateOfMail() {
 		return dateOfMail;
 	}
-	public void setDateOfMail(Date dateOfMail) {
+	public void setDateOfMail(String dateOfMail) {
 		this.dateOfMail = dateOfMail;
 	}
 
