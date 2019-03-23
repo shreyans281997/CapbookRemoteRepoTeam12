@@ -20,6 +20,7 @@ import com.cg.capbook.services.IUserService;
 @Controller
 @SessionAttributes("user")
 public class UserServiceController {
+	
 	@Autowired
 	IUserService userService; 
 	@RequestMapping("/showSignup")
