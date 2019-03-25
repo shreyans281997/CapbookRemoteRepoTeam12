@@ -12,4 +12,5 @@ public interface EmailDAO extends JpaRepository<Email, Integer>{
 	public List<Email> getAllEmailsOfUser(@Param("emailId") String  emailId);
 	@Query("from Email e where e.fromAddress =:emailId and e.emailChatId=:emailChatId")
 	public Email getEmail(@Param("emailId") String emailId,@Param("emailChatId") int emailChatId);
+
 }
