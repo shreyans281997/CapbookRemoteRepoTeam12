@@ -1,8 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <style>
 .error {
 	color: red;
@@ -16,8 +23,19 @@ footer {
 	width: 100%;
 	background-color: #555;
 	color: white;
-	padding: 15px;
+	padding: 10px;
 	text-align: center;
+}
+div.a {
+	font-size: 115%;
+	color: white;
+	align: right;
+}
+div.b {
+	font-size: 140%;
+	color: black;
+	text-align: center;
+    font-weight: bold;
 }
 
 #respond {
@@ -42,41 +60,86 @@ footer {
 
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span>
+      </button>
+      
+    
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+      <li class="dropdown">
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon">&#xe012;</span>
+           </a>
+           <ul class="dropdown-menu">
+     	   <li><a href="#">Show Friends</a></li>
+      	   <li><a href="#">Edit Profile</a></li>
+      	   </ul></li>
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Compose</a></li>
+		<li><a href="email.html">Inbox</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" placeholder="Search..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>        
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> log out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 	<div id="respond">
 
-		<h3>Send Important E-mail</h3>
+		<div class="b">Compose <span class="glyphicon glyphicon-pencil"></span></div>
 
 		<form action="sendEmail" method="post" id="commentform">
+                  <div class="form-group">
+				    	<label for="to" class="col-sm-1 control-label" class="required">To:</label>
+				    	<div class="col-sm-11">
+                              <input type="email" name="toAddress" class="form-control select2-offscreen" id="to" placeholder="Type email address" tabindex="-1">
+				    	</div>
+				  	</div>
+					<div class="form-group">
+				    	<label for="subject" class="col-sm-1 control-label">Subject:</label>
+				    	<div class="col-sm-11">
+                              <input type="text" name="subject" class="form-control select2-offscreen" id="subject" placeholder="Enter subject" tabindex="-1">
+				    	</div>
+				  	</div>
 
-
-			<label for="email" class="required">Send To email;</label> <input
-				type="email" name="toAddress" id="email" value="" tabindex="2"
-				required="required"> <label for="subject" class="required">Enter
-				Subject</label>
-			<textarea name="subject" id="subject" rows="2" tabindex="4"
-				required="required"></textarea>
-
-			<label for="messageBody" class="required">Your message</label>
-			<textarea name="messageBody" id="messageBody" rows="10" tabindex="4"
-				required="required"></textarea>
-
-			<input type="hidden" name="comment_post_ID" value="1"
-				id="comment_post_ID" /> <input name="submit" type="submit"
-				value="Send" color="blue" />
-
+			<div class="form-group">
+           <label for="messageBody" class="col-sm-1 control-label" class="required">Your message:</label>
+            <div class="col-sm-11">
+						<textarea class="form-control" name="messageBody" id="messageBody" name="messageBody" rows="12" placeholder="Click here to reply"></textarea>
+					</div>
+            </div>
+            
+             <p align="center">
+             <button type="submit" class="btn btn-primary btn-md">
+				Send <span class="glyphicon glyphicon-send"></span></button>
+              
 		</form>
 
 	</div>
 	<article>
-		<div class="error" align="center">${errorMessage}
-		                        ${success}</div>
-		
+		<div class="error" align="center">${errorMessage}</div>
 		<br> <br>
 	</article>
 	<footer class="container-fluid text-center">
-		<div class="a">
-			<p>@CapgeminiApp2019</p>
-		</div>
-	</footer>
+  <div class="a"><p>@CapgeminiApp2019</p></div>
+</footer>
+
 </body>
 </html>
