@@ -22,10 +22,12 @@ public class EditProfileServicesImpl implements IEditProfileServices {
 		return userAccount;
 	}
 	@Override
-	public UserAccount editWorkPlaceAndWorkExperience(String emailId, String workPlace, String workExperience) throws UserAccountNotFoundException {
+	public UserAccount editWorkPlaceAndWorkExperience(String emailId, String workPlace, String workExperience,String businessProfile,String mobileNo) throws UserAccountNotFoundException {
 		UserAccount userAccount = user.getUserDetails(emailId);
 		userAccount.setWorkPlace(workPlace);
 		userAccount.setWorkExperience(workExperience);
+		userAccount.setBusinessProfile(businessProfile);
+		userAccount.setMobileNo(mobileNo);
 		userDao.save(userAccount);
 		return userAccount;
 	}

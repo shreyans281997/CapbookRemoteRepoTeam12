@@ -33,7 +33,10 @@ div.center{
 text-align: center;
 color: black;
 }
-
+div.successMsg{
+text-align: center;
+color: red;
+}
 
   </style>
 </head>
@@ -62,7 +65,7 @@ color: black;
       	   </ul></li>
         <li><a href="#">Home</a></li>
         <li><a href="#">Messages</a></li>
-		<li><a href="email.html">E-Mail</a></li>
+		<li><a href="sendEmail">E-Mail</a></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group input-group">
@@ -81,8 +84,9 @@ color: black;
   </div>
 </nav>
 <div class="row">
-  		<div class="col-sm-10"><div class="center"><h3>User name</h3></div></div>
+  		<div class="center"><h3>User name</h3></div>
     </div>
+    <div class="successMsg">${success}</div>
 <div class="text-center">
         
       </div></hr><br>
@@ -93,24 +97,32 @@ color: black;
         <h6>Upload a different photo...</h6>
         <input type="file" class="text-center center-block file-upload">
      </hr><br>
+     <form action="updateBio" method="post">
         <div class="panel panel-default">
             <div class="panel-heading">Bio <i class="fa fa-link fa-1x"></i></div>
-            <div class="panel-body"><p contenteditable="true">Enter your Bio here!</p></div>
-            <button type="button" class="btn btn-primary btn-sm">
+           <input type="text" class="form-control" name="bio" id="bio" placeholder="Add Your Bio" title="enter your bio.">
+            <button type="submit" class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-edit"></span> Edit
         </button><br><br>
           </div>
    </div>
+   </form>
       
     <div class="col-sm-8">
-          <div class="panel panel-default  ">
+    <form action="updateAddress" method="post">
+    <div class="panel panel-default  ">
+    <div class="panel-heading"><h3>Address Information</h3><i class="fa fa-link fa-1x"></i></div>
+          
             <div class="panel-body">
-            <div class="center"><h3>Address Information</h3></div>
+            
                <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="city"><h4>City</h4></label>
                               <input type="text" class="form-control" name="city" id="first_name" placeholder="city" title="enter your city.">
+                              <label for="country"><h4>Country</h4></label>
+                              <input type="text" class="form-control" name="country" id="country" placeholder="country" title="enter your country">
+                         
                           
                       </div>
                       <div class="form-group">
@@ -118,34 +130,25 @@ color: black;
                           <div class="col-xs-6">
                             <label for="state"><h4>State</h4></label>
                               <input type="text" class="form-control" name="state" id="state" placeholder="state" title="enter your state.">
+                              <label for="zipCode"><h4>Zipcode</h4></label>
+                              <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="zipcode" title="enter your zipCode."><br>
                          
-                      </div> </div>  </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="country"><h4>Country</h4></label>
-                              <input type="text" class="form-control" name="country" id="country" placeholder="country" title="enter your country">
-                         
-                      </div> </div>  <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="zipCode"><h4>Zipcode</h4></label>
-                              <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="zipcode" title="enter your zipCode.">
-                         
-                      </div>   </div></div>
-                      <button type="button" class="btn btn-primary btn-sm">
+                      </div> 
+                     
+                      <button type="submit" class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-edit"></span> Update Info
-        </button><br><br>
-                      </div></div>
-                     <div class="col-sm-8">
-          <div class="panel panel-default">
+        </button><br>
+                      </div></div></div></form></div>
+                     
+          <div class="panel panel-default"><form action="updatePassword" method="post">
+          <div class="panel-heading"><h3>Change Password</h3><i class="fa fa-link fa-1x"></i></div>
             <div class="panel-body">
-            <div class="center"><h3>Change Password</h3></div>
+           
                <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="password"><h4>Current Password</h4></label>
-                              <input type="text" class="form-control" name="password" id="password" placeholder="password" title="enter your current password.">
+                              <input type="text" class="form-control" name="oldPassword" id="password" placeholder="password" title="enter your current password.">
                           
                       </div>
                       <div class="form-group">
@@ -154,16 +157,41 @@ color: black;
                             <label for="newPassword"><h4>New Password</h4></label>
                               <input type="text" class="form-control" name="newPassword" id="newPassword" placeholder="new password" title="enter your new password."><br>
                          
-                      </div> </div></div>
-                      <button type="button" class="btn btn-primary btn-sm">
+                      </div> 
+                      <button type="submit" class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-edit"></span> Update Info
         </button><br>
-                      </div>
+                      </div></div></form>
             
-            </div>
+           </div>
          </div>
- 
-</div>
+          
+          <div class="panel panel-default  "><form action="updateProfessionalInfo" method="post">
+          <div class="panel-heading"><h3>Professional Information</h3><i class="fa fa-link fa-1x"></i></div>
+            <div class="panel-body">
+               <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="newPassword"><h4>Business Profile</h4></label>
+                              <input type="text" class="form-control" name="businessProfile" id="businessProfile" placeholder="business Profile" title="enter your business profile.">
+                          
+                              <label for="password"><h4>Work Experience</h4></label>
+                              <input type="text" class="form-control" name="workExperience" id="workExperience" placeholder="workExperience" title="enter your work experience.">
+                         
+                      </div> 
+                      <div class="form-group">
+                      <div class="col-xs-6">
+                       <label for="password"><h4>Work Place</h4></label>
+                              <input type="text" class="form-control" name="workPlace" id="workPlace" placeholder="workPlace" title="enter your work place.">
+                              
+                              <label for="password"><h4>Mobile Number</h4></label>
+                              <input type="text" class="form-control" name="mobileNo" id="mobileNo" placeholder="mobileNo" title="enter your mobile number."><br>
+                         </div>
+                      
+                      <button type="submit" class="btn btn-primary btn-sm">
+          <span class="glyphicon glyphicon-edit"></span> Update Info
+        </button><br>
+                      </div></div></div></form></div>
 </div>
 </div>
 </div>

@@ -19,7 +19,7 @@ public class CapBookExceptionAspect {
 	}
 	@ExceptionHandler(IncorrectOldPassword.class)
 	public ModelAndView handleIncorrectOldPassword(Exception e) {
-		return new ModelAndView("changePassword", "errorMessage", e.getMessage());
+		return new ModelAndView("editProfilePage", "errorMessage", e.getMessage());
 	}
 	@ExceptionHandler(InvalidUsernameOrPasswordException.class)
 	public ModelAndView handleInvalidUsernameOrPasswordException(Exception e) {

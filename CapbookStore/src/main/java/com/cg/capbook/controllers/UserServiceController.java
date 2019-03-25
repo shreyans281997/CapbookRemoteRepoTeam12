@@ -16,6 +16,7 @@ import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNotAFriendException;
 import com.cg.capbook.model.UserAccount;
+import com.cg.capbook.services.IEditProfileServices;
 import com.cg.capbook.services.IEmailService;
 import com.cg.capbook.services.IUserService;
 
@@ -27,6 +28,8 @@ public class UserServiceController {
 	IUserService userService; 
 	@Autowired
 	IEmailService emailService;
+	@Autowired
+	IEditProfileServices editProfile;
 	@RequestMapping("/showSignup")
 	public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException {
 		userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue,answer);
@@ -46,10 +49,25 @@ public class UserServiceController {
 		user=userService.updateDetails(user.getEmailId(), userName);
 		return new ModelAndView("profilePage","user",user);
 	}
-	@RequestMapping("/changePassword")
+	@RequestMapping("/updatePassword")
 	public ModelAndView changePassword(@RequestParam String oldPassword, String newPassword,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
-		boolean check=userService.changePassword(user.getEmailId(),oldPassword, newPassword);
+		userService.changePassword(user.getEmailId(),oldPassword, newPassword);
 		return new ModelAndView("editProfilePage","success","Password changed Successfully");
+	}
+	@RequestMapping("/updateAddress")
+	public ModelAndView updateAddress(@RequestParam String city,String state,String country,String zipCode,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
+		editProfile.editAddress(user.getEmailId(), city, state, country, zipCode);
+		return new ModelAndView("editProfilePage","success","Address Updated Successfully");
+	}
+	@RequestMapping("/updateBio")
+	public ModelAndView updateBio(@RequestParam String bio,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
+		editProfile.editBio(user.getEmailId(), bio);
+		return new ModelAndView("editProfilePage","success","Bio Updated Successfully");
+	}
+	@RequestMapping("/updateProfessionalInfo")
+	public ModelAndView updateProfessionalInfo(@RequestParam String workPlace,String workExperience,String businessProfile,String mobileNo,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
+		editProfile.editWorkPlaceAndWorkExperience(user.getEmailId(), workPlace, workExperience, businessProfile, mobileNo);
+		return new ModelAndView("editProfilePage","success","Professional Information Updated Successfully");
 	}
 	@RequestMapping("/updatePic") public ModelAndView updatePic( @RequestParam MultipartFile file ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
 		userService.addProfilePic(user.getEmailId(), file);

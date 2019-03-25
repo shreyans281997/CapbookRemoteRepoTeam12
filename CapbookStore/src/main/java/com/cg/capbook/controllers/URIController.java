@@ -17,19 +17,16 @@ private Photo photo;
 
 @RequestMapping(value= {"/","getLoginPage"})
 public String getIndexPage() {
-return "loginPage";
-}
+return "loginPage";}
 
 @RequestMapping("/getSignUp")
 public String getSignUp() {
 	return "getSignUp";}
 
-//@RequestMapping("/getLogin")
-//public String getLogin() {
-//	return "loginPage";}
 @RequestMapping("/getEmailPage")
 public String getEmailPage() {
 	return "sendEmail";}
+
 @RequestMapping("/getHomePage")
 public String getHomePage() {
 	return "homePage";}
@@ -71,4 +68,5 @@ public Comments getCommnets() {
 public Notification getNotification() {
 	notification=new Notification();
 	return notification;}
+
 }
