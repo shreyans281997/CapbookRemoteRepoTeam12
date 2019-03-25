@@ -78,11 +78,11 @@ div.successMsg {
 					</a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Show Friends</a></li>
-							<li><a href="#">Edit Profile</a></li>
+							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Messages</a></li>
-					<li><a href="getEmailPage">E-Mail</a></li>
+					<li><a href="getEmailPage">Compose</a></li>
+					<li><a href="showAllEmail">Inbox</a></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group input-group">
