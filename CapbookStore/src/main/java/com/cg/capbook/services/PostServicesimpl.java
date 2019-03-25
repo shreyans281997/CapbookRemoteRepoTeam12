@@ -1,13 +1,14 @@
 package com.cg.capbook.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.cg.capbook.daoservice.PostDAO;
 import com.cg.capbook.daoservice.UserDAO;
 import com.cg.capbook.model.Likes;
 import com.cg.capbook.model.Post;
 import com.cg.capbook.model.UserAccount;
-
+@Component("postService")
 public class PostServicesimpl implements IPostService {
 	@Autowired
 	private UserDAO userDao;

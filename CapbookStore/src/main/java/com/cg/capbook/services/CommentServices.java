@@ -1,5 +1,7 @@
 package com.cg.capbook.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cg.capbook.daoservice.CommentDAO;
@@ -20,9 +22,8 @@ public Comments saveComment(int postId,String emailId,String commentContent) {
 	return commentDao.save(comment);
 }
 @Override
-public Comments getAllComments() {
-	
-	return null;
+public List<Comments> getAllComments() {
+	return commentDao.findAll();
 }
 
 

@@ -89,9 +89,12 @@ color: black;
 <div class="container text-center">    
   <div class="row">
     <div class="col-sm-4">
-      <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+      <img src="/images/Koala.jpg" class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a different photo...</h6>
+        <form action="updatePic">
         <input type="file" class="text-center center-block file-upload">
+        <input type="submit">
+        </form>
      </hr><br>
         <div class="panel panel-default">
             <div class="panel-heading">Bio <i class="fa fa-link fa-1x"></i></div>
