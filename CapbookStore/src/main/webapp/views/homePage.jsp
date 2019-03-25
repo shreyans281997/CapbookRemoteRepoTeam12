@@ -57,8 +57,8 @@ div.a {
       	   <li><a href="getEditProfile">Edit Profile</a></li>
       	   </ul></li>
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Messages</a></li>
-		<li><a href="sendEmail">E-Mail</a></li>
+        <li><a href="showAllEmail">Messages</a></li>
+		<li><a href="getEmailPage">E-Mail</a></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group input-group">

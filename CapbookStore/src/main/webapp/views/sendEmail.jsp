@@ -68,7 +68,9 @@ footer {
 
 	</div>
 	<article>
-		<div class="error" align="center">${errorMessage}</div>
+		<div class="error" align="center">${errorMessage}
+		                        ${success}</div>
+		
 		<br> <br>
 	</article>
 	<footer class="container-fluid text-center">
