@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,14 +146,21 @@ div.a {
         </div>
         <div class="col-sm-9">
           <div class="well">
-            <p>${user.posts }</p>
-            <p align="right">
-              <button type="submit" class="btn btn-primary btn-sm">
+            <c:forEach var="posts"
+				items="${posts}">
+          <table>
+          <tr>
+           <td> <p>${posts.postContent}</p></td>
+            <tr>
+             <td> <button type="submit" class="btn btn-primary btn-sm">
               <i class="glyphicon glyphicon-thumbs-up"></i> Like
-                </button>
-              <button type="button" class="btn btn-default">Comment
-              <i class="glyphicon glyphicon-comment"></i>
+                </button> </td>
+            <td>  <button type="button" class="btn btn-default">Comment
+              <i class="glyphicon glyphicon-comment"></i></button></td>
+              </tr>
                 </button></p>
+                </table>
+                 </c:forEach>
           </div>
         </div>
       </div>

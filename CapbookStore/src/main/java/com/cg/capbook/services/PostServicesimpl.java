@@ -1,7 +1,11 @@
 package com.cg.capbook.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cg.capbook.daoservice.PostDAO;
 import com.cg.capbook.daoservice.UserDAO;
@@ -19,6 +23,11 @@ public class PostServicesimpl implements IPostService {
 		UserAccount user=userDao.findById(emailId).orElse(null);
 		Post post=new Post(postContent, user);
 		return postDao.save(post);
+	}
+	@Override
+	public List<Post> allPosts(String emailId) {
+		return postDao.showAllPosts(emailId);
+		
 	}
 
 
