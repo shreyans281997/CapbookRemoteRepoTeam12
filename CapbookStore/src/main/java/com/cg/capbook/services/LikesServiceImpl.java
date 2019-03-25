@@ -15,6 +15,7 @@ public class LikesServiceImpl implements ILikesService {
 	private LikesDAO likesDao;
 	@Autowired 
 	private PostDAO postDao;
+	
 	@Override
 	public Likes updateLikes(int postId, String likedBy) {
 		Likes alreadyLiked=likesDao.findLikeByStatus(postId, likedBy);
