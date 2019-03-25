@@ -1,13 +1,7 @@
 package com.cg.capbook.controllers;
-
-
 import java.io.IOException;
-
 import org.apache.catalina.Session;
-
 import java.util.List;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -100,12 +94,11 @@ public class UserServiceController {
 		Email email =emailService.getEmail(emailId, emailChatId);
 		return new ModelAndView("openEmailContent", "email", email);
 	}
-@RequestMapping("/updatePost")
-	public ModelAndView updatePost(@RequestParam @SessionAttribute("user") UserAccount user, String postContent) throws UserAccountNotFoundException, UserNotAFriendException {
+	@RequestMapping("/updatePost")
+	public ModelAndView updatePost(@RequestParam String postContent ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
 		postService.createPostText(user.getEmailId(), postContent);
 		return new ModelAndView("homePage", "user", user);
 	}
-
 	@RequestMapping("/getEditProfile")
 	public ModelAndView getEditProfile(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
 		return new ModelAndView("editProfilePage","user",user);

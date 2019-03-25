@@ -122,12 +122,15 @@ div.a {
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
             <div class="panel-body">
-              <p><textarea class="form-control" rows="4" id="status"></textarea></p>
+            <form action="updatePost" method="post">
+              <p><textarea class="form-control" name="postContent" rows="4" id="status"></textarea></p>
               <p align="right">
               <button type="submit" class="btn btn-primary btn-sm">
               <i class="glyphicon glyphicon-send"></i> Post
                 </button>
+          
                 </p>
+                </form>
             </div>
           </div>
         </div>
@@ -142,7 +145,7 @@ div.a {
         </div>
         <div class="col-sm-9">
           <div class="well">
-            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            <p>${user.posts}</p>
             <p align="right">
               <button type="submit" class="btn btn-primary btn-sm">
               <i class="glyphicon glyphicon-thumbs-up"></i> Like
