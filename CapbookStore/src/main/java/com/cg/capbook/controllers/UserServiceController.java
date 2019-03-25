@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -80,8 +82,8 @@ public class UserServiceController {
 
 
 	@RequestMapping("/updatePic") public ModelAndView updatePic( @RequestParam MultipartFile file ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IOException {
-		userService.addProfilePic(user.getEmailId(), file);
-		return new ModelAndView("profilePage","success","File successfully uploaded");
+		user=userService.addProfilePic(user.getEmailId(), file);
+		return new ModelAndView("editProfilePage","user",user);
 	}
 	@RequestMapping("/sendEmail")
 	public ModelAndView sendEmail( @SessionAttribute("user") UserAccount user,@RequestParam String toAddress, String subject, String messageBody) throws UserAccountNotFoundException, UserNotAFriendException {
@@ -91,7 +93,7 @@ public class UserServiceController {
 	@RequestMapping("/showAllEmail")
 	public ModelAndView showAllEmail( @SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
 		List<Email> email =emailService.getAllEmailsOfUser(user.getEmailId());
-		return new ModelAndView("ShowAllEmails", "email", "email");
+		return new ModelAndView("ShowAllEmails", "email", email);
 	}
 
 @RequestMapping("/updatePost")
@@ -108,8 +110,7 @@ public class UserServiceController {
 	public ModelAndView getHomePage(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
 		return new ModelAndView("homePage","user",user);
 	}
-	
-	
+
 }
 
 

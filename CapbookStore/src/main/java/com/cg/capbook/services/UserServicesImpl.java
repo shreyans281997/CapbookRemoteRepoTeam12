@@ -1,5 +1,6 @@
 package com.cg.capbook.services;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -61,22 +62,20 @@ public class UserServicesImpl implements IUserService{
 		else throw new InvalidQuestionOrAnswer("Question Or Answer is wrong.");
 	}
 	@Override
-	public String addProfilePic(String emailId,MultipartFile file) throws UserAccountNotFoundException  {
+	public UserAccount addProfilePic(String emailId,MultipartFile file) throws UserAccountNotFoundException  {
 		UserAccount user=userDao.findById(emailId).orElseThrow(()->new UserAccountNotFoundException("User Account Not Found"));
-		if(file.isEmpty()) {
-			return "Please enter file again";
-		}
 		try {
 			// Get the file and save it somewhere
-			byte[] bytes = file.getBytes();
+		//byte[] bytes = file.getBytes();
 			Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-			Files.write(path, bytes);
+			//Files.write(path, bytes);
+			file.transferTo(path);
 			user.setProfilePic("/images/" + file.getOriginalFilename());
-			userDao.save(user);
+			user=userDao.save(user);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-       return user.getProfilePic();
+      return user;
 	}
 	public UserAccount updateDetails(String emailId,String userName) throws UserAccountNotFoundException {
 		UserAccount user=getUserDetails(emailId);
