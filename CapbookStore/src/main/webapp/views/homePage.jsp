@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{user.firstName}'s Home</title>
+  <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -57,8 +57,8 @@ div.a {
       	   <li><a href="getEditProfile">Edit Profile</a></li>
       	   </ul></li>
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="showAllEmail">Messages</a></li>
-		<li><a href="getEmailPage">E-Mail</a></li>
+        <li><a href="#">Messages</a></li>
+		<li><a href="sendEmail">E-Mail</a></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group input-group">
@@ -81,28 +81,40 @@ div.a {
   <div class="row">
     <div class="col-sm-3 well">
       <div class="well">
-        <p><a href="#">My Profile</a></p>
+        <p><font color="#2E86C1">My Profile</font></p>
         <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
       </div>
       <div class="well">
-        <p><a href="#">Interests</a></p>
-        <p>
-          <span class="label label-default">News</span>
-          <span class="label label-primary">W3Schools</span>
-          <span class="label label-success">Labels</span>
-          <span class="label label-info">Football</span>
-          <span class="label label-warning">Gaming</span>
-          <span class="label label-danger">Friends</span>
-        </p>
+        <p><font color="#2E86C1">Bio</font></p>
+        <div class="panel-body">
+       <p contenteditable="true"></p>
+       </div>
       </div>
       <div class="alert alert-success fade in">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
         <p><strong>Ey!</strong></p>
-        People are looking at your profile. Find out who.
+        Some new friend requests have come up.
       </div>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+      <p><font color="black">Friend requests:</font></p>
+      <p><a href="#"><img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-circle" style="width: 60px; height: 60px;">
+<div class="text-left user-item" style="display: inline-block; margin-left: 10px; width: 100px;">
+        FirstName LastName
+      </div>
+      <div style="display: inline-block;">
+        <input type="button" class="btn btn-primary btn-sm" value="Accept">
+        <input type="button" class="btn btn-default btn-sm" value="Reject">
+      </div>
+</a></p>
+      <p><a href="#"><img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-circle" style="width: 60px; height: 60px;">
+<div class="text-left user-item" style="display: inline-block; margin-left: 10px; width: 100px;">
+        FirstName LastName
+      </div>
+      <div style="display: inline-block;">
+        <input type="button" class="btn btn-primary btn-sm" value="Accept">
+        <input type="button" class="btn btn-default btn-sm" value="Reject">
+      </div>
+</a></p>
+      <p><a href="#">see more</a>...</p>
     </div>
     <div class="col-sm-7">
     
@@ -110,10 +122,12 @@ div.a {
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
             <div class="panel-body">
-              <p contenteditable="true">Status: Feeling Blue</p>
-              <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-thumbs-up"></span> Like
-              </button>     
+              <p><textarea class="form-control" rows="4" id="status"></textarea></p>
+              <p align="right">
+              <button type="submit" class="btn btn-primary btn-sm">
+              <i class="glyphicon glyphicon-send"></i> Post
+                </button>
+                </p>
             </div>
           </div>
         </div>
@@ -129,6 +143,13 @@ div.a {
         <div class="col-sm-9">
           <div class="well">
             <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            <p align="right">
+              <button type="submit" class="btn btn-primary btn-sm">
+              <i class="glyphicon glyphicon-thumbs-up"></i> Like
+                </button>
+              <button type="button" class="btn btn-default">Comment
+              <i class="glyphicon glyphicon-comment"></i>
+                </button></p>
           </div>
         </div>
       </div>
@@ -142,6 +163,13 @@ div.a {
         <div class="col-sm-9">
           <div class="well">
             <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            <p align="right">
+              <button type="submit" class="btn btn-primary btn-sm">
+              <i class="glyphicon glyphicon-thumbs-up"></i> Like
+                </button>
+              <button type="button" class="btn btn-default">Comment
+              <i class="glyphicon glyphicon-comment"></i>
+                </button></p>
           </div>
         </div>
       </div>
@@ -155,6 +183,13 @@ div.a {
         <div class="col-sm-9">
           <div class="well">
             <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            <p align="right">
+              <button type="submit" class="btn btn-primary btn-sm">
+              <i class="glyphicon glyphicon-thumbs-up"></i> Like
+                </button>
+              <button type="button" class="btn btn-default">Comment
+              <i class="glyphicon glyphicon-comment"></i>
+                </button></p>
           </div>
         </div>
       </div>
@@ -168,6 +203,13 @@ div.a {
         <div class="col-sm-9">
           <div class="well">
             <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            <p align="right">
+              <button type="submit" class="btn btn-primary btn-sm">
+              <i class="glyphicon glyphicon-thumbs-up"></i> Like
+                </button>
+              <button type="button" class="btn btn-default">Comment
+              <i class="glyphicon glyphicon-comment"></i>
+                </button></p>
           </div>
         </div>
       </div>     
