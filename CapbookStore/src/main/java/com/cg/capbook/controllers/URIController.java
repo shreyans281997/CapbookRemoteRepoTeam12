@@ -27,7 +27,9 @@ public String getSignUp() {
 //@RequestMapping("/getLogin")
 //public String getLogin() {
 //	return "loginPage";}
-
+@RequestMapping("/getEmailPage")
+public String getEmailPage() {
+	return "sendEmail";}
 @RequestMapping("/getHomePage")
 public String getHomePage() {
 	return "homePage";}

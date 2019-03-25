@@ -1,10 +1,6 @@
 package com.cg.capbook.model;
-
-import java.util.Arrays;
 import java.util.Map;
-
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,13 +16,12 @@ public class Post {
 	@SequenceGenerator(name="post",sequenceName="post_seq",initialValue=101,allocationSize=10000)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="post")
 	private int postId;
-	private String postContent;
+	private String postContent,postPic;
 	@ManyToOne
 	private UserAccount user;
-	@Column(columnDefinition="BLOB")
-	private byte[] postPic;
-	private int noOfPostLikes;
-	private int noOfPostDislikes;
+	@OneToMany(mappedBy="post",cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+	@MapKey
+	private Map<Integer, Likes> likes;
 	@OneToMany(mappedBy="posts",cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
 	@MapKey
 	private Map<Integer, Comments> comments;
@@ -35,87 +30,66 @@ public class Post {
 	private Map<Integer,Notification> notifications;
 	public Post() {}
 
-	public Post(int postId, String postContent, UserAccount user, byte[] postPic, int noOfPostLikes, int noOfPostDislikes,
-			Map<Integer, Comments> comments) {
+	public Post(int postId, String postContent, String postPic, UserAccount user,
+			Map<Integer, Likes> likes, Map<Integer, Comments> comments,
+			Map<Integer, Notification> notifications) {
 		super();
 		this.postId = postId;
 		this.postContent = postContent;
-		this.user = user;
 		this.postPic = postPic;
-		this.noOfPostLikes = noOfPostLikes;
-		this.noOfPostDislikes = noOfPostDislikes;
+		this.user = user;
+		this.likes = likes;
 		this.comments = comments;
+		this.notifications = notifications;
 	}
-
-	public Post(String postContent, UserAccount user, int noOfPostLikes, int noOfPostDislikes) {
+	public Post(String postContent, UserAccount user) {
 		super();
 		this.postContent = postContent;
 		this.user = user;
-		this.noOfPostLikes = noOfPostLikes;
-		this.noOfPostDislikes = noOfPostDislikes;
 	}
-
 	public int getPostId() {
 		return postId;
 	}
-
 	public void setPostId(int postId) {
 		this.postId = postId;
 	}
-
 	public String getPostContent() {
 		return postContent;
 	}
-
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
-
 	public UserAccount getUser() {
 		return user;
 	}
-
 	public void setUser(UserAccount user) {
 		this.user = user;
 	}
-
-	public byte[] getPostPic() {
+	public String getPostPic() {
 		return postPic;
 	}
-
-	public void setPostPic(byte[] postPic) {
+	public void setPostPic(String postPic) {
 		this.postPic = postPic;
 	}
-
-	public int getNoOfPostLikes() {
-		return noOfPostLikes;
+	public Map<Integer, Likes> getLikes() {
+		return likes;
 	}
 
-	public void setNoOfPostLikes(int noOfPostLikes) {
-		this.noOfPostLikes = noOfPostLikes;
-	}
-
-	public int getNoOfPostDislikes() {
-		return noOfPostDislikes;
-	}
-
-	public void setNoOfPostDislikes(int noOfPostDislikes) {
-		this.noOfPostDislikes = noOfPostDislikes;
+	public void setLikes(Map<Integer, Likes> likes) {
+		this.likes = likes;
 	}
 
 	public Map<Integer, Comments> getComments() {
 		return comments;
 	}
-
 	public void setComments(Map<Integer, Comments> comments) {
 		this.comments = comments;
 	}
-
-	@Override
-	public String toString() {
-		return "Post [postId=" + postId + ", postContent=" + postContent + ", user=" + user + ", postPic="
-				+ Arrays.toString(postPic) + ", noOfPostLikes=" + noOfPostLikes + ", noOfPostDislikes="
-				+ noOfPostDislikes + ", comments=" + comments + "]";
+	public Map<Integer, Notification> getNotifications() {
+		return notifications;
+	}
+	public void setNotifications(Map<Integer, Notification> notifications) {
+		this.notifications = notifications;
 	}
 
 	@Override
@@ -123,11 +97,11 @@ public class Post {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
-		result = prime * result + noOfPostDislikes;
-		result = prime * result + noOfPostLikes;
+		result = prime * result + ((likes == null) ? 0 : likes.hashCode());
+		result = prime * result + ((notifications == null) ? 0 : notifications.hashCode());
 		result = prime * result + ((postContent == null) ? 0 : postContent.hashCode());
 		result = prime * result + postId;
-		result = prime * result + Arrays.hashCode(postPic);
+		result = prime * result + ((postPic == null) ? 0 : postPic.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -146,9 +120,15 @@ public class Post {
 				return false;
 		} else if (!comments.equals(other.comments))
 			return false;
-		if (noOfPostDislikes != other.noOfPostDislikes)
+		if (likes == null) {
+			if (other.likes != null)
+				return false;
+		} else if (!likes.equals(other.likes))
 			return false;
-		if (noOfPostLikes != other.noOfPostLikes)
+		if (notifications == null) {
+			if (other.notifications != null)
+				return false;
+		} else if (!notifications.equals(other.notifications))
 			return false;
 		if (postContent == null) {
 			if (other.postContent != null)
@@ -157,7 +137,10 @@ public class Post {
 			return false;
 		if (postId != other.postId)
 			return false;
-		if (!Arrays.equals(postPic, other.postPic))
+		if (postPic == null) {
+			if (other.postPic != null)
+				return false;
+		} else if (!postPic.equals(other.postPic))
 			return false;
 		if (user == null) {
 			if (other.user != null)
@@ -166,5 +149,10 @@ public class Post {
 			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Post [postId=" + postId + ", postContent=" + postContent + ", user=" + user + ", postPic=" + postPic
+				+ ", Likes=" + likes + ", comments=" + comments + ", notifications=" + notifications + "]";
+	}
 }

@@ -11,8 +11,7 @@ public class Comments {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int commentId;
-	private String commentContent;
-	private String commentPerson;
+	private String commentContent,commentPerson;
 	@ManyToOne
 	@MapKey
 	@JoinColumn(name="postId")
