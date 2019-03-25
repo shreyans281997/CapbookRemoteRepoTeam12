@@ -54,6 +54,8 @@ public class UserServiceController {
 		userService.changePassword(user.getEmailId(),oldPassword, newPassword);
 		return new ModelAndView("editProfilePage","success","Password changed Successfully");
 	}
+	
+	
 	@RequestMapping("/updateAddress")
 	public ModelAndView updateAddress(@RequestParam String city,String state,String country,String zipCode,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
 		editProfile.editAddress(user.getEmailId(), city, state, country, zipCode);
