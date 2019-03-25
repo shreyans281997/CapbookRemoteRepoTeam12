@@ -18,6 +18,7 @@ public class Likes {
 	private int dislike_count;
 	@ManyToOne
 	private Post post;
+	
 	public Likes() {}
 	public Likes(Integer likeId, String likedBy, String dislikedBy, int like_count, int dislike_count, Post post) {
 		super();

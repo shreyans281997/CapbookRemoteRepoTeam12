@@ -15,6 +15,7 @@ public class LikesServiceImpl implements ILikesService {
 	private LikesDAO likesDao;
 	@Autowired 
 	private PostDAO postDao;
+	
 	@Override
 	public Likes updateLikes(int postId, String likedBy) {
 		Likes alreadyLiked=likesDao.findLikeByStatus(postId, likedBy);
@@ -25,10 +26,12 @@ public class LikesServiceImpl implements ILikesService {
 			return likesDao.save(new Likes(likedBy, 1, 0, postDao.findById(postId).orElse(null)));
 		}
 	}
+	
 	@Override
 	public int getLikesCount(int postId) {
 		return likesDao.getLikeCount(postId);
 	}
+	
 	@Override
 	public Likes updateDislikes(int postId, String dislikedBy) {
 		Likes alreadyLiked=likesDao.findLikeByStatus(postId, dislikedBy);
