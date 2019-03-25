@@ -1,5 +1,8 @@
 package com.cg.capbook.controllers;
 
+import java.io.IOException;
+
+import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +48,7 @@ public class UserServiceController {
 		return new ModelAndView("forgotPassword","success","Password changed Successfully");
 	}
 	@RequestMapping("/showLogin") public ModelAndView login(@RequestParam String
-			emailId,String password) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException {
+			emailId,String password ) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException {
 		UserAccount user=userService.loginUser(emailId, password);
 		return new ModelAndView("homePage","user",user);
 	}
@@ -58,7 +61,6 @@ public class UserServiceController {
 		userService.changePassword(user.getEmailId(),oldPassword, newPassword);
 		return new ModelAndView("editProfilePage","success","Password changed Successfully");
 	}
-	
 	
 	@RequestMapping("/updateAddress")
 	public ModelAndView updateAddress(@RequestParam String city,String state,String country,String zipCode,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
@@ -75,10 +77,10 @@ public class UserServiceController {
 		editProfile.editWorkPlaceAndWorkExperience(user.getEmailId(), workPlace, workExperience, businessProfile, mobileNo);
 		return new ModelAndView("editProfilePage","success","Professional Information Updated Successfully");
 	}
-	@RequestMapping("/updatePic") public ModelAndView updatePic( @RequestParam MultipartFile file ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
-		String path=userService.addProfilePic(user.getEmailId(), file);
-		return new ModelAndView("editProfilePage","path",path);
-	}
+	@RequestMapping("/updatePic") public ModelAndView updatePic( @RequestParam MultipartFile file ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IOException {
+		userService.addProfilePic(user.getEmailId(), file);
+		return new ModelAndView("editProfilePage","path1",user.getProfilePic());
+}
 	@RequestMapping("/sendEmail")
 	public ModelAndView sendEmail(@RequestParam @SessionAttribute("user") UserAccount user, String toAddress, String subject, String messageBody) throws UserAccountNotFoundException, UserNotAFriendException {
 		emailService.saveEmail(user.getEmailId(), toAddress, subject, messageBody);
@@ -86,7 +88,17 @@ public class UserServiceController {
 	}
 	@RequestMapping("/updatePost")
 	public ModelAndView updatePost(@RequestParam @SessionAttribute("user") UserAccount user, String postContent) throws UserAccountNotFoundException, UserNotAFriendException {
-		Post newPost=postService.createPostText(user.getEmailId(), postContent);
-		return new ModelAndView("homePage", "newPost", newPost);
+		postService.createPostText(user.getEmailId(), postContent);
+		return new ModelAndView("homePage", "user", user);
 	}
+	@RequestMapping("/getEditProfile")
+	public ModelAndView getEditProfile(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
+		return new ModelAndView("editProfilePage","user",user);
+	}
+	@RequestMapping("/getHomePage")
+	public ModelAndView getHomePage(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
+		return new ModelAndView("homePage","user",user);
+	}
+	
+	
 }

@@ -27,17 +27,9 @@ public String getSignUp() {
 public String getEmailPage() {
 	return "sendEmail";}
 
-@RequestMapping("/getHomePage")
-public String getHomePage() {
-	return "homePage";}
-
 @RequestMapping("/getForgotPassword")
 public String getChangePassword() {
 	return "forgotPassword";}
-
-@RequestMapping("/getEditProfile")
-public String getEditProfile() {
-	return "editProfilePage";}
 
 @ModelAttribute
 public UserAccount getUserAccount() {

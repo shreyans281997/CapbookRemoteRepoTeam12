@@ -20,7 +20,6 @@ import com.cg.capbook.model.UserAccount;
 @Component("userService")
 public class UserServicesImpl implements IUserService{
 	private static String UPLOADED_FOLDER = "C:\\Users\\ADM-IG-HWDLAB1D\\git\\CapbookLocalRepoTeam12\\CapbookStore\\src\\main\\resources\\static\\images\\";
-	private static String path1="/images/";
 	@Autowired
 	private UserDAO userDao;
 	@Autowired
@@ -64,7 +63,6 @@ public class UserServicesImpl implements IUserService{
 	@Override
 	public String addProfilePic(String emailId,MultipartFile file) throws UserAccountNotFoundException  {
 		UserAccount user=userDao.findById(emailId).orElseThrow(()->new UserAccountNotFoundException("User Account Not Found"));
-		
 		if(file.isEmpty()) {
 			return "Please enter file again";
 		}
@@ -73,7 +71,7 @@ public class UserServicesImpl implements IUserService{
 			byte[] bytes = file.getBytes();
 			Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
 			Files.write(path, bytes);
-			user.setProfilePic(path1 + file.getOriginalFilename());
+			user.setProfilePic("/images/" + file.getOriginalFilename());
 			userDao.save(user);
 		} catch (IOException e) {
 			e.printStackTrace();
