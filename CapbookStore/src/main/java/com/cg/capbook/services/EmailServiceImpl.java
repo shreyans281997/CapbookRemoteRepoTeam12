@@ -43,4 +43,10 @@ public class EmailServiceImpl implements IEmailService {
 		return emailDao.getAllEmailsOfUser(emailId);
 	}
 
+	@Override
+	public Email getEmail(String emailId, int emailChatId) {
+        Email email=emailDao.getEmail(emailId, emailChatId);	
+		return email;
+	}
+
 }

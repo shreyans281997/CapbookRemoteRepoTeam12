@@ -41,6 +41,14 @@ color: red;
 }
 
   </style>
+  <script>
+    function processVehicles()
+    {
+        var vehicleTypes = document.getElementsByName("email");
+        var form = document.getElementById("email");
+        form.submit();
+    }
+</script>
 </head>
 <body>
 
@@ -85,18 +93,23 @@ color: red;
     </div>
   </div>
 </nav>
-<form action="" method="post">
+
 <div >
     <table id="customers">
     <c:forEach var="email"
 				items="${requestScope.email}">
+				<form action="showEmail" method="post">
+    <input type="hidden" name="emailChatId"  value="${email.emailChatId}">
+    <input type="hidden" name="emailId"  value="${email.fromAddress}">
+    <input type="submit" value="submit">
+    </form>
   <tr>
     <td><div class="radio">
-      <label><input type="radio" name="email" ><a href="${email.emailChatId}_${email.fromAddress}_${email.subject }_${email.dateOfMail }">${email.emailChatId} ${email.fromAddress} ${email.subject } ${email.dateOfMail }</a></label></td>
+      <label><input type="radio" name="email" ><a href="${email.emailChatId}_${email.fromAddress}_${email.subject }_${email.dateOfMail }" onclick="form.submit()">${email.emailChatId} ${email.fromAddress} ${email.subject } ${email.dateOfMail }</a></label></td>
+    
     </tr>
 </c:forEach>
 </table>
 </div>
-</form>
 </body>
 	</html>

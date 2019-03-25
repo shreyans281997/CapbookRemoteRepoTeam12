@@ -63,8 +63,8 @@ color: red;
      	   <li><a href="#">Show Friends</a></li>
       	   <li><a href="#">Edit Profile</a></li>
       	   </ul></li>
-        <li><a href="getHomePage">Home</a></li>
-        <li><a href="#">Messages</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="showAllEmail">Messages</a></li>
 		<li><a href="sendEmail">E-Mail</a></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
@@ -93,11 +93,11 @@ color: red;
 <div class="container text-center">    
   <div class="row">
     <div class="col-sm-4">
-    <form action="updatePic" enctype="multipart/form-data", method="post" >
-      <img src="${user.profilePic}" class="avatar img-circle img-thumbnail" alt="avatar">
+    <form action="updatePic" enctype="multipart/form-data", method="post">
+            <img src="${user.profilePic}" class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a different photo...</h6>
-        <input type="file" name="file" class="text-center center-block file-upload" >
-        <input type="submit" >
+        <input type="file" name="file" class="text-center center-block file-upload">
+        <input type="submit">
         </form>
      </hr><br>
      <form action="updateBio" method="post">

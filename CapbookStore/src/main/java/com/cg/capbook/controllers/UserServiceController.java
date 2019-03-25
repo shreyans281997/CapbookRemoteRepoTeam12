@@ -95,7 +95,11 @@ public class UserServiceController {
 		List<Email> email =emailService.getAllEmailsOfUser(user.getEmailId());
 		return new ModelAndView("ShowAllEmails", "email", email);
 	}
-
+	@RequestMapping("/showEmail")
+	public ModelAndView showEmail(@RequestParam String emailId,int emailChatId) throws UserAccountNotFoundException, UserNotAFriendException {
+		Email email =emailService.getEmail(emailId, emailChatId);
+		return new ModelAndView("openEmailContent", "email", email);
+	}
 @RequestMapping("/updatePost")
 	public ModelAndView updatePost(@RequestParam @SessionAttribute("user") UserAccount user, String postContent) throws UserAccountNotFoundException, UserNotAFriendException {
 		postService.createPostText(user.getEmailId(), postContent);
