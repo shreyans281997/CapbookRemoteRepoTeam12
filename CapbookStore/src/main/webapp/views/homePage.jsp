@@ -145,7 +145,7 @@ div.a {
         </div>
         <div class="col-sm-9">
           <div class="well">
-            <p>${user.posts}</p>
+            <p>${user.posts }</p>
             <p align="right">
               <button type="submit" class="btn btn-primary btn-sm">
               <i class="glyphicon glyphicon-thumbs-up"></i> Like
