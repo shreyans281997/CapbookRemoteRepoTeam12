@@ -93,10 +93,10 @@ color: red;
 <div class="container text-center">    
   <div class="row">
     <div class="col-sm-4">
-      <img src="/images/Koala.jpg" class="avatar img-circle img-thumbnail" alt="avatar">
+    <form action="updatePic" enctype="multipart/form-data", method="post">
+      <img src="${path}" class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a different photo...</h6>
-        <form action="updatePic">
-        <input type="file" class="text-center center-block file-upload">
+        <input type="file" name="file" class="text-center center-block file-upload">
         <input type="submit">
         </form>
      </hr><br>

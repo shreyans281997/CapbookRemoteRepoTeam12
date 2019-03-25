@@ -76,8 +76,8 @@ public class UserServiceController {
 		return new ModelAndView("editProfilePage","success","Professional Information Updated Successfully");
 	}
 	@RequestMapping("/updatePic") public ModelAndView updatePic( @RequestParam MultipartFile file ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
-		userService.addProfilePic(user.getEmailId(), file);
-		return new ModelAndView("profilePage","success","File successfully uploaded");
+		String path=userService.addProfilePic(user.getEmailId(), file);
+		return new ModelAndView("editProfilePage","path",path);
 	}
 	@RequestMapping("/sendEmail")
 	public ModelAndView sendEmail(@RequestParam @SessionAttribute("user") UserAccount user, String toAddress, String subject, String messageBody) throws UserAccountNotFoundException, UserNotAFriendException {
