@@ -15,9 +15,11 @@ import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNotAFriendException;
+import com.cg.capbook.model.Post;
 import com.cg.capbook.model.UserAccount;
 import com.cg.capbook.services.IEditProfileServices;
 import com.cg.capbook.services.IEmailService;
+import com.cg.capbook.services.IPostService;
 import com.cg.capbook.services.IUserService;
 
 @Controller
@@ -30,6 +32,8 @@ public class UserServiceController {
 	IEmailService emailService;
 	@Autowired
 	IEditProfileServices editProfile;
+	@Autowired
+	IPostService postService;
 	@RequestMapping("/showSignup")
 	public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException {
 		userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue,answer);
@@ -79,5 +83,10 @@ public class UserServiceController {
 	public ModelAndView sendEmail(@RequestParam @SessionAttribute("user") UserAccount user, String toAddress, String subject, String messageBody) throws UserAccountNotFoundException, UserNotAFriendException {
 		emailService.saveEmail(user.getEmailId(), toAddress, subject, messageBody);
 		return new ModelAndView("sendEmail", "success", "Email Sent Successfully");
+	}
+	@RequestMapping("/updatePost")
+	public ModelAndView updatePost(@RequestParam @SessionAttribute("user") UserAccount user, String postContent) throws UserAccountNotFoundException, UserNotAFriendException {
+		Post newPost=postService.createPostText(user.getEmailId(), postContent);
+		return new ModelAndView("homePage", "newPost", newPost);
 	}
 }
