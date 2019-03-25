@@ -13,6 +13,7 @@ import com.cg.capbook.daoservice.UserDAO;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNotAFriendException;
 import com.cg.capbook.model.Email;
+import com.cg.capbook.model.UserAccount;
 @Component("emailService")
 public class EmailServiceImpl implements IEmailService {
 
@@ -22,11 +23,13 @@ public class EmailServiceImpl implements IEmailService {
 	private FriendDAO friendDao;
 	@Autowired
 	private UserDAO userDao;
+	@Autowired
+	private IUserService user;
 	
 	@Override
 	public Email saveEmail(String fromAddress, String toAddress, String subject, String messageBody) throws UserAccountNotFoundException,UserNotAFriendException{
 		userDao.findById(toAddress).orElseThrow(()->new UserAccountNotFoundException("User is not Registered!"));
-		friendDao.findById(toAddress).orElseThrow(()->new UserNotAFriendException("Can't Send Mail! User is Not a Friend!")); 
+		//friendDao.findById(toAddress).orElseThrow(()->new UserNotAFriendException("Can't Send Mail! User is Not a Friend!")); 
 	        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
 	        String dateOfMail = LocalDateTime.now().format(format);  
 		Email email=new Email(fromAddress, toAddress, subject, messageBody, dateOfMail);
@@ -34,7 +37,9 @@ public class EmailServiceImpl implements IEmailService {
 	}
 
 	@Override
-	public List<Email> getAllEmailsOfUser(String emailId) {
+	public List<Email> getAllEmailsOfUser(String emailId) throws UserAccountNotFoundException {
+		UserAccount userAccount=user.getUserDetails(emailId);
+		if(userAccount==null)throw new UserAccountNotFoundException("Sorry No user found");
 		return emailDao.getAllEmailsOfUser(emailId);
 	}
 

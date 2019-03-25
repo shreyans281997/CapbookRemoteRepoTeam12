@@ -8,6 +8,6 @@ import com.cg.capbook.model.Email;
 import org.springframework.data.repository.query.Param;
 
 public interface EmailDAO extends JpaRepository<Email, Integer>{
-	@Query("select e from Email e where e.toAddress =:emailId")
+	@Query("from Email e where e.toAddress =:emailId")
 	public List<Email> getAllEmailsOfUser(@Param("emailId") String  emailId);
 }

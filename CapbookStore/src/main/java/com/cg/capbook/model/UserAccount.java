@@ -14,21 +14,24 @@ import javax.persistence.OneToMany;
 public class UserAccount {
 	@Id
 	private String emailId;
-	private String password;
-	private String businessProfile;
-	private String workPlace;
-	private String workExperience;
 	@OneToMany(mappedBy="user")
 	private List<Photo> photos;
 	@OneToMany(mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)  //mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
 	private Map<String, Friend> friends;
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,orphanRemoval=true)  //mappedBy="user",fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<Post> posts ;
-	private String gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userName,securityQue,answer;
+	private String password,businessProfile, workPlace,workExperience,gender,firstName,secondName,bio,status,mobileNo,dateOfBirth,userName,securityQue,answer;
 	private String profilePic;
 	@Embedded
 	private Address address;
 	public UserAccount() {}
+	
+	public UserAccount(String emailId, String profilePic) {
+		super();
+		this.emailId = emailId;
+		this.profilePic = profilePic;
+	}
+
 	public UserAccount(String emailId, String password, String businessProfile, String workPlace, String workExperience,
 			List<Photo> photos, Map<String, Friend> friends, List<Post> posts, String gender, String firstName,
 			String secondName, String bio, String status, String mobileNo, String dateOfBirth, String userName,
@@ -68,6 +71,24 @@ public class UserAccount {
 		this.dateOfBirth = dateOfBirth;
 		this.securityQue = securityQue;
 		this.answer = answer;
+	}
+	
+	public UserAccount(String emailId, String businessProfile, String workPlace, String workExperience,
+			String firstName, String secondName, String bio, String status, String mobileNo, String dateOfBirth,
+			String userName, Address address) {
+		super();
+		this.emailId = emailId;
+		this.businessProfile = businessProfile;
+		this.workPlace = workPlace;
+		this.workExperience = workExperience;
+		this.firstName = firstName;
+		this.secondName = secondName;
+		this.bio = bio;
+		this.status = status;
+		this.mobileNo = mobileNo;
+		this.dateOfBirth = dateOfBirth;
+		this.userName = userName;
+		this.address = address;
 	}
 	public String getEmailId() {
 		return emailId;
