@@ -13,12 +13,12 @@ public class Likes {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="likes")
 	private Integer likeId;
 	private String likedBy;
-	private boolean like_count;
-	private boolean dislike_count;
+	private int like_count;
+	private int dislike_count;
 	@ManyToOne
 	private Post post;
 	public Likes() {}
-	public Likes(Integer likeId, String likedBy, boolean like_count, boolean dislike_count, Post post) {
+	public Likes(Integer likeId, String likedBy, int like_count, int dislike_count, Post post) {
 		super();
 		this.likeId = likeId;
 		this.likedBy = likedBy;
@@ -38,16 +38,16 @@ public class Likes {
 	public void setLikedBy(String likedBy) {
 		this.likedBy = likedBy;
 	}
-	public boolean isLike_count() {
+	public int isLike_count() {
 		return like_count;
 	}
-	public void setLike_count(boolean like_count) {
+	public void setLike_count(int like_count) {
 		this.like_count = like_count;
 	}
-	public boolean isDislike_count() {
+	public int isDislike_count() {
 		return dislike_count;
 	}
-	public void setDislike_count(boolean dislike_count) {
+	public void setDislike_count(int dislike_count) {
 		this.dislike_count = dislike_count;
 	}
 	public Post getPost() {
@@ -56,13 +56,14 @@ public class Likes {
 	public void setPost(Post post) {
 		this.post = post;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (dislike_count ? 1231 : 1237);
+		result = prime * result + dislike_count;
 		result = prime * result + ((likeId == null) ? 0 : likeId.hashCode());
-		result = prime * result + (like_count ? 1231 : 1237);
+		result = prime * result + like_count;
 		result = prime * result + ((likedBy == null) ? 0 : likedBy.hashCode());
 		result = prime * result + ((post == null) ? 0 : post.hashCode());
 		return result;
