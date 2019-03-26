@@ -151,9 +151,13 @@ div.a {
           <tr>
            <td> <p>${posts.postContent}</p></td>
             <tr>
-             <td> <button type="submit" class="btn btn-primary btn-sm">
+             <td> 
+             <form action="updateLikes" method="post">
+             <input type="hidden" name="postId" value="${posts.postId }">
+             <input type="hidden" name="likedBy" value="${user.emailId }">
+              <button type="submit" class="btn btn-default">
               <i class="glyphicon glyphicon-thumbs-up"></i> Like
-                </button> </td>
+                </button></form> </td>
             <td>  <button type="button" class="btn btn-default">Comment
               <i class="glyphicon glyphicon-comment"></i></button></td>
               </tr>

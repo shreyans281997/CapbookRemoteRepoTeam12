@@ -26,6 +26,7 @@ import com.cg.capbook.model.Post;
 import com.cg.capbook.model.UserAccount;
 import com.cg.capbook.services.IEditProfileServices;
 import com.cg.capbook.services.IEmailService;
+import com.cg.capbook.services.ILikesService;
 import com.cg.capbook.services.IPostService;
 import com.cg.capbook.services.IUserService;
 
@@ -41,6 +42,8 @@ public class UserServiceController {
 	IEditProfileServices editProfile;
 	@Autowired
 	IPostService postService;
+	@Autowired
+	ILikesService likeServices;
 	@RequestMapping("/showSignup")
 	public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException {
 		userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue,answer);
@@ -112,6 +115,12 @@ public class UserServiceController {
 	}
 	@RequestMapping("/getHomePage")
 	public ModelAndView getHomePage(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
+		List<Post> posts=postService.allPosts(user.getEmailId());
+        return new ModelAndView("homePage","posts",posts);
+	}
+	@RequestMapping("/updateLikes")
+	public ModelAndView updateLikes(@SessionAttribute("user") UserAccount user, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
+		likeServices.updateLikes(postId, likedBy);
 		List<Post> posts=postService.allPosts(user.getEmailId());
         return new ModelAndView("homePage","posts",posts);
 	}
