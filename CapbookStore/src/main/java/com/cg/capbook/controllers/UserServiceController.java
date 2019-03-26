@@ -36,8 +36,7 @@ import com.cg.capbook.services.IUserService;
 @Controller
 @SessionAttributes({"user","posts"})
 public class UserServiceController {
-
-	@Autowired
+@Autowired
 	IUserService userService; 
 	@Autowired
 	IEmailService emailService;
