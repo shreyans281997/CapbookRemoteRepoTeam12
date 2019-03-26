@@ -110,7 +110,7 @@ public class UserServiceController {
 	@RequestMapping("/showAllPost")
 	public ModelAndView allPosts(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
 		List<Post> posts=postService.allPosts(user.getEmailId());
-		return new ModelAndView("post", "posts", posts);
+		return new ModelAndView("homePage", "posts", posts);
 	}
 	@RequestMapping("/getEditProfile")
 	public ModelAndView getEditProfile(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
@@ -138,6 +138,11 @@ public class UserServiceController {
     public ModelAndView delAllEmail(@SessionAttribute("user") UserAccount user) throws NoMailsArePresentToDeleteException {
     	emailService.deleteAllMails(user.getEmailId());
 		return new ModelAndView("ShowAllEmails","success","Emails deleted successfully Now Inbox is empty");
+    }
+    @RequestMapping("/searchUser")
+    public ModelAndView searchUser(@RequestParam String emailId ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
+    	UserAccount findUser=userService.searchUser(emailId);
+		return new ModelAndView("resultPage","findUser",findUser);
     }
 }
 

@@ -87,6 +87,11 @@ public class UserServicesImpl implements IUserService{
 		userDao.save(user);
 		return true;}
 		else throw new IncorrectOldPassword();
-	}	
+	}
+	@Override
+	public UserAccount searchUser(String emailId) throws UserAccountNotFoundException {
+		UserAccount user=getUserDetails(emailId);
+		return user;
+	}
 	
 }

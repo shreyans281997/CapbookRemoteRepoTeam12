@@ -61,11 +61,11 @@ div.a {
       <li><a href="getEmailPage">Compose</a></li>
         <li><a href="showAllEmail">Inbox</a></li>
       </ul>
-      <form class="navbar-form navbar-right" role="search">
+      <form class="navbar-form navbar-right" role="search" action="searchUser">
         <div class="form-group input-group">
-          <input type="text" class="form-control" placeholder="Search..">
+          <input type="text" class="form-control" placeholder="Search.." name="emailId">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
+            <button class="btn btn-default" type="submit">
               <span class="glyphicon glyphicon-search"></span>
             </button>
           </span>        
