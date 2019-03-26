@@ -40,6 +40,7 @@ public class EmailServiceImpl implements IEmailService {
 	public List<Email> getAllEmailsOfUser(String emailId) throws UserAccountNotFoundException {
 		UserAccount userAccount=user.getUserDetails(emailId);
 		if(userAccount==null)throw new UserAccountNotFoundException("Sorry No user found");
+		System.out.print(emailDao.getAllEmailsOfUser(emailId));
 		return emailDao.getAllEmailsOfUser(emailId);
 	}
 

@@ -15,27 +15,34 @@ public class LikesServiceImpl implements ILikesService {
 	private LikesDAO likesDao;
 	@Autowired 
 	private PostDAO postDao;
-	
+
 	@Override
 	public Likes updateLikes(int postId, String likedBy) {
 		Likes alreadyLiked=likesDao.findLikeByStatus(postId, likedBy);
-		if(alreadyLiked!=null){
-			alreadyLiked.setLike_count(0);
-			return likesDao.save(alreadyLiked);
-		}else {
-			return likesDao.save(new Likes(likedBy, 1, 0, postDao.findById(postId).orElse(null)));
-		}
+		if(alreadyLiked!=null) {
+			if(alreadyLiked.getLike_count()==1){
+				alreadyLiked.setLike_count(0);
+				return likesDao.save(alreadyLiked);
+			}else {
+				alreadyLiked.setLike_count(1);
+				return likesDao.save(alreadyLiked);
+			}
+		}return likesDao.save(new Likes(likedBy, 1, 0, postDao.findById(postId).orElse(null)));
+
 	}
-	
+
 	@Override
 	public int getLikesCount(int postId) {
-		return likesDao.getLikeCount(postId);
+		Post post=postDao.findById(postId).orElse(null);
+		post.setTotalLikeCount(likesDao.getLikeCount(postId));
+		postDao.save(post);
+		return  post.getTotalLikeCount();
 	}
-	
+
 	@Override
 	public Likes updateDislikes(int postId, String dislikedBy) {
 		Likes alreadyLiked=likesDao.findLikeByStatus(postId, dislikedBy);
-		if(alreadyLiked!=null){
+		if(alreadyLiked.getDislike_count()==1){
 			alreadyLiked.setDislike_count(0);
 			return likesDao.save(alreadyLiked);
 		}else {

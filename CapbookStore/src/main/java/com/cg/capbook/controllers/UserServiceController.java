@@ -3,7 +3,10 @@ import java.io.IOException;
 import org.apache.catalina.Session;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +34,7 @@ import com.cg.capbook.services.IPostService;
 import com.cg.capbook.services.IUserService;
 
 @Controller
-@SessionAttributes({"user","post"})
+@SessionAttributes({"user","posts"})
 public class UserServiceController {
 
 	@Autowired
@@ -119,9 +122,13 @@ public class UserServiceController {
         return new ModelAndView("homePage","posts",posts);
 	}
 	@RequestMapping("/updateLikes")
-	public ModelAndView updateLikes(@SessionAttribute("user") UserAccount user, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
+	public ModelAndView updateLikes(@SessionAttribute("user") UserAccount user,@SessionAttribute("posts") List<Post> posts, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
 		likeServices.updateLikes(postId, likedBy);
-		List<Post> posts=postService.allPosts(user.getEmailId());
+		likeServices.getLikesCount(postId);
+		posts=postService.allPosts(user.getEmailId());
+		//Map<String,Object> model=new HashMap<String,Object>();
+		//model.put("count",count);
+		//model.put("posts",posts);
         return new ModelAndView("homePage","posts",posts);
 	}
 

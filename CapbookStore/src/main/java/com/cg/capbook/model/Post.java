@@ -16,6 +16,8 @@ public class Post {
 	@SequenceGenerator(name="post",sequenceName="post_seq",initialValue=101,allocationSize=10000)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="post")
 	private int postId;
+	private int totalLikeCount;
+	private int dislikeCount;
 	private String postContent,postPic;
 	@ManyToOne
 	private UserAccount user;
@@ -29,12 +31,12 @@ public class Post {
 	@MapKey
 	private Map<Integer,Notification> notifications;
 	public Post() {}
-
-	public Post(int postId, String postContent, String postPic, UserAccount user,
-			Map<Integer, Likes> likes, Map<Integer, Comments> comments,
-			Map<Integer, Notification> notifications) {
+	public Post(int postId, int totalLikeCount, int dislikeCount, String postContent, String postPic, UserAccount user,
+			Map<Integer, Likes> likes, Map<Integer, Comments> comments, Map<Integer, Notification> notifications) {
 		super();
 		this.postId = postId;
+		this.totalLikeCount = totalLikeCount;
+		this.dislikeCount = dislikeCount;
 		this.postContent = postContent;
 		this.postPic = postPic;
 		this.user = user;
@@ -42,6 +44,7 @@ public class Post {
 		this.comments = comments;
 		this.notifications = notifications;
 	}
+	
 	public Post(String postContent, UserAccount user) {
 		super();
 		this.postContent = postContent;
@@ -53,17 +56,24 @@ public class Post {
 	public void setPostId(int postId) {
 		this.postId = postId;
 	}
+	
+	public int getTotalLikeCount() {
+		return totalLikeCount;
+	}
+	public void setTotalLikeCount(int totalLikeCount) {
+		this.totalLikeCount = totalLikeCount;
+	}
+	public int getDislikeCount() {
+		return dislikeCount;
+	}
+	public void setDislikeCount(int dislikeCount) {
+		this.dislikeCount = dislikeCount;
+	}
 	public String getPostContent() {
 		return postContent;
 	}
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
-	}
-	public UserAccount getUser() {
-		return user;
-	}
-	public void setUser(UserAccount user) {
-		this.user = user;
 	}
 	public String getPostPic() {
 		return postPic;
@@ -71,14 +81,18 @@ public class Post {
 	public void setPostPic(String postPic) {
 		this.postPic = postPic;
 	}
+	public UserAccount getUser() {
+		return user;
+	}
+	public void setUser(UserAccount user) {
+		this.user = user;
+	}
 	public Map<Integer, Likes> getLikes() {
 		return likes;
 	}
-
 	public void setLikes(Map<Integer, Likes> likes) {
 		this.likes = likes;
 	}
-
 	public Map<Integer, Comments> getComments() {
 		return comments;
 	}
@@ -91,21 +105,21 @@ public class Post {
 	public void setNotifications(Map<Integer, Notification> notifications) {
 		this.notifications = notifications;
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
+		result = prime * result + dislikeCount;
 		result = prime * result + ((likes == null) ? 0 : likes.hashCode());
 		result = prime * result + ((notifications == null) ? 0 : notifications.hashCode());
 		result = prime * result + ((postContent == null) ? 0 : postContent.hashCode());
 		result = prime * result + postId;
 		result = prime * result + ((postPic == null) ? 0 : postPic.hashCode());
+		result = prime * result + totalLikeCount;
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -119,6 +133,8 @@ public class Post {
 			if (other.comments != null)
 				return false;
 		} else if (!comments.equals(other.comments))
+			return false;
+		if (dislikeCount != other.dislikeCount)
 			return false;
 		if (likes == null) {
 			if (other.likes != null)
@@ -142,6 +158,8 @@ public class Post {
 				return false;
 		} else if (!postPic.equals(other.postPic))
 			return false;
+		if (totalLikeCount != other.totalLikeCount)
+			return false;
 		if (user == null) {
 			if (other.user != null)
 				return false;
@@ -149,10 +167,13 @@ public class Post {
 			return false;
 		return true;
 	}
-
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", postContent=" + postContent + ", user=" + user + ", postPic=" + postPic
-				+ ", Likes=" + likes + ", comments=" + comments + ", notifications=" + notifications + "]";
+		return "Post [postId=" + postId + ", totalLikeCount=" + totalLikeCount + ", dislikeCount=" + dislikeCount
+				+ ", postContent=" + postContent + ", postPic=" + postPic + ", user=" + user + ", likes=" + likes
+				+ ", comments=" + comments + ", notifications=" + notifications + "]";
 	}
+
+	
+	
 }

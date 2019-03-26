@@ -156,7 +156,7 @@ div.a {
              <input type="hidden" name="postId" value="${posts.postId }">
              <input type="hidden" name="likedBy" value="${user.emailId }">
               <button type="submit" class="btn btn-default">
-              <i class="glyphicon glyphicon-thumbs-up"></i> Like
+              <i class="glyphicon glyphicon-thumbs-up"></i> Like ${posts.totalLikeCount}
                 </button></form> </td>
             <td>  <button type="button" class="btn btn-default">Comment
               <i class="glyphicon glyphicon-comment"></i></button></td>
