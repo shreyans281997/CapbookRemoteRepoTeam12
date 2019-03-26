@@ -136,7 +136,8 @@ div.a {
           </div>
         </div>
       </div>
-      
+      <c:forEach var="posts"
+				items="${posts}">
       <div class="row">
         <div class="col-sm-3">
           <div class="well">
@@ -146,8 +147,6 @@ div.a {
         </div>
         <div class="col-sm-9">
           <div class="well">
-            <c:forEach var="posts"
-				items="${posts}">
           <table>
           <tr>
            <td> <p>${posts.postContent}</p></td>
@@ -158,73 +157,12 @@ div.a {
             <td>  <button type="button" class="btn btn-default">Comment
               <i class="glyphicon glyphicon-comment"></i></button></td>
               </tr>
-                </button></p>
                 </table>
-                 </c:forEach>
+                
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>Bo</p>
-           <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            <p align="right">
-              <button type="submit" class="btn btn-primary btn-sm">
-              <i class="glyphicon glyphicon-thumbs-up"></i> Like
-                </button>
-              <button type="button" class="btn btn-default">Comment
-              <i class="glyphicon glyphicon-comment"></i>
-                </button></p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>Jane</p>
-           <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            <p align="right">
-              <button type="submit" class="btn btn-primary btn-sm">
-              <i class="glyphicon glyphicon-thumbs-up"></i> Like
-                </button>
-              <button type="button" class="btn btn-default">Comment
-              <i class="glyphicon glyphicon-comment"></i>
-                </button></p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>Anja</p>
-           <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            <p align="right">
-              <button type="submit" class="btn btn-primary btn-sm">
-              <i class="glyphicon glyphicon-thumbs-up"></i> Like
-                </button>
-              <button type="button" class="btn btn-default">Comment
-              <i class="glyphicon glyphicon-comment"></i>
-                </button></p>
-          </div>
-        </div>
-      </div>     
-    </div>
+       </c:forEach>
     <div class="col-sm-2 well">
       <div class="thumbnail">
         <p>Upcoming Events:</p>

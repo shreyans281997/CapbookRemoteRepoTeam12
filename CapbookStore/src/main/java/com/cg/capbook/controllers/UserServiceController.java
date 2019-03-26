@@ -30,7 +30,7 @@ import com.cg.capbook.services.IPostService;
 import com.cg.capbook.services.IUserService;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes({"user","post"})
 public class UserServiceController {
 
 	@Autowired
@@ -95,7 +95,6 @@ public class UserServiceController {
 		Email email =emailService.getEmail(emailId, emailChatId);
 		return new ModelAndView("openEmailContent", "email", email);
 	}
-	
 	@RequestMapping("/updatePost")
 	public ModelAndView updatePost(@RequestParam String postContent ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
 		postService.createPostText(user.getEmailId(), postContent);
@@ -105,7 +104,7 @@ public class UserServiceController {
 	@RequestMapping("/showAllPost")
 	public ModelAndView allPosts(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
 		List<Post> posts=postService.allPosts(user.getEmailId());
-		return new ModelAndView("post", "posts", posts.get(1));
+		return new ModelAndView("post", "posts", posts);
 	}
 	@RequestMapping("/getEditProfile")
 	public ModelAndView getEditProfile(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
