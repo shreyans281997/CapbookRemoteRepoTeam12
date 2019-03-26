@@ -12,6 +12,4 @@ public interface LikesDAO extends JpaRepository<Likes, Integer>{
 	Likes findLikeByStatus(@Param("post_id")Integer post_id, @Param("liked_by")String liked_by);
 	@Query("select count(*) from Likes where like_count=1 and post_post_id=:post_id")
 	Integer getLikeCount(Integer post_id);
-	@Query("select count(*) from Likes where dislike_count=1 and post_post_id=:post_id")
-	Integer getDislikeCount(Integer post_id);
 }

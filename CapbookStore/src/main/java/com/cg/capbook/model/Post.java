@@ -17,7 +17,6 @@ public class Post {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="post")
 	private int postId;
 	private int totalLikeCount;
-	private int dislikeCount;
 	private String postContent,postPic;
 	@ManyToOne
 	private UserAccount user;
@@ -31,12 +30,11 @@ public class Post {
 	@MapKey
 	private Map<Integer,Notification> notifications;
 	public Post() {}
-	public Post(int postId, int totalLikeCount, int dislikeCount, String postContent, String postPic, UserAccount user,
+	public Post(int postId, int totalLikeCount, String postContent, String postPic, UserAccount user,
 			Map<Integer, Likes> likes, Map<Integer, Comments> comments, Map<Integer, Notification> notifications) {
 		super();
 		this.postId = postId;
 		this.totalLikeCount = totalLikeCount;
-		this.dislikeCount = dislikeCount;
 		this.postContent = postContent;
 		this.postPic = postPic;
 		this.user = user;
@@ -62,12 +60,6 @@ public class Post {
 	}
 	public void setTotalLikeCount(int totalLikeCount) {
 		this.totalLikeCount = totalLikeCount;
-	}
-	public int getDislikeCount() {
-		return dislikeCount;
-	}
-	public void setDislikeCount(int dislikeCount) {
-		this.dislikeCount = dislikeCount;
 	}
 	public String getPostContent() {
 		return postContent;
@@ -110,7 +102,6 @@ public class Post {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
-		result = prime * result + dislikeCount;
 		result = prime * result + ((likes == null) ? 0 : likes.hashCode());
 		result = prime * result + ((notifications == null) ? 0 : notifications.hashCode());
 		result = prime * result + ((postContent == null) ? 0 : postContent.hashCode());
@@ -133,8 +124,6 @@ public class Post {
 			if (other.comments != null)
 				return false;
 		} else if (!comments.equals(other.comments))
-			return false;
-		if (dislikeCount != other.dislikeCount)
 			return false;
 		if (likes == null) {
 			if (other.likes != null)
@@ -169,8 +158,7 @@ public class Post {
 	}
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", totalLikeCount=" + totalLikeCount + ", dislikeCount=" + dislikeCount
-				+ ", postContent=" + postContent + ", postPic=" + postPic + ", user=" + user + ", likes=" + likes
+		return "Post [postId=" + postId + ", totalLikeCount=" + totalLikeCount + ", postContent=" + postContent + ", postPic=" + postPic + ", user=" + user + ", likes=" + likes
 				+ ", comments=" + comments + ", notifications=" + notifications + "]";
 	}
 

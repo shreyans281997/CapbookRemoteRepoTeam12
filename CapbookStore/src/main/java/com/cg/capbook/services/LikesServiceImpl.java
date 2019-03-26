@@ -27,7 +27,7 @@ public class LikesServiceImpl implements ILikesService {
 				alreadyLiked.setLike_count(1);
 				return likesDao.save(alreadyLiked);
 			}
-		}return likesDao.save(new Likes(likedBy, 1, 0, postDao.findById(postId).orElse(null)));
+		}return likesDao.save(new Likes(likedBy, 1, postDao.findById(postId).orElse(null)));
 
 	}
 
@@ -39,17 +39,5 @@ public class LikesServiceImpl implements ILikesService {
 		return  post.getTotalLikeCount();
 	}
 
-	@Override
-	public Likes updateDislikes(int postId, String dislikedBy) {
-		Likes alreadyLiked=likesDao.findLikeByStatus(postId, dislikedBy);
-		if(alreadyLiked.getDislike_count()==1){
-			alreadyLiked.setDislike_count(0);
-			return likesDao.save(alreadyLiked);
-		}else {
-			return likesDao.save(new Likes(dislikedBy,  postDao.findById(postId).orElse(null), 0, 1));
-		}
-	}
-	@Override
-	public int getDislikesCount(int postId) {
-		return likesDao.getDislikeCount(postId);	}
+	
 }

@@ -136,6 +136,7 @@ div.a {
           </div>
         </div>
       </div>
+      
       <c:forEach var="posts"
 				items="${posts}">
       <div class="row">

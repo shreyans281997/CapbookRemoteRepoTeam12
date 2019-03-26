@@ -130,7 +130,6 @@ public class UserServiceController {
 		//model.put("posts",posts);
         return new ModelAndView("homePage","posts",posts);
 	}
-
 }
 
 

@@ -13,36 +13,29 @@ public class Likes {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="likes")
 	private Integer likeId;
 	private String likedBy;
-	private String dislikedBy;
 	private int like_count;
-	private int dislike_count;
 	@ManyToOne
 	private Post post;
 	
 	public Likes() {}
-	public Likes(Integer likeId, String likedBy, String dislikedBy, int like_count, int dislike_count, Post post) {
+	public Likes(Integer likeId, String likedBy, String dislikedBy, int like_count, Post post) {
 		super();
 		this.likeId = likeId;
 		this.likedBy = likedBy;
-		this.dislikedBy = dislikedBy;
 		this.like_count = like_count;
-		this.dislike_count = dislike_count;
 		this.post = post;
 	}
 
-	public Likes(String likedBy, int like_count, int dislike_count, Post post) {
+	public Likes(String likedBy, int like_count, Post post) {
 		super();
 		this.likedBy = likedBy;
 		this.like_count = like_count;
-		this.dislike_count = dislike_count;
 		this.post = post;
 	}
 	
-	public Likes(String dislikedBy,Post post, int like_count, int dislike_count) {
+	public Likes(String dislikedBy,Post post, int like_count) {
 		super();
-		this.dislikedBy = dislikedBy;
 		this.like_count = like_count;
-		this.dislike_count = dislike_count;
 		this.post = post;
 	}
 	public Integer getLikeId() {
@@ -57,23 +50,11 @@ public class Likes {
 	public void setLikedBy(String likedBy) {
 		this.likedBy = likedBy;
 	}
-	public String getDislikedBy() {
-		return dislikedBy;
-	}
-	public void setDislikedBy(String dislikedBy) {
-		this.dislikedBy = dislikedBy;
-	}
 	public int getLike_count() {
 		return like_count;
 	}
 	public void setLike_count(int like_count) {
 		this.like_count = like_count;
-	}
-	public int getDislike_count() {
-		return dislike_count;
-	}
-	public void setDislike_count(int dislike_count) {
-		this.dislike_count = dislike_count;
 	}
 	public Post getPost() {
 		return post;
@@ -83,15 +64,13 @@ public class Likes {
 	}
 	@Override
 	public String toString() {
-		return "Likes [likeId=" + likeId + ", likedBy=" + likedBy + ", dislikedBy=" + dislikedBy + ", like_count="
-				+ like_count + ", dislike_count=" + dislike_count + ", post=" + post + "]";
+		return "Likes [likeId=" + likeId + ", likedBy=" + likedBy + ", like_count="
+				+ like_count + ", post=" + post + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + dislike_count;
-		result = prime * result + ((dislikedBy == null) ? 0 : dislikedBy.hashCode());
 		result = prime * result + ((likeId == null) ? 0 : likeId.hashCode());
 		result = prime * result + like_count;
 		result = prime * result + ((likedBy == null) ? 0 : likedBy.hashCode());
@@ -107,13 +86,6 @@ public class Likes {
 		if (getClass() != obj.getClass())
 			return false;
 		Likes other = (Likes) obj;
-		if (dislike_count != other.dislike_count)
-			return false;
-		if (dislikedBy == null) {
-			if (other.dislikedBy != null)
-				return false;
-		} else if (!dislikedBy.equals(other.dislikedBy))
-			return false;
 		if (likeId == null) {
 			if (other.likeId != null)
 				return false;
