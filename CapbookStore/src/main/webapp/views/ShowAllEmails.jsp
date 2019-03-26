@@ -49,14 +49,6 @@ div.successMsg {
 	color: red;
 }
 </style>
-<script>
-    function processVehicles()
-    {
-        var vehicleTypes = document.getElementsByName("email");
-        var form = document.getElementById("email");
-        form.submit();
-    }
-</script>
 </head>
 <body>
 
@@ -102,25 +94,41 @@ div.successMsg {
 		</div>
 	</nav>
 
-	<div>
-		<table id="customers">
-			<c:forEach var="email" items="${requestScope.email}">
+	<div class="container">
+  <h2><font color="blue">Inbox</font></h2>
+  <p>Check your mail. May be something Important is there.</p>
+  <p><font color="red">${success}</font></p>
+  <p><font color="red">${errorMessage}</font></p>
+  <table class="table">
+  <tr><td>
+           <button type="button"><a href="delAllEmail" >
+          <span class="glyphicon glyphicon-trash"></span> Delete All Mails 
+        </a></button></td></tr>
+        <tr>
+    <c:forEach var="email" items="${requestScope.email}">
 				<form action="showEmail" method="post" id="emails">
 					<input type="hidden" name="emailChatId"
 						value="${email.emailChatId}"> <input type="hidden"
 						name="emailId" value="${email.fromAddress}">
-					<tr>
-						<td><div class="radio">
-								<label><input type="radio" name="email"><a
-									href="${email.emailChatId}_${email.fromAddress}_${email.subject}_${email.dateOfMail}"
-									onclick="document.getElementById('emails').submit()">ID-: ${email.emailChatId} From-:
+					
+           <td> <button type="submit"><a href="#">
+          <span class="glyphicon glyphicon-envelope"></span></a></button></td>
+          	</form>
+          	
+          	<form action="delEmail" method="post" id="delEmail">
+          	<input type="hidden" name="emailChatId"
+						value="${email.emailChatId}"> <input type="hidden"
+						name="emailId" value="${email.fromAddress}">
+          	<td> <button type="submit"><a href="#">
+          <span class="glyphicon glyphicon-trash"></span></td></form>
+						<td>
+								ID-: ${email.emailChatId} From-:
 										${email.fromAddress} Subject-:${email.subject } Date-:
-										${email.dateOfMail }</a></label></td>
+										${email.dateOfMail }</td>
 					</tr>
-				</form>
-				
-			</c:forEach>
-		</table>
-	</div>
+				</c:forEach>
+  
+  </table>
+</div>
 </body>
 </html>

@@ -22,6 +22,7 @@ import com.cg.capbook.exceptions.FieldsEmptyException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
+import com.cg.capbook.exceptions.NoMailsArePresentToDeleteException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNotAFriendException;
 import com.cg.capbook.model.Email;
@@ -126,11 +127,18 @@ public class UserServiceController {
 		likeServices.updateLikes(postId, likedBy);
 		likeServices.getLikesCount(postId);
 		posts=postService.allPosts(user.getEmailId());
-		//Map<String,Object> model=new HashMap<String,Object>();
-		//model.put("count",count);
-		//model.put("posts",posts);
         return new ModelAndView("homePage","posts",posts);
 	}
+	@RequestMapping("/delEmail")
+    public ModelAndView delEmail(@RequestParam String emailId,int emailChatId) {
+    	emailService.delEmail(emailId, emailChatId);
+		return new ModelAndView("ShowAllEmails","success","Email deleted successfully");
+    }
+    @RequestMapping("/delAllEmail")
+    public ModelAndView delAllEmail(@SessionAttribute("user") UserAccount user) throws NoMailsArePresentToDeleteException {
+    	emailService.deleteAllMails(user.getEmailId());
+		return new ModelAndView("ShowAllEmails","success","Emails deleted successfully Now Inbox is empty");
+    }
 }
 
 

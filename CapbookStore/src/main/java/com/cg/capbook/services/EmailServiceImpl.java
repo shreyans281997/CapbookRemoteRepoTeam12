@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.cg.capbook.daoservice.EmailDAO;
 import com.cg.capbook.daoservice.FriendDAO;
 import com.cg.capbook.daoservice.UserDAO;
+import com.cg.capbook.exceptions.NoMailsArePresentToDeleteException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNotAFriendException;
 import com.cg.capbook.model.Email;
@@ -40,7 +41,6 @@ public class EmailServiceImpl implements IEmailService {
 	public List<Email> getAllEmailsOfUser(String emailId) throws UserAccountNotFoundException {
 		UserAccount userAccount=user.getUserDetails(emailId);
 		if(userAccount==null)throw new UserAccountNotFoundException("Sorry No user found");
-		System.out.print(emailDao.getAllEmailsOfUser(emailId));
 		return emailDao.getAllEmailsOfUser(emailId);
 	}
 
@@ -50,4 +50,14 @@ public class EmailServiceImpl implements IEmailService {
 		return email;
 	}
 
+	@Override
+	public void delEmail(String emailId, int emailChatId) {
+    emailDao.deleteEmail(emailId, emailChatId);
+	}
+
+	@Override
+	public void deleteAllMails(String emailId) throws NoMailsArePresentToDeleteException {
+	emailDao.deleteAllEmails(emailId);
+	}
+	
 }
