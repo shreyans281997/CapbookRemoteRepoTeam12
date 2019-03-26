@@ -77,6 +77,7 @@ public class Likes {
 		result = prime * result + ((post == null) ? 0 : post.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

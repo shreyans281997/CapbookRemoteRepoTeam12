@@ -120,6 +120,7 @@ public class UserServiceController {
 		List<Post> posts=postService.allPosts(user.getEmailId());
         return new ModelAndView("homePage","posts",posts);
 	}
+	
 	@RequestMapping("/updateLikes")
 	public ModelAndView updateLikes(@SessionAttribute("user") UserAccount user,@SessionAttribute("posts") List<Post> posts, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
 		likeServices.updateLikes(postId, likedBy);

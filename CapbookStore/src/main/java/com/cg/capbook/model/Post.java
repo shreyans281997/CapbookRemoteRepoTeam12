@@ -156,6 +156,7 @@ public class Post {
 			return false;
 		return true;
 	}
+	
 	@Override
 	public String toString() {
 		return "Post [postId=" + postId + ", totalLikeCount=" + totalLikeCount + ", postContent=" + postContent + ", postPic=" + postPic + ", user=" + user + ", likes=" + likes

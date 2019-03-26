@@ -136,8 +136,7 @@ div.a {
           </div>
         </div>
       </div>
-      
-      <c:forEach var="posts"
+       <c:forEach var="posts"
 				items="${posts}">
       <div class="row">
         <div class="col-sm-3">
