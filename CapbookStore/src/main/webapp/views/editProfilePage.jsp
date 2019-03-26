@@ -79,7 +79,7 @@ color: red;
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> log out</a></li>
+        <li><a href="endSession"><span class="glyphicon glyphicon-user"></span> log out</a></li>
       </ul>
     </div>
   </div>

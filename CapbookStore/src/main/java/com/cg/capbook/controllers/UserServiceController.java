@@ -144,6 +144,11 @@ public class UserServiceController {
     	UserAccount findUser=userService.searchUser(emailId);
 		return new ModelAndView("resultPage","findUser",findUser);
     }
+    @RequestMapping("/endSession")
+    public ModelAndView endSession(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
+    	user=null;
+		return new ModelAndView("loginPage","","");
+    }
 }
 
 
