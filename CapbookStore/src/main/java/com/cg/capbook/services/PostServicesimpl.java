@@ -29,6 +29,10 @@ public class PostServicesimpl implements IPostService {
 		return postDao.showAllPosts(emailId);
 		
 	}
+	public boolean deletePost(int postId) {
+		postDao.deleteById(postId);
+		return true;
+	}
 
 
 }
