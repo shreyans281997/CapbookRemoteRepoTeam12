@@ -65,10 +65,7 @@ public class UserServicesImpl implements IUserService{
 	public UserAccount addProfilePic(String emailId,MultipartFile file) throws UserAccountNotFoundException  {
 		UserAccount user=userDao.findById(emailId).orElseThrow(()->new UserAccountNotFoundException("User Account Not Found"));
 		try {
-			// Get the file and save it somewhere
-		//byte[] bytes = file.getBytes();
 			Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-			//Files.write(path, bytes);
 			file.transferTo(path);
 			user.setProfilePic("/images/" + file.getOriginalFilename());
 			user=userDao.save(user);
