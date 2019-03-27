@@ -30,6 +30,7 @@ import com.cg.capbook.model.Post;
 import com.cg.capbook.model.UserAccount;
 import com.cg.capbook.services.IEditProfileServices;
 import com.cg.capbook.services.IEmailService;
+import com.cg.capbook.services.IFriendRequestServices;
 import com.cg.capbook.services.ILikesService;
 import com.cg.capbook.services.IPostService;
 import com.cg.capbook.services.IUserService;
@@ -47,6 +48,8 @@ public class UserServiceController {
 	IPostService postService;
 	@Autowired
 	ILikesService likeServices;
+	@Autowired
+	IFriendRequestServices friendServices;
 	@RequestMapping("/showSignup")
 	public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException {
 		userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue,answer);
@@ -148,6 +151,11 @@ public class UserServiceController {
     public ModelAndView endSession(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
     	user=null;
 		return new ModelAndView("loginPage","","");
+    }
+    @RequestMapping("/sendFriendRequest")
+    public ModelAndView sendFriendRequest(@SessionAttribute("user") UserAccount user, @RequestParam String receiverEmailId) throws UserAccountNotFoundException {
+    	friendServices.sendFriendRequest(user.getEmailId(), receiverEmailId);
+		return new ModelAndView("resultPage","success","Friend Request Sent!!!!");
     }
 }
 

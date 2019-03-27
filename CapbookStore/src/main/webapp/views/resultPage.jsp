@@ -7,6 +7,16 @@
 <title></title>
 </head>
 <body>
-<a href="">${findUser.firstName } ${findUser.secondName }</a>
+<table>
+<tr>
+<td>
+<a href="">${findUser.firstName} ${findUser.secondName } ${findUser.emailId}</a></td>
+<td><form action="sendFriendRequest" method="post">
+<input type="hidden" name="receiverEmailId" value="${findUser.emailId }">
+<input type="submit" value="Send Request"></form>
+</tr></table>
+<div>
+${success }
+</div>
 </body>
 </html>

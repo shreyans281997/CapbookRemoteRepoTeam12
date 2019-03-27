@@ -1,12 +1,15 @@
 package com.cg.capbook.services;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.cg.capbook.daoservice.FriendDAO;
 import com.cg.capbook.daoservice.FriendRequestDAO;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.model.Friend;
 import com.cg.capbook.model.FriendRequest;
 import com.cg.capbook.model.UserAccount;
+@Component("friendServices")
 public class FriendRequestImpl implements IFriendRequestServices {
 	@Autowired
 	private IUserService userService;
@@ -15,8 +18,7 @@ public class FriendRequestImpl implements IFriendRequestServices {
 	@Autowired
 	private FriendDAO friendDao;
 	@Override
-	public boolean sendFriendRequest(String senderEmailId, String receiverEmailId) throws UserAccountNotFoundException {
-		UserAccount user=userService.getUserDetails(receiverEmailId);
+	public boolean sendFriendRequest(String senderEmailId, String receiverEmailId)  {
 		FriendRequest friendRequest = new FriendRequest();
 		friendRequest.setSenderEmailId(senderEmailId);
 		friendRequest.setReceiverEmailId(receiverEmailId);
