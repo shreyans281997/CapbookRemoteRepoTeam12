@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.cg.capbook.daoservice.FriendDAO;
 import com.cg.capbook.daoservice.FriendRequestDAO;
+import com.cg.capbook.exceptions.FriendRequestAlreadySentException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.model.Friend;
 import com.cg.capbook.model.FriendRequest;
@@ -18,7 +19,10 @@ public class FriendRequestImpl implements IFriendRequestServices {
 	@Autowired
 	private FriendDAO friendDao;
 	@Override
-	public boolean sendFriendRequest(String senderEmailId, String receiverEmailId)  {
+	public boolean sendFriendRequest(String senderEmailId, String receiverEmailId) throws FriendRequestAlreadySentException  {
+		if(friendRequestDao.findRequest(senderEmailId, receiverEmailId) != null) {
+			throw new FriendRequestAlreadySentException("Friend Request Already Sent");
+		}
 		FriendRequest friendRequest = new FriendRequest();
 		friendRequest.setSenderEmailId(senderEmailId);
 		friendRequest.setReceiverEmailId(receiverEmailId);

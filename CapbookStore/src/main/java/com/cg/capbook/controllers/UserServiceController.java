@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.FieldsEmptyException;
+import com.cg.capbook.exceptions.FriendRequestAlreadySentException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
@@ -153,7 +154,7 @@ public class UserServiceController {
 		return new ModelAndView("loginPage","","");
     }
     @RequestMapping("/sendFriendRequest")
-    public ModelAndView sendFriendRequest(@SessionAttribute("user") UserAccount user, @RequestParam String receiverEmailId) throws UserAccountNotFoundException {
+    public ModelAndView sendFriendRequest(@SessionAttribute("user") UserAccount user, @RequestParam String receiverEmailId) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
     	friendServices.sendFriendRequest(user.getEmailId(), receiverEmailId);
 		return new ModelAndView("resultPage","success","Friend Request Sent!!!!");
     }

@@ -5,6 +5,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.FieldsEmptyException;
+import com.cg.capbook.exceptions.FriendRequestAlreadySentException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
@@ -49,5 +50,9 @@ public class CapBookExceptionAspect {
     @ExceptionHandler(NoMailsArePresentToDeleteException.class)
     public ModelAndView handleNoMailsPresentToDeleteException(Exception e) {
     	return new ModelAndView("ShowAllEmails", "errorMessage", e.getMessage());
+    }
+    @ExceptionHandler(FriendRequestAlreadySentException.class)
+    public ModelAndView handleFriendRequestAlreadySentException(Exception e) {
+    	return new ModelAndView("resultPage", "errorMessage", e.getMessage());
     }
 }

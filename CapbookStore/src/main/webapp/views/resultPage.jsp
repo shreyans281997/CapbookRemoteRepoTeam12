@@ -16,7 +16,8 @@
 <input type="submit" value="Send Request"></form>
 </tr></table>
 <div>
-${success }
+${success}
+${errorMessage}
 </div>
 </body>
 </html>
