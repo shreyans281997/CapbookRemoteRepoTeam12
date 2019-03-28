@@ -168,8 +168,7 @@ div.a {
               <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
-      <!-- Modal content-->
+    <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -182,7 +181,7 @@ div.a {
         <input type="hidden" name="postId" value="${posts.postId }">
 		<textarea placeholder="Enter something funny." id="text" name="comment" rows="1" cols="30" style="overflow: hidden; word-wrap: break-word; resize: none; height: 100px; "></textarea>  
 		<input id="button" type="submit" value="comment">
-		${comments }
+		${comments } <!-- loop lgana hai -->
 	</form>
 
 </div>
