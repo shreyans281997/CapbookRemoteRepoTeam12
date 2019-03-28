@@ -1,8 +1,8 @@
 
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Bootstrap Example</title>
-<meta charset="utf-8">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -17,8 +17,13 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href='https://fonts.googleapis.com/css?family=RobotoDraft'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
-/* Set black background color, white text and some padding */
 footer {
 	position: bottom;
 	left: 0;
@@ -30,25 +35,16 @@ footer {
 	text-align: center;
 }
 
-div.a {
-	font-size: 115%;
-	color: white;
-	align: right;
+html, body, h1, h2, h3, h4, h5 {
+	font-family: "RobotoDraft", "Roboto", sans-serif
 }
 
-div.center {
-	text-align: center;
-	color: black;
-}
-
-div.successMsg {
-	text-align: center;
-	color: red;
+.w3-bar-block .w3-bar-item {
+	padding: 16px
 }
 </style>
-</head>
-<body>
 
+<body>
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -69,13 +65,14 @@ div.successMsg {
 							<li><a href="#">Show Friends</a></li>
 							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
-					<li><a href="#">Home</a></li>
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Messages</a>
-        <ul class="dropdown-menu">
-     	   <li><a href="getEmailPage">Compose</a></li>
-      	   <li><a href="showAllEmail">Inbox</a></li>
-      	   <li><a href="showAllSentEmail">Sent Mails</a></li>
-      	   </ul></li>
+					<li><a href="getHomePage">Home</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Messages</a>
+						<ul class="dropdown-menu">
+							<li><a href="getEmailPage">Compose</a></li>
+							<li><a href="showAllEmail">Inbox</a></li>
+							<li><a href="showAllSentEmail">Sent Mails</a></li>
+						</ul></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group input-group">
@@ -88,19 +85,90 @@ div.successMsg {
 					</div>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-							log out</a></li>
+					<li><a href="endSession"><span
+							class="glyphicon glyphicon-user"></span> log out</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div>
-		<h1>${email.fromAddress}</h1>
-		<br>
-		<h2>${email.subject }</h2>
-		<br>
-		<p1>${email.messageBody }</p1>
+
+	<!-- Overlay effect when opening the side navigation on small screens -->
+
+	<!-- Page content -->
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div class="w3-main" style="margin-center: 320px;">
+				<div id="Borge" class="w3-container person">
+					<br> <img class="w3-round  w3-animate-top"
+						src="/w3images/avatar3.png" style="width: 20%;">
+					<h5 class="w3-opacity">Subject: ${email.subject }</h5>
+					<h4>
+						<i class="fa fa-clock-o"></i>From ${email.fromAddress },
+						${email.dateOfMail }
+					</h4>
+					<form action="replyEmail" method="post" id="commentform">
+                        <p align="right" right="100px">
+						<button type="submit" class="btn btn-primary btn-md">
+							reply <span class="glyphicon glyphicon-send"></span>
+						</button>
+						</p>
+						<div class="form-group">
+							<div class="col-sm-11">
+								<input type="hidden" name="emailId"
+									class="form-control select2-offscreen" id="to"
+									value="${email.toAddress }" tabindex="-1">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-11">
+								<input type="hidden" name="emailChatId"
+									class="form-control select2-offscreen" id="emailChatId"
+									value="${email.emailChatId }" tabindex="-1">
+							</div>
+						</div>
+						</div>
+				</form>
+				<form action="forwardEmail" method="post" id="commentform">
+                 <p align="right">  
+						<button type="submit" class="btn btn-primary btn-md">
+							Forward<span class="glyphicon glyphicon-send"></span>
+						</button>
+						</p>
+						<div class="form-group">
+							<div class="col-sm-11">
+								<input type="hidden" name="emailId"
+									class="form-control select2-offscreen" id="to"
+									value="${email.toAddress }" tabindex="-1">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-11">
+								<input type="hidden" name="emailChatId"
+									class="form-control select2-offscreen" id="emailChatId"
+									value="${email.emailChatId }" tabindex="-1">
+							</div>
+						</div>
+						
+				</div>
+				</form>
+				
+				<hr>
+				<p>${email.messageBody }</p>
+
+				<p>
+					Best Regards, <br>${user.firstName }</p>
+			</div>
+		</div>
 	</div>
+
+	<div class="col-sm-3"></div>
+	</div>
+	<footer class="container-fluid text-center">
+		<div class="a">
+			<p>@CapgeminiApp2019</p>
+		</div>
+	</footer>
+
 </body>
 </html>
-

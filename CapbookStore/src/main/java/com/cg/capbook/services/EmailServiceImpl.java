@@ -66,8 +66,9 @@ public class EmailServiceImpl implements IEmailService {
 	}
 
 	@Override
-	public Email getSentEmail(String emailId, int emailChatId) {
-		  Email email=emailDao.getSentEmail(emailId, emailChatId);	
+	public Email getSentEmail(String emailId, int emailChatId) throws UserAccountNotFoundException {
+		UserAccount getUser=userDao.findById(emailId).orElseThrow(()->new UserAccountNotFoundException("User is not Registered!"));
+         Email email=emailDao.getSentEmail(emailId, emailChatId);	
 			return email;
 	}
 

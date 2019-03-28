@@ -31,6 +31,10 @@ public String getEmailPage() {
 public String getChangePassword() {
 	return "forgotPassword";}
 
+@RequestMapping("/getReplyEmailPage")
+public String getReplyEmailPage() {
+	return "replyEmail";}
+
 @ModelAttribute
 public UserAccount getUserAccount() {
 	user=new UserAccount();

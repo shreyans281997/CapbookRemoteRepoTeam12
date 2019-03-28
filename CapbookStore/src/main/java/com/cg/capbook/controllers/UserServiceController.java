@@ -163,6 +163,16 @@ public class UserServiceController {
     	emailService.deleteAllSentMails(user.getEmailId());
 		return new ModelAndView("showAllSentEmails","success","Emails deleted successfully Now sent box is empty");
     }
+    @RequestMapping("/replyEmail")
+	public ModelAndView replyEmail(@RequestParam String emailId,int emailChatId) throws UserAccountNotFoundException, UserNotAFriendException {
+		Email email =emailService.getEmail(emailId, emailChatId);
+		return new ModelAndView("replyEmail", "email", email);
+	}
+    @RequestMapping("/forwardEmail")
+   	public ModelAndView forwardEmail(@RequestParam String emailId,int emailChatId) throws UserAccountNotFoundException, UserNotAFriendException {
+   		Email email =emailService.getEmail(emailId, emailChatId);
+   		return new ModelAndView("forwardEmail", "email", email);
+   	}
     @RequestMapping("/searchUser")
     public ModelAndView searchUser(@RequestParam String emailId ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
     	UserAccount findUser=userService.searchUser(emailId);
