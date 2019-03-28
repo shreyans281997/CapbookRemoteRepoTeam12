@@ -64,9 +64,11 @@ color: red;
       	   <li><a href="getEditProfile">Edit Profile</a></li>
       	   </ul></li>
         <li><a href="getHomePage">Home</a></li>
-        <li><a href="getEmailPage">Compose</a></li>
-        <li><a href="showAllEmail">Inbox</a></li>
-		
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Messages</a>
+        <ul class="dropdown-menu">
+     	   <li><a href="getEmailPage">Compose</a></li>
+      	   <li><a href="showAllEmail">Inbox</a></li>
+      	   </ul></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group input-group">
@@ -103,8 +105,8 @@ color: red;
      </hr><br>
      <form action="updateBio" method="post">
         <div class="panel panel-default">
-            <div class="panel-heading">Bio <i class="fa fa-link fa-1x"></i></div>
-           <input type="text" class="form-control" name="bio" id="bio" placeholder="Add Your Bio" title="enter your bio.">
+            <div class="panel-heading">Bio <i class="fa fa-link fa-1x"></i></div><br>
+           <input type="text" class="form-control" name="bio" id="bio" placeholder="Add Your Bio" title="enter your bio."><br>
             <button type="submit" class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-edit"></span> Edit
         </button><br><br>
@@ -205,3 +207,4 @@ color: red;
 
 </body>
 </html>
+

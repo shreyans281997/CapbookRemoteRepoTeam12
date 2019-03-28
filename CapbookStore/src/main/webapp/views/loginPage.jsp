@@ -1,4 +1,4 @@
-
+!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Login Page</title>
@@ -26,7 +26,7 @@ footer {
 	width: 100%;
 	background-color: #555;
 	color: white;
-	padding: 15px;
+	padding: 10px;
 	text-align: center;
 }
 
@@ -43,7 +43,7 @@ li a {
 }
 
 div.a {
-	font-size: 130%;
+	font-size: 115%;
 	color: white;
 	align: right;
 }
@@ -164,14 +164,12 @@ div.c {
 							<!-- form-group// -->
 							<div class="d-flex justify-content-center">
 
-								<a href="getForgotPassword">Forgot your password?</a>
+								<a href="getChangePassword">Forgot your password?</a>
 
 							</div>
 
 						</article>
 					</form>
-					<div>${register}
-					${errorMessage }</div>
 				</div>
 			</div>
 		</div>

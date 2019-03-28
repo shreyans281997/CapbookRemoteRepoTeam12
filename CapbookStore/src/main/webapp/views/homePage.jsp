@@ -58,8 +58,11 @@ div.a {
       	   <li><a href="getEditProfile">Edit Profile</a></li>
       	   </ul></li>
         <li class="active"><a href="#">Home</a></li>
-      <li><a href="getEmailPage">Compose</a></li>
-        <li><a href="showAllEmail">Inbox</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Messages</a>
+        <ul class="dropdown-menu">
+     	   <li><a href="getEmailPage">Compose</a></li>
+      	   <li><a href="showAllEmail">Inbox</a></li>
+      	   </ul></li>
       </ul>
       <form class="navbar-form navbar-right" role="search" action="searchUser">
         <div class="form-group input-group">

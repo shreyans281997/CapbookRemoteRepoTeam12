@@ -16,13 +16,13 @@
 }
 
 footer {
-	position: fixed;
+	position: bottom;
 	left: 0;
 	bottom: 0;
 	width: 100%;
 	background-color: #555;
 	color: white;
-	padding: 15px;
+	padding: 8px;
 	text-align: center;
 }
 
