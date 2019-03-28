@@ -68,6 +68,7 @@ color: red;
         <ul class="dropdown-menu">
      	   <li><a href="getEmailPage">Compose</a></li>
       	   <li><a href="showAllEmail">Inbox</a></li>
+      	   <li><a href="#">Sent Mails</a></li>
       	   </ul></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
