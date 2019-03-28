@@ -17,7 +17,15 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <style>
+.error {
+	color: red;
+	font-weight: bold;
+}
 
+.success {
+	color: red;
+	font-weight: bold;
+}
 /* Add a gray background color and some padding to the footer */
 footer {
 	position: fixed;
@@ -170,6 +178,8 @@ div.c {
 
 						</article>
 					</form>
+					<div class="error" align="center">${errorMessage}</div>
+					<div class="success" align="center">${register}</div>
 				</div>
 			</div>
 		</div>

@@ -29,7 +29,7 @@ public class UserServicesImpl implements IUserService{
 	@Override
 	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, String dateOfBirth, String gender, String mobileNo,String securityQue,String answer)
 			throws EmailAlreadyRegisteredException, FieldsEmptyException {
-		if(emailId==null || password==null || firstName==null || secondName==null || dateOfBirth==null || gender==null || mobileNo==null || securityQue==null || answer==null)
+		if(emailId.equals("") || password.equals("") || firstName.equals("") || secondName.equals("") || dateOfBirth.equals("") || gender.equals("") || mobileNo.equals("") || securityQue.equals("") || answer.equals(""))
 			throw new FieldsEmptyException("Don't Keep the Required Fields Empty");
 		UserAccount userAccount=userDao.findById(emailId).orElse(null);
 		if(userAccount!=null)
@@ -51,7 +51,7 @@ public class UserServicesImpl implements IUserService{
 		if(password.equals(depcryptPassword))
 			return userAccount;
 		else
-			throw new InvalidUsernameOrPasswordException();
+			throw new InvalidUsernameOrPasswordException("Invalid Username or Password!");
 	}
 	public boolean forgotPassword(String emailId, String password, String securityQue,String answer) throws UserAccountNotFoundException, InvalidQuestionOrAnswer{
 		UserAccount userAccount=getUserDetails(emailId);
