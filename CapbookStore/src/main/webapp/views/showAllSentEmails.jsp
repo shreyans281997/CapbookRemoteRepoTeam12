@@ -77,7 +77,7 @@ div.successMsg {
         <ul class="dropdown-menu">
      	   <li><a href="getEmailPage">Compose</a></li>
       	   <li><a href="showAllEmail">Inbox</a></li>
-      	   <li><a href="showAllSentEmail">Sent Mails</a></li>
+      	   <li><a href="showAllSentEmails">Sent Mails</a></li>
       	   </ul></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search">
@@ -99,7 +99,7 @@ div.successMsg {
 	</nav>
 
 	<div class="container">
-  <h2><font color="blue">Inbox</font></h2>
+  <h2><font color="blue">Sent-Box</font></h2>
   <p>Check your mail. May be something Important is there.</p>
   <p><font color="red">${success}</font></p>
   <p><font color="red">${errorMessage}</font></p>
@@ -110,24 +110,24 @@ div.successMsg {
         </a></button></td></tr>
         <tr>
     <c:forEach var="email" items="${requestScope.email}">
-				<form action="showEmail" method="post" id="emails">
+				<form action="showSentEmail" method="post" id="emails">
 					<input type="hidden" name="emailChatId"
 						value="${email.emailChatId}"> <input type="hidden"
-						name="emailId" value="${email.toAddress}">
+						name="emailId" value="${email.fromAddress}">
 					
            <td> <button type="submit"><a href="#">
           <span class="glyphicon glyphicon-envelope"></span></a></button></td>
           	</form>
           	
-          	<form action="delEmail" method="post" id="delEmail">
+          	<form action="delSentEmail" method="post" id="delEmail">
           	<input type="hidden" name="emailChatId"
 						value="${email.emailChatId}"> <input type="hidden"
-						name="emailId" value="${email.toAddress}">
+						name="emailId" value="${email.fromAddress}">
           	<td> <button type="submit"><a href="#">
           <span class="glyphicon glyphicon-trash"></span></td></form>
 						<td>
-								ID-: ${email.emailChatId} From-:
-										${email.fromAddress} Subject-:${email.subject } Date-:
+								ID-: ${email.emailChatId} To:-
+										${email.toAddress} Subject-:${email.subject } Date-:
 										${email.dateOfMail }</td>
 					</tr>
 				</c:forEach>

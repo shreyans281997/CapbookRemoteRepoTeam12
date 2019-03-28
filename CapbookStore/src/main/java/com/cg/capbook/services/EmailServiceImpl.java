@@ -59,5 +59,26 @@ public class EmailServiceImpl implements IEmailService {
 	public void deleteAllMails(String emailId) throws NoMailsArePresentToDeleteException {
 	emailDao.deleteAllEmails(emailId);
 	}
+
+	@Override
+	public List<Email> getAllSentEmailsOfUser(String emailId) throws UserAccountNotFoundException {
+		return emailDao.getAllSentEmailsOfUser(emailId);
+	}
+
+	@Override
+	public Email getSentEmail(String emailId, int emailChatId) {
+		  Email email=emailDao.getSentEmail(emailId, emailChatId);	
+			return email;
+	}
+
+	@Override
+	public void delSentEmail(String emailId, int emailChatId) {
+		emailDao.deleteSentEmail(emailId, emailChatId);
+	}
+
+	@Override
+	public void deleteAllSentMails(String emailId) throws NoMailsArePresentToDeleteException {
+		emailDao.deleteAllSentEmails(emailId);
+	}
 	
 }

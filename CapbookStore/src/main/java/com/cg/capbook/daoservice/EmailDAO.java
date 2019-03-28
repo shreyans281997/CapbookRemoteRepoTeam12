@@ -13,14 +13,27 @@ import org.springframework.data.repository.query.Param;
 public interface EmailDAO extends JpaRepository<Email, Integer>{
 	@Query("from Email e where e.toAddress =:emailId")
 	public List<Email> getAllEmailsOfUser(@Param("emailId") String  emailId);
-	@Query("from Email e where e.fromAddress =:emailId and e.emailChatId=:emailChatId")
+	@Query("from Email e where e.toAddress =:emailId and e.emailChatId=:emailChatId")
 	public Email getEmail(@Param("emailId") String emailId,@Param("emailChatId") int emailChatId);
 	 @Transactional
 	  @Modifying
-	@Query("delete from Email e where e.fromAddress =:emailId and e.emailChatId=:emailChatId")
+	@Query("delete from Email e where e.toAddress =:emailId and e.emailChatId=:emailChatId")
     public void deleteEmail(@Param("emailId") String emailId,@Param("emailChatId") int emailChatId);
 	 @Transactional
 	  @Modifying
 	@Query("delete from Email e where e.toAddress =:emailId")
 	 public void deleteAllEmails(@Param("emailId") String emailId);
+	 
+	 @Query("from Email e where e.fromAddress =:emailId")
+		public List<Email> getAllSentEmailsOfUser(@Param("emailId") String  emailId);
+		@Query("from Email e where e.fromAddress =:emailId and e.emailChatId=:emailChatId")
+		public Email getSentEmail(@Param("emailId") String emailId,@Param("emailChatId") int emailChatId);
+		 @Transactional
+		  @Modifying
+		@Query("delete from Email e where e.fromAddress =:emailId and e.emailChatId=:emailChatId")
+	    public void deleteSentEmail(@Param("emailId") String emailId,@Param("emailChatId") int emailChatId);
+		 @Transactional
+		  @Modifying
+		@Query("delete from Email e where e.fromAddress =:emailId")
+		 public void deleteAllSentEmails(@Param("emailId") String emailId);
 }

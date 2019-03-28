@@ -105,6 +105,16 @@ public class UserServiceController {
 		Email email =emailService.getEmail(emailId, emailChatId);
 		return new ModelAndView("openEmailContent", "email", email);
 	}
+	@RequestMapping("/showAllSentEmail")
+	public ModelAndView showAllSentEmail( @SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
+		List<Email> email =emailService.getAllSentEmailsOfUser(user.getEmailId());
+		return new ModelAndView("showAllSentEmails", "email", email);
+	}
+	@RequestMapping("/showSentEmail")
+	public ModelAndView showSentEmail(@RequestParam String emailId,int emailChatId) throws UserAccountNotFoundException, UserNotAFriendException {
+		Email email =emailService.getSentEmail(emailId, emailChatId);
+		return new ModelAndView("openSentEmailContent", "email", email);
+	}
 	@RequestMapping("/updatePost")
 	public ModelAndView updatePost(@RequestParam String postContent ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
 		postService.createPostText(user.getEmailId(), postContent);
@@ -141,7 +151,17 @@ public class UserServiceController {
     @RequestMapping("/delAllEmail")
     public ModelAndView delAllEmail(@SessionAttribute("user") UserAccount user) throws NoMailsArePresentToDeleteException {
     	emailService.deleteAllMails(user.getEmailId());
-		return new ModelAndView("ShowAllEmails","success","Emails deleted successfully Now Inbox is empty");
+		return new ModelAndView("showAllSentEmails","success","Emails deleted successfully Now Inbox is empty");
+    }
+    @RequestMapping("/delSentEmail")
+    public ModelAndView delSentEmail(@RequestParam String emailId,int emailChatId) {
+    	emailService.delSentEmail(emailId, emailChatId);
+		return new ModelAndView("showAllSentEmails","success","Email deleted successfully");
+    }
+    @RequestMapping("/delAllSentEmail")
+    public ModelAndView delAllSentEmail(@SessionAttribute("user") UserAccount user) throws NoMailsArePresentToDeleteException {
+    	emailService.deleteAllSentMails(user.getEmailId());
+		return new ModelAndView("showAllSentEmails","success","Emails deleted successfully Now sent box is empty");
     }
     @RequestMapping("/searchUser")
     public ModelAndView searchUser(@RequestParam String emailId ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {

@@ -13,4 +13,9 @@ public interface IEmailService {
 	Email getEmail(String emailId,int emailChatId);
 	void delEmail(String emailId,int emailChatId);
 	void deleteAllMails(String emailId) throws NoMailsArePresentToDeleteException;
+	//sent e-mails services.
+	List<Email> getAllSentEmailsOfUser(String emailId) throws UserAccountNotFoundException;
+	Email getSentEmail(String emailId,int emailChatId);
+	void delSentEmail(String emailId,int emailChatId);
+	void deleteAllSentMails(String emailId) throws NoMailsArePresentToDeleteException;
 }

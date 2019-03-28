@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <title>Bootstrap Example</title>
@@ -9,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -20,6 +16,7 @@
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <style>
 /* Set black background color, white text and some padding */
 footer {
@@ -73,7 +70,7 @@ div.successMsg {
 							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
 					<li><a href="#">Home</a></li>
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"                              href="#">Messages</a>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Messages</a>
         <ul class="dropdown-menu">
      	   <li><a href="getEmailPage">Compose</a></li>
       	   <li><a href="showAllEmail">Inbox</a></li>
@@ -97,42 +94,13 @@ div.successMsg {
 			</div>
 		</div>
 	</nav>
-
-	<div class="container">
-  <h2><font color="blue">Inbox</font></h2>
-  <p>Check your mail. May be something Important is there.</p>
-  <p><font color="red">${success}</font></p>
-  <p><font color="red">${errorMessage}</font></p>
-  <table class="table">
-  <tr><td>
-           <button type="button"><a href="delAllEmail" >
-          <span class="glyphicon glyphicon-trash"></span> Delete All Mails 
-        </a></button></td></tr>
-        <tr>
-    <c:forEach var="email" items="${requestScope.email}">
-				<form action="showEmail" method="post" id="emails">
-					<input type="hidden" name="emailChatId"
-						value="${email.emailChatId}"> <input type="hidden"
-						name="emailId" value="${email.toAddress}">
-					
-           <td> <button type="submit"><a href="#">
-          <span class="glyphicon glyphicon-envelope"></span></a></button></td>
-          	</form>
-          	
-          	<form action="delEmail" method="post" id="delEmail">
-          	<input type="hidden" name="emailChatId"
-						value="${email.emailChatId}"> <input type="hidden"
-						name="emailId" value="${email.toAddress}">
-          	<td> <button type="submit"><a href="#">
-          <span class="glyphicon glyphicon-trash"></span></td></form>
-						<td>
-								ID-: ${email.emailChatId} From-:
-										${email.fromAddress} Subject-:${email.subject } Date-:
-										${email.dateOfMail }</td>
-					</tr>
-				</c:forEach>
-  
-  </table>
-</div>
+	<div>
+		<h1>${email.toAddress}</h1>
+		<br>
+		<h2>${email.subject }</h2>
+		<br>
+		<p1>${email.messageBody }</p1>
+	</div>
 </body>
 </html>
+
