@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/commentbox.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
@@ -87,7 +88,7 @@ div.a {
     <div class="col-sm-3 well">
       <div class="well">
         <p><font color="#2E86C1">My Profile</font></p>
-        <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+        <img src="${user.profilePic}" class="img-circle" height="65" width="65" alt="Avatar">
       </div>
       <div class="well">
         <p><font color="#2E86C1">Bio</font></p>
@@ -146,7 +147,7 @@ div.a {
         <div class="col-sm-3">
           <div class="well">
            <p>${user.firstName} ${user.secondName }</p>
-           <img src="${userName.profilePic }" class="img-circle" height="55" width="55" alt="Avatar">
+           <img src="${user.profilePic}" class="img-circle" height="55" width="55" alt="Avatar">
           </div>
         </div>
         <div class="col-sm-9">
@@ -162,8 +163,39 @@ div.a {
               <button type="submit" class="btn btn-default">
               <i class="glyphicon glyphicon-thumbs-up"></i> Like ${posts.totalLikeCount}
                 </button></form> </td>
-            <td>  <button type="button" class="btn btn-default">Comment
-              <i class="glyphicon glyphicon-comment"></i></button></td>
+            <td>  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Comment
+              <i class="glyphicon glyphicon-comment"></i></button>
+              <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+           
+           <div id="wrapper" align="left">
+
+	<form id="paper" method="get" action="postComment">
+        <input type="hidden" name="postId" value="${posts.postId }">
+		<textarea placeholder="Enter something funny." id="text" name="comment" rows="1" cols="30" style="overflow: hidden; word-wrap: break-word; resize: none; height: 100px; "></textarea>  
+		<input id="button" type="submit" value="comment">
+		${comments }
+	</form>
+
+</div>
+           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+              </td>
               </tr>
                 </table>
                 

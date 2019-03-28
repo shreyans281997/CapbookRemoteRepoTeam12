@@ -26,9 +26,11 @@ import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.NoMailsArePresentToDeleteException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNotAFriendException;
+import com.cg.capbook.model.Comments;
 import com.cg.capbook.model.Email;
 import com.cg.capbook.model.Post;
 import com.cg.capbook.model.UserAccount;
+import com.cg.capbook.services.ICommentServices;
 import com.cg.capbook.services.IEditProfileServices;
 import com.cg.capbook.services.IEmailService;
 import com.cg.capbook.services.IFriendRequestServices;
@@ -51,6 +53,8 @@ public class UserServiceController {
 	ILikesService likeServices;
 	@Autowired
 	IFriendRequestServices friendServices;
+	@Autowired
+	ICommentServices commentServices;
 	@RequestMapping("/showSignup")
 	public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException {
 		userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue,answer);
@@ -187,6 +191,12 @@ public class UserServiceController {
     public ModelAndView sendFriendRequest(@SessionAttribute("user") UserAccount user, @RequestParam String receiverEmailId) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
     	friendServices.sendFriendRequest(user.getEmailId(), receiverEmailId);
 		return new ModelAndView("resultPage","success","Friend Request Sent!!!!");
+    }
+    @RequestMapping("/postComment")
+    public ModelAndView postComment( @RequestParam int postId, String emailId, String comment, @SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
+    	commentServices.saveComment(postId, user.getEmailId(), comment);
+    	List<Comments> comments=commentServices.getAllComments();
+		return new ModelAndView("homePage","comments",comments);
     }
 }
 

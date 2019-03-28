@@ -3,11 +3,12 @@ package com.cg.capbook.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.cg.capbook.daoservice.CommentDAO;
 import com.cg.capbook.daoservice.PostDAO;
 import com.cg.capbook.model.Comments;
-
+@Component("commentServices")
 public class CommentServices implements ICommentServices {
 @Autowired
 private CommentDAO commentDao;
