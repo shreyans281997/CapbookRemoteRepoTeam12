@@ -196,8 +196,7 @@ public class UserServiceController {
     @RequestMapping("/showFriendRequest")
     public ModelAndView showFriendRequest(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
     	List<FriendRequest> friendRequests=friendServices.showAllFriendRequest(user.getEmailId());
-    	
-		return new ModelAndView("friendRequestsPage","friendRequests",friendRequests);
+    	return new ModelAndView("friendRequestsPage","friendRequests",friendRequests);
     }
     @RequestMapping("/postComment")
     public ModelAndView postComment( @RequestParam int postId, String emailId, String comment, @SessionAttribute("user") UserAccount user,@SessionAttribute("posts") Post posts) throws UserAccountNotFoundException, FriendRequestAlreadySentException {

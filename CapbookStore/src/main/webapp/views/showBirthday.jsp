@@ -26,10 +26,10 @@
 
 <style>
 footer {
-	position: bottom;
+	position: fixed;
 	left: 0;
-	bottom: 0;
 	width: 100%;
+	margin-top:100px;
 	background-color: #555;
 	color: white;
 	padding: 10px;

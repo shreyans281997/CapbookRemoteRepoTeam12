@@ -82,7 +82,7 @@ div.a {
 					</div>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="endSession"><span
+					<li><a href="showBirthday"><span
 							class="glyphicon glyphicon-user"></span> log out</a></li>
 				</ul>
 			</div>
@@ -118,7 +118,7 @@ div.a {
 					<font color="black">Friend requests:</font>
 				</p>
 				<p>
-					<a href="sendFriendRequest"><font color="#008CBA">See, who want to connect to you.</font></a>
+					<a href="showFriendRequest"><font color="#008CBA">See, who want to connect to you.</font></a>
 			    </p>
 			</div>
 			<div class="col-sm-7">
