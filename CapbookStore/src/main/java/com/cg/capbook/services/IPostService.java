@@ -8,5 +8,5 @@ public interface IPostService {
 	Post createPostText(String emailId, String postContent);
 	List<Post> allPosts(String emaildId);
 	public boolean deletePost(int postId);
-	
+	public Post showSinglePost(int postId);
 }
