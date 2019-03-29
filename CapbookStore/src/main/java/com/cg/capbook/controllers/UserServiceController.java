@@ -216,6 +216,7 @@ public class UserServiceController {
     	List<UserAccount> users = userService.findBirthday();
 		return new ModelAndView("showBirthday","users",users);
     }
+	  
 }
 
 
