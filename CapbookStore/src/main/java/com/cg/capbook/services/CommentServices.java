@@ -26,6 +26,10 @@ public Comments saveComment(int postId,String emailId,String commentContent) {
 public List<Comments> getAllComments() {
 	return commentDao.findAll();
 }
+@Override
+public List<Comments> getPostComments(int postId) {
+	return commentDao.getParticularPostComments(postId);
+}
 
 
 
