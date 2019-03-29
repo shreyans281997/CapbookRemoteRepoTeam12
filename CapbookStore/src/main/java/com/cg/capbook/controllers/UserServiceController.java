@@ -197,7 +197,7 @@ public class UserServiceController {
     	commentServices.saveComment(postId, user.getEmailId(), comment);
     	List<Comments> comments=commentServices.getPostComments(postId);
     	Post post=postService.showSinglePost(postId);
-		return new ModelAndView("homePage","post1",post);
+		return new ModelAndView("postPage","post",post);
     }
     @RequestMapping("/showPost")
     public ModelAndView showPost(@SessionAttribute("user") UserAccount user, @RequestParam int postId) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
