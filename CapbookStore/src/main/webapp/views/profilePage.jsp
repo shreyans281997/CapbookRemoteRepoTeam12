@@ -1,560 +1,296 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<style>
-html {
-  height: 100%;
-}
-
-body {
-  overflow: hidden;
-  background: #bcdee7 url("../img/bg.jpg") no-repeat center center fixed;
-  background-size: cover;
-  position: fixed;
-  padding: 0px;
-  margin: 0px;
-  width: 100%;
-  height: 100%;
-  font: normal 14px/1.618em "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-body:before {
-  content: "";
-  height: 0px;
-  padding: 0px;
-  border: 130em solid #313440;
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  z-index: 2;
-  display: block;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  -webkit-animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;
-  animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;
-}
-
-h1,
-h2 {
-  font-weight: 500;
-  margin: 0px 0px 5px 0px;
-}
-
-h1 {
-  font-size: 24px;
-}
-
-h2 {
-  font-size: 16px;
-}
-
-p {
-  margin: 0px;
-}
-
-.profile-card {
-  background: #FFB300;
-  width: 56px;
-  height: 56px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 2;
-  overflow: hidden;
-  opacity: 0;
-  margin-top: 70px;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
-  -webkit-animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
-  animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
-}
-
-.profile-card header {
-  width: 179px;
-  height: 280px;
-  padding: 40px 20px 30px 20px;
-  display: inline-block;
-  float: left;
-  border-right: 2px dashed #EEEEEE;
-  background: #FFFFFF;
-  color: #000000;
-  margin-top: 50px;
-  opacity: 0;
-  text-align: center;
-  -webkit-animation: moveIn 1s 3.1s ease forwards;
-  animation: moveIn 1s 3.1s ease forwards;
-}
-
-.profile-card header h1 {
-  color: #FF5722;
-}
-
-.profile-card header a {
-  display: inline-block;
-  text-align: center;
-  position: relative;
-  margin: 25px 30px;
-}
-
-.profile-card header a:after {
-  position: absolute;
-  content: "";
-  bottom: 3px;
-  right: 3px;
-  width: 20px;
-  height: 20px;
-  border: 4px solid #FFFFFF;
-  -webkit-transform: scale(0);
-  transform: scale(0);
-  background: -webkit-linear-gradient(top, #2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);
-  background: linear-gradient(#2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  -webkit-animation: scaleIn 0.3s 3.5s ease forwards;
-  animation: scaleIn 0.3s 3.5s ease forwards;
-}
-
-.profile-card header a > img {
-  width: 120px;
-  max-width: 100%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  -webkit-transition: -webkit-box-shadow 0.3s ease;
-  transition: box-shadow 0.3s ease;
-  -webkit-box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
-  box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
-}
-
-.profile-card header a:hover > img {
-  -webkit-box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.1);
-}
-
-.profile-card .profile-bio {
-  width: 175px;
-  height: 180px;
-  display: inline-block;
-  float: right;
-  padding: 50px 20px 30px 20px;
-  background: #FFFFFF;
-  color: #333333;
-  margin-top: 50px;
-  text-align: center;
-  opacity: 0;
-  -webkit-animation: moveIn 1s 3.1s ease forwards;
-  animation: moveIn 1s 3.1s ease forwards;
-}
-
-.profile-social-links {
-  width: 218px;
-  display: inline-block;
-  float: right;
-  margin: 0px;
-  padding: 15px 20px;
-  background: #FFFFFF;
-  margin-top: 50px;
-  text-align: center;
-  opacity: 0;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-animation: moveIn 1s 3.1s ease forwards;
-  animation: moveIn 1s 3.1s ease forwards;
-}
-
-.profile-social-links li {
-  list-style: none;
-  margin: -5px 0px 0px 0px;
-  padding: 0px;
-  float: left;
-  width: 25%;
-  text-align: center;
-}
-
-.profile-social-links li a {
-  display: inline-block;
-  color: red;
-  width: 24px;
-  height: 24px;
-  padding: 6px;
-  position: relative;
-  overflow: hidden!important;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-}
-
-.profile-social-links li a i {
-  position: relative;
-  z-index: 1;
-}
-
-.profile-social-links li a img,
-.profile-social-links li a svg {
-  width: 24px;
-}
-
-@-webkit-keyframes init {
-  0% {
-    width: 0px;
-    height: 0px;
-  }
-  100% {
-    width: 56px;
-    height: 56px;
-    margin-top: 0px;
-    opacity: 1;
-  }
-}
-
-@keyframes init {
-  0% {
-    width: 0px;
-    height: 0px;
-  }
-  100% {
-    width: 56px;
-    height: 56px;
-    margin-top: 0px;
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes puff {
-  0% {
-    top: 100%;
-    height: 0px;
-    padding: 0px;
-  }
-  100% {
-    top: 50%;
-    height: 100%;
-    padding: 0px 100%;
-  }
-}
-
-@keyframes puff {
-  0% {
-    top: 100%;
-    height: 0px;
-    padding: 0px;
-  }
-  100% {
-    top: 50%;
-    height: 100%;
-    padding: 0px 100%;
-  }
-}
-
-@-webkit-keyframes borderRadius {
-  0% {
-    -webkit-border-radius: 50%;
-  }
-  100% {
-    -webkit-border-radius: 0px;
-  }
-}
-
-@keyframes borderRadius {
-  0% {
-    -webkit-border-radius: 50%;
-  }
-  100% {
-    border-radius: 0px;
-  }
-}
-
-@-webkit-keyframes moveDown {
-  0% {
-    top: 50%;
-  }
-  50% {
-    top: 40%;
-  }
-  100% {
-    top: 100%;
-  }
-}
-
-@keyframes moveDown {
-  0% {
-    top: 50%;
-  }
-  50% {
-    top: 40%;
-  }
-  100% {
-    top: 100%;
-  }
-}
-
-@-webkit-keyframes moveUp {
-  0% {
-    background: #FFB300;
-    top: 100%;
-  }
-  50% {
-    top: 40%;
-  }
-  100% {
-    top: 50%;
-    background: #E0E0E0;
-  }
-}
-
-@keyframes moveUp {
-  0% {
-    background: #FFB300;
-    top: 100%;
-  }
-  50% {
-    top: 40%;
-  }
-  100% {
-    top: 50%;
-    background: #E0E0E0;
-  }
-}
-
-@-webkit-keyframes materia {
-  0% {
-    background: #E0E0E0;
-  }
-  50% {
-    -webkit-border-radius: 4px;
-  }
-  100% {
-    width: 440px;
-    height: 280px;
-    background: #FFFFFF;
-    -webkit-border-radius: 4px;
-  }
-}
-
-@keyframes materia {
-  0% {
-    background: #E0E0E0;
-  }
-  50% {
-    border-radius: 4px;
-  }
-  100% {
-    width: 440px;
-    height: 280px;
-    background: #FFFFFF;
-    border-radius: 4px;
-  }
-}
-
-@-webkit-keyframes moveIn {
-  0% {
-    margin-top: 50px;
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-    margin-top: -20px;
-  }
-}
-
-@keyframes moveIn {
-  0% {
-    margin-top: 50px;
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-    margin-top: -20px;
-  }
-}
-
-@-webkit-keyframes scaleIn {
-  0% {
-    -webkit-transform: scale(0);
-  }
-  100% {
-    -webkit-transform: scale(1);
-  }
-}
-
-@keyframes scaleIn {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@-webkit-keyframes ripple {
-  0% {
-    transform: scale3d(0, 0, 0);
-  }
-  50%,
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes ripple {
-  0% {
-    transform: scale3d(0, 0, 0);
-  }
-  50%,
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@media screen and (min-aspect-ratio: 4/3) {
-  body {
-    background-size: cover;
-  }
-  body:before {
-    width: 0px;
-  }
-  @ -webkit-keyframes puff {
-    0% {
-      top: 100%;
-      width: 0px;
-      padding-bottom: 0px;
-    }
-    100% {
-      top: 50%;
-      width: 100%;
-      padding-bottom: 100%;
-    }
-  }
-  @keyframes puff {
-    0% {
-      top: 100%;
-      width: 0px;
-      padding-bottom: 0px;
-    }
-    100% {
-      top: 50%;
-      width: 100%;
-      padding-bottom: 100%;
-    }
-  }
-}
-
-@media screen and (min-height: 480px) {
-  .profile-card header {
-    width: auto;
-    height: auto;
-    padding: 30px 20px;
-    display: block;
-    float: none;
-    border-right: none;
-  }
-  .profile-card .profile-bio {
-    width: auto;
-    height: auto;
-    padding: 15px 20px 30px 20px;
-    display: block;
-    float: none;
-  }
-  .profile-social-links {
-    width: 100%;
-    display: block;
-    float: none;
-  }
-  @ -webkit-keyframes materia {
-    0% {
-      background: #E0E0E0;
-    }
-    50% {
-      -webkit-border-radius: 4px;
-    }
-    100% {
-      width: 280px;
-      height: 440px;
-      background: #FFFFFF;
-      -webkit-border-radius: 4px;
-    }
-  }
-  @keyframes materia {
-    0% {
-      background: #E0E0E0;
-    }
-    50% {
-      border-radius: 4px;
-    }
-    100% {
-      width: 280px;
-      height: 440px;
-      background: #FFFFFF;
-      border-radius: 4px;
-    }
-  }
-}
-</style>
-</head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
  
-<aside class="profile-card">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-  <header>
-  <img src="Lighthouse.jpeg" >
-    <!-- here’s the avatar -->
-   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <!-- the username -->
-    <h1>
-       ${user.firstName} ${user.secondName }
-          </h1>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-    <!-- and role or location -->
-    <h2>
-           ${user.address.city},${user.address.country},${user.address.state},${user.address.zipCode}
-          </h2>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-  </header>
 
-  <!-- bit of a bio; who are you? -->
-  <div class="profile-bio">
+  <style>
+   footer {
+	position: bottom;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #555;
+	color: black;
+	padding: 10px;
+	text-align: center;
+}
 
-    <p>
-    ${user.userName}
-    </p>
+div.a {
+	font-size: 115%;
+	color: white;
+	align: right;
+}
+div.b {
+	font-size: 15px;
+	font-color: #2E86C1;
+	align: center;
+}
+.round_img{
+position: relative;
+margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+ 
+}
+.round_img img {
+  width: 100%;
+  height: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+table#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#main h1 { background: #ccc;}
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+body
+{
+    font-family: 'Open Sans', sans-serif;
+     background-color: #EBF5FB;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+      <li class="dropdown">
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon">&#xe012;</span>
+           </a>
+           <ul class="dropdown-menu">
+     	   <li><a href="#">Show Friends</a></li>
+      	   <li><a href="getEditProfile">Edit Profile</a></li>
+      	   </ul></li>
+        <li><a href="getHomePage">Home</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Messages</a>
+        <ul class="dropdown-menu">
+     	   <li><a href="getEmailPage">Compose</a></li>
+      	   <li><a href="showAllEmail">Inbox</a></li>
+      	   <li><a href="#">Sent Mails</a></li>
+      	   </ul></li>
+           <li><a href="getHomePage">FriendList</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" placeholder="Search..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>        
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="endSession"><span class="glyphicon glyphicon-user"></span> log out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container"><br>
+  
+        <div style="background:#1B4F72   !important" class="jumbotron">
+  <div class="container text-center">
+    <div class="a"><h1>Capbook</h1>      
+    <p>My Profile</p></div>
+
+<div class="round_img">
+    <img src="http://lorempixel.com/100/100/people/9/" alt="">
+     </div>    
   </div>
 
-  <!-- some social links to show off -->
-  <ul class="profile-social-links">
-    <li>
-      <a target="_blank" href="getEditProfile">
-        edit profile
-      </a>
-    </li>
-    <li>
-      <a target="_blank" href="https://twitter.com/dropyourbass">
-        <i class="fa fa-twitter"></i>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" href="https://github.com/vipulsaxena">
-        <i class="fa fa-github"></i>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" href="https://www.behance.net/vipulsaxena">
+</div>
+</div> <!-- /container -->  
+
+  
+<div class="container-fluid bg-3 text-center">    
+  
+  <div class="row">
+  <div class="col-sm-1"></div>
+   
+    <div class="col-sm-4"> 
+      <div class="container text-center"> 
+      <div class="row">
+       <div class="col-sm-3">
+    <h2><b>Username</b></h2>
+    <div class="well">
+        <div class="b">Bio</div>
+        <div class="panel-body">
        
-        <i class="fa fa-behance"></i>
-      </a>
-    </li>
-  </ul>
-</aside>
+       </div>
+       </div>     
+      
+       
+       <div class="well">
+        <div class="b">About</div>
+        <div class="panel-body">
+       
+  <table id="t01">
+  <tr>
+    <td>City</td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>State</td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Country</td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Zipcode</td>
+    <td>  </td>
+  </tr>
+   <tr>
+    <td>Date Of Birth</td>
+    <td>  </td>
+  </tr>
+   <tr>
+    <td>Business Profile</td>
+    <td>  </td>
+  </tr>
+    <tr>
+    <td>Work Place</td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td>Work Experience</td>
+    <td>  </td>
+  </tr>
+   <tr>
+    <td>Mobile No</td>
+    <td>  </td>
+  </tr> 
+</table>
+
+       </div>
+       </div>     
+       
+       </div>
+       </div>
+    </div>
+   </div>
+<div class="col-sm-6"> 
+<c:forEach var="posts"
+				items="${posts}">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+           <p>${user.firstName} ${user.secondName }</p>
+           <img src="${user.profilePic}" class="img-circle" height="55" width="55" alt="Avatar">
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+          <table>
+          <tr>
+           <td> <p>${posts.postContent}</p></td>
+            <tr>
+             <td> 
+             <form action="updateLikes" method="post">
+             <input type="hidden" name="postId" value="${posts.postId }">
+             <input type="hidden" name="likedBy" value="${user.emailId }">
+              <button type="submit" class="btn btn-primary">
+              <i class="glyphicon glyphicon-thumbs-up"></i> Like ${posts.totalLikeCount}
+                </button></form> </td>
+            <td>  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Comment
+              <i class="glyphicon glyphicon-comment"></i></button>
+              <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+           
+           <div id="wrapper" align="left">
+
+	<form id="paper" method="get" action="postComment">
+        <input type="hidden" name="postId" value="${posts.postId }">
+		<textarea placeholder="Enter something funny." id="text" name="comment" rows="1" cols="30" style="overflow: hidden; word-wrap: break-word; resize: none; height: 100px; "></textarea>  
+		<input id="button" type="submit" value="comment">
+		${comments } <!-- loop lgana hai -->
+	</form>
+
+</div>
+           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+              </td>
+              </tr>
+                </table>
+                
+          </div>
+        </div>
+      </div>
+       </c:forEach>
+</div>
+</div>
+<footer class="container-fluid text-center">
+  <div class="a"><p>@CapgeminiApp2019</p></div>
+</footer>
+
+</body>
 </html>
