@@ -196,7 +196,13 @@ public class UserServiceController {
     public ModelAndView postComment( @RequestParam int postId, String emailId, String comment, @SessionAttribute("user") UserAccount user,@SessionAttribute("posts") Post posts) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
     	commentServices.saveComment(postId, user.getEmailId(), comment);
     	List<Comments> comments=commentServices.getPostComments(postId);
-		return new ModelAndView("homePage","comments",comments);
+    	Post post=postService.showSinglePost(postId);
+		return new ModelAndView("homePage","post1",post);
+    }
+    @RequestMapping("/showPost")
+    public ModelAndView showPost(@SessionAttribute("user") UserAccount user, @RequestParam int postId) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
+    	Post post=postService.showSinglePost(postId);
+		return new ModelAndView("postPage","post",post);
     }
 }
 

@@ -197,44 +197,15 @@ div.a {
 											</form>
 										</td>
 										<td>
-											<button type="button" class="open-homeEvents btn btn-default"
+										<form action="showPost" method="post">
+										<input type="hidden" name="postId" value="${posts.postId }">
+											<button type="submit" class="open-homeEvents btn btn-default"
 												data-id="${posts.postId }" data-toggle="modal"
 												data-target="#myModal">
+												
 												Comment <i class="glyphicon glyphicon-comment"></i>
-											</button> <!-- Modal -->
-											<div class="modal fade" id="myModal" role="dialog">
-												<div class="modal-dialog">
-													<!-- Modal content-->
-													<div class="modal-content">
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal">&times;</button>
-														</div>
-														<div class="modal-body">
-															<div id="wrapper" align="left">
-																<form id="paper" method="get" action="postComment">
-																	<input type="hidden" name="postId" id="myField"
-																		value="" />
-																	<textarea placeholder="Enter something funny."
-																		id="text" name="comment" rows="1" cols="30"
-																		style="overflow: hidden; word-wrap: break-word; resize: none; height: 100px;"></textarea>
-																	<input id="button" type="submit" value="comment">
-																	<c:forEach var="comment" items="${posts.comments}">
-		                   ${comment.value} <br>
-																		<!-- loop lgana hai -->
-																	</c:forEach>
-																</form>
-
-															</div>
-
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-default"
-																data-dismiss="modal">Close</button>
-														</div>
-													</div>
-
-												</div>
-											</div>
+											</button> </form>
+													
 										</td>
 									</tr>
 								</table>

@@ -34,7 +34,7 @@ public class PostServicesimpl implements IPostService {
 		return true;
 	}
 	public Post showSinglePost(int postId) {
-		return postDao.showSinglePost(postId);
+		return postDao.findById(postId).orElse(null);
 	}
 
 
