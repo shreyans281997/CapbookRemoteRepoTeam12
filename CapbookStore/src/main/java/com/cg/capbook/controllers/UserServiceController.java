@@ -28,6 +28,7 @@ import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNotAFriendException;
 import com.cg.capbook.model.Comments;
 import com.cg.capbook.model.Email;
+import com.cg.capbook.model.FriendRequest;
 import com.cg.capbook.model.Post;
 import com.cg.capbook.model.UserAccount;
 import com.cg.capbook.services.ICommentServices;
@@ -192,6 +193,12 @@ public class UserServiceController {
     	friendServices.sendFriendRequest(user.getEmailId(), receiverEmailId);
 		return new ModelAndView("resultPage","success","Friend Request Sent!!!!");
     }
+    @RequestMapping("/showFriendRequest")
+    public ModelAndView showFriendRequest(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
+    	List<FriendRequest> friendRequests=friendServices.showAllFriendRequest(user.getEmailId());
+    	
+		return new ModelAndView("friendRequestsPage","friendRequests",friendRequests);
+    }
     @RequestMapping("/postComment")
     public ModelAndView postComment( @RequestParam int postId, String emailId, String comment, @SessionAttribute("user") UserAccount user,@SessionAttribute("posts") Post posts) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
     	commentServices.saveComment(postId, user.getEmailId(), comment);
@@ -204,7 +211,7 @@ public class UserServiceController {
     	Post post=postService.showSinglePost(postId);
 		return new ModelAndView("postPage","post",post);
     }
-    @RequestMapping("/showBirthday")
+	  @RequestMapping("/showBirthday")
     public ModelAndView showBirhtdays() throws UserAccountNotFoundException, FriendRequestAlreadySentException {
     	List<UserAccount> users = userService.findBirthday();
 		return new ModelAndView("showBirthday","users",users);
