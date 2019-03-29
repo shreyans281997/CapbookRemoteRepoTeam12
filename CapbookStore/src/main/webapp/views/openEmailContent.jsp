@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <title>W3.CSS Template</title>
@@ -108,10 +107,10 @@ html, body, h1, h2, h3, h4, h5 {
 						${email.dateOfMail }
 					</h4>
 					<form action="replyEmail" method="post" id="commentform">
-                        <p align="right" right="100px">
-						<button type="submit" class="btn btn-primary btn-md">
-							reply <span class="glyphicon glyphicon-send"></span>
-						</button>
+						<p align="right" right="100px">
+							<button type="submit" class="btn btn-primary btn-md">
+								reply <span class="glyphicon glyphicon-send"></span>
+							</button>
 						</p>
 						<div class="form-group">
 							<div class="col-sm-11">
@@ -127,39 +126,36 @@ html, body, h1, h2, h3, h4, h5 {
 									value="${email.emailChatId }" tabindex="-1">
 							</div>
 						</div>
-						</div>
+				</div>
 				</form>
 				<form action="forwardEmail" method="post" id="commentform">
-                 <p align="right">  
+					<p align="right">
 						<button type="submit" class="btn btn-primary btn-md">
 							Forward<span class="glyphicon glyphicon-send"></span>
 						</button>
-						</p>
-						<div class="form-group">
-							<div class="col-sm-11">
-								<input type="hidden" name="emailId"
-									class="form-control select2-offscreen" id="to"
-									value="${email.toAddress }" tabindex="-1">
-							</div>
+					</p>
+					<div class="form-group">
+						<div class="col-sm-11">
+							<input type="hidden" name="emailId"
+								class="form-control select2-offscreen" id="to"
+								value="${email.toAddress }" tabindex="-1">
 						</div>
-						<div class="form-group">
-							<div class="col-sm-11">
-								<input type="hidden" name="emailChatId"
-									class="form-control select2-offscreen" id="emailChatId"
-									value="${email.emailChatId }" tabindex="-1">
-							</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-11">
+							<input type="hidden" name="emailChatId"
+								class="form-control select2-offscreen" id="emailChatId"
+								value="${email.emailChatId }" tabindex="-1">
 						</div>
-						
-				</div>
-				</form>
-				
-				<hr>
-				<p>${email.messageBody }</p>
-
-				<p>
-					Best Regards, <br>${user.firstName }</p>
+					</div>
 			</div>
+			</form>
+			<hr>
+			<p>${email.messageBody }</p>
+            <p>
+				Best Regards, <br>${user.firstName }</p>
 		</div>
+	</div>
 	</div>
 
 	<div class="col-sm-3"></div>
