@@ -204,6 +204,11 @@ public class UserServiceController {
     	Post post=postService.showSinglePost(postId);
 		return new ModelAndView("postPage","post",post);
     }
+    @RequestMapping("/showBirthday")
+    public ModelAndView showBirhtdays() throws UserAccountNotFoundException, FriendRequestAlreadySentException {
+    	List<UserAccount> users = userService.findBirthday();
+		return new ModelAndView("showBirthday","users",users);
+    }
 }
 
 

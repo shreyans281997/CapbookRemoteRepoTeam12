@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
@@ -90,78 +92,43 @@ html, body, h1, h2, h3, h4, h5 {
 			</div>
 		</div>
 	</nav>
-
-	<!-- Overlay effect when opening the side navigation on small screens -->
-
-	<!-- Page content -->
-	<div class="row">
-		<div class="col-sm-3"></div>
-		<div class="col-sm-6">
-			<div class="w3-main" style="margin-center: 320px;">
-					<h5 class="w3-opacity">Subject: ${email.subject }</h5>
-					<h4>
-						<i class="fa fa-clock-o"></i>From ${email.fromAddress },
-						${email.dateOfMail }
-					</h4>
-					<form action="replyEmail" method="post" id="commentform">
-						<p align="right" right="100px">
-							<button type="submit" class="btn btn-primary btn-md">
-								reply <span class="glyphicon glyphicon-send"></span>
-							</button>
-						</p>
-						<div class="form-group">
-							<div class="col-sm-11">
-								<input type="hidden" name="emailId"
-									class="form-control select2-offscreen" id="to"
-									value="${email.toAddress }" tabindex="-1">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-11">
-								<input type="hidden" name="emailChatId"
-									class="form-control select2-offscreen" id="emailChatId"
-									value="${email.emailChatId }" tabindex="-1">
-							</div>
-						</div>
-				</div>
-				</form>
-				<form action="forwardEmail" method="post" id="commentform">
-					<p align="right">
-						<button type="submit" class="btn btn-primary btn-md">
-							Forward<span class="glyphicon glyphicon-send"></span>
-						</button>
-					</p>
-					<div class="form-group">
-						<div class="col-sm-11">
-							<input type="hidden" name="emailId"
-								class="form-control select2-offscreen" id="to"
-								value="${email.toAddress }" tabindex="-1">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-11">
-							<input type="hidden" name="emailChatId"
-								class="form-control select2-offscreen" id="emailChatId"
-								value="${email.emailChatId }" tabindex="-1">
-						</div>
-					</div>
+<div class="container">
+ <h2><font color="#008CBA">Your Friends have birthday today</font></h2>
+  <p>Wish them and make their day special</p>
+  <c:forEach var="users" items="${users}">
+  <div class="row">
+    <div class="col-md-6 col-xl-4">                       
+      <div class="card">
+        <div class="card-body">
+          <div class="media align-items-center"><span style="background-image: url(http://bootdey.com/img/Content/avatar/avatar6.png)" class="avatar avatar-xl mr-3"></span>
+            <div class="media-body overflow-hidden">
+              <h5 class="card-text mb-0">${users.firstName} ${users.secondName}</h5>
+              <p class="card-text text-uppercase text-muted">${users.dateOfBirth}</p>
+              <p class="card-text">
+                 ${users.emailId}<br><abbr title="Phone">PH:  </abbr>${users.mobileNo}
+                 
+              </p>
+              <p>
+              <a href="getEmailPage">
+          <span class="glyphicon glyphicon-gift" color="#008CBA"></span><font color="#008CBA">Send Greetings</font>
+        </a>
+             </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </c:forEach>
+    </div>
+    
+<footer class="container-fluid text-center">
+			<div class="a">
+				<p>@CapgeminiApp2019</p>
 			</div>
-			</form>
-			<hr>
-			<h6>${email.messageBody }</h6>
-            <p>
-				Best Regards, <br>${user.firstName }</p>
-		</div>
-	</div>
-	</div>
-
-	<div class="col-sm-3"></div>
-	</div>
-	<footer class="container-fluid text-center">
-		<div class="a">
-			<p>@CapgeminiApp2019</p>
-		</div>
-	</footer>
+		</footer>
 
 </body>
 </html>
+          
+						

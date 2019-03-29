@@ -2,9 +2,8 @@
 package com.cg.capbook.services;
 
 import java.io.IOException;
-
+import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.FieldsEmptyException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
@@ -21,5 +20,6 @@ public interface IUserService {
 	UserAccount addProfilePic(String emailId, MultipartFile file) throws UserAccountNotFoundException, IOException;
 	public UserAccount updateDetails(String emailId, String userName) throws UserAccountNotFoundException;
 	public UserAccount searchUser(String emailId) throws UserAccountNotFoundException;
-
+	public List<UserAccount> findBirthday() throws UserAccountNotFoundException;
+	public List<UserAccount> users();
 }

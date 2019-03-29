@@ -94,7 +94,7 @@ div.a {
 			<div class="col-sm-3 well">
 				<div class="well">
 					<p>
-						<font color="#2E86C1">My Profile</font>
+						<font color="#2E86C1">${user.firstName} ${user.secondName}</font>
 					</p>
 					<img src="${user.profilePic}" class="img-circle" height="65"
 						width="65" alt="Avatar">
@@ -104,7 +104,7 @@ div.a {
 						<font color="#2E86C1">Bio</font>
 					</p>
 					<div class="panel-body">
-						<p contenteditable="true"></p>
+						<p>${user.bio}</p>
 					</div>
 				</div>
 				<div class="alert alert-success fade in">
@@ -118,34 +118,8 @@ div.a {
 					<font color="black">Friend requests:</font>
 				</p>
 				<p>
-					<a href="#"><img
-						src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-						class="img-circle" style="width: 60px; height: 60px;">
-						<div class="text-left user-item"
-							style="display: inline-block; margin-left: 10px; width: 100px;">
-							FirstName LastName</div>
-						<div style="display: inline-block;">
-							<input type="button" class="btn btn-primary btn-sm"
-								value="Accept"> <input type="button"
-								class="btn btn-default btn-sm" value="Reject">
-						</div> </a>
-				</p>
-				<p>
-					<a href="#"><img
-						src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-						class="img-circle" style="width: 60px; height: 60px;">
-						<div class="text-left user-item"
-							style="display: inline-block; margin-left: 10px; width: 100px;">
-							FirstName LastName</div>
-						<div style="display: inline-block;">
-							<input type="button" class="btn btn-primary btn-sm"
-								value="Accept"> <input type="button"
-								class="btn btn-default btn-sm" value="Reject">
-						</div> </a>
-				</p>
-				<p>
-					<a href="#">see more</a>...
-				</p>
+					<a href="sendFriendRequest"><font color="#008CBA">See, who want to connect to you.</font></a>
+			    </p>
 			</div>
 			<div class="col-sm-7">
 
@@ -155,6 +129,7 @@ div.a {
 							<div class="panel-body">
 								<form action="updatePost" method="post">
 									<p>
+									<p><font color="#008CBA">Hey,Write what ever is in your mind</font></p>
 										<textarea class="form-control" name="postContent" rows="4"
 											id="status"></textarea>
 									</p>

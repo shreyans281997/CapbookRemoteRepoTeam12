@@ -11,13 +11,20 @@
 <tr>
 <td>
 <a href="">${findUser.firstName} ${findUser.secondName } ${findUser.emailId}</a></td>
-<td><form action="sendFriendRequest" method="post">
+<td><form action="sendFriendRequest" method="post" id="friendReq">
 <input type="hidden" name="receiverEmailId" value="${findUser.emailId }">
-<input type="submit" value="Send Request"></form>
+<input type="submit"  valeu ="Send Request" id="submitButton"  disabled="disabled" />
 </tr></table>
 <div>
 ${success}
 ${errorMessage}
 </div>
 </body>
+<script type="text/javascript">
+    window.onload=function() {
+      setTimeout(function() {
+        document.getElementById('submitButton').disabled = false;
+      }, 5000); 
+    }
+</script>
 </html>

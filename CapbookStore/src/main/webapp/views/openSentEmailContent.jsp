@@ -90,12 +90,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif}
   <img class="w3-round  w3-animate-top" src="" style="width:20%;">
   <h5 class="w3-opacity">Subject: ${email.subject}</h5>
   <h4><i class="fa fa-clock-o"></i>${email.toAddress}, ${email.dateOfMail}</h4>
-  <a class="w3-button w3-light-grey" href="#">Reply<i class="w3-margin-left fa fa-mail-reply"></i></a>
-  <a class="w3-button w3-light-grey" href="#">Forward<i class="w3-margin-left fa fa-arrow-right"></i></a>
   <hr>
   <p>${email.messageBody}</p>
   
   <p>Best Regards, <br>${user.firstName}</p>
+  
 </div>
 </div>
 </div>

@@ -48,6 +48,7 @@ div.successMsg {
 	text-align: center;
 	color: red;
 }
+
 </style>
 </head>
 <body>

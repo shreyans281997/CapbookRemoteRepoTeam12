@@ -5,7 +5,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.hibernate.query.criteria.internal.expression.function.SubstringFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -93,5 +99,24 @@ public class UserServicesImpl implements IUserService{
 		UserAccount user=getUserDetails(emailId);
 		return user;
 	}
-	
+	@Override
+	public List<UserAccount> findBirthday() throws UserAccountNotFoundException {
+		List<UserAccount>users=users();
+		ArrayList<UserAccount> userBirthday=new ArrayList<UserAccount>();
+		for ( UserAccount user : users ) 
+		{
+		String dob=user.getDateOfBirth();
+		String birthday=dob.substring(5,10);
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+	    String date = LocalDateTime.now().format(format);  
+		String today=date.toString();
+		if(birthday.equals(today.substring(5,10))) {
+		userBirthday.add(user);}}
+		return userBirthday;
+		}
+	@Override
+	public List<UserAccount> users() {
+		List<UserAccount> users= userDao.findAll();
+		return users;
+	}
 }
