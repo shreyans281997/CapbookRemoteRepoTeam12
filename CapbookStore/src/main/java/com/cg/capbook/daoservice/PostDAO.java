@@ -10,7 +10,7 @@ import com.cg.capbook.model.Post;
 public interface PostDAO extends JpaRepository<Post, Integer>{
 	@Query("from Post where USER_EMAIL_ID=:emailId")
 	public List<Post> showAllPosts(String emailId);
-	@Query("from Post where USER_EMAIL_ID=:emailId")
-	public List<Post> showSinglePost(String emailId);
+	@Query("from Post where POST_ID=:postId")
+	public List<Post> showSinglePost(int postId);
 	
 }
