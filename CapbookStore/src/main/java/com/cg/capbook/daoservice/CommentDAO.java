@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 import com.cg.capbook.model.Comments;
 
 public interface CommentDAO extends JpaRepository<Comments, Integer> {
-@Query("from Comments where POST_ID=:postId")
+@Query("from Comments where POST_ID=:postId order by postId desc")
 List<Comments> getParticularPostComments(@Param("postId") int postId);
 }

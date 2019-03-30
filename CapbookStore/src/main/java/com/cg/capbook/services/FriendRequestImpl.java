@@ -31,19 +31,20 @@ public class FriendRequestImpl implements IFriendRequestServices {
 	}
 	@Override
 	public boolean confirmFriendRequest(String senderEmailId,String receiverEmailId) throws UserAccountNotFoundException {
-		UserAccount senderUser=userService.getUserDetails(senderEmailId);
-		UserAccount receiverUser =userService.getUserDetails(receiverEmailId);
-		Friend senderFriend= new Friend();
-		Friend receiverFirend = new Friend();
-		senderFriend.setEmailId(senderEmailId);
-		senderFriend.setFirstName(senderUser.getFirstName());
-		senderFriend.setLastName(senderUser.getSecondName());
-		friendDao.save(senderFriend);
-		receiverFirend.setEmailId(receiverEmailId);
-		receiverFirend.setFirstName(receiverUser.getFirstName());
-		receiverFirend.setLastName(receiverUser.getSecondName());
-		friendDao.save(receiverFirend);
-		friendRequestDao.deleteRequest(senderEmailId, receiverEmailId);
+//		UserAccount senderUser=userService.getUserDetails(senderEmailId);
+//		UserAccount receiverUser =userService.getUserDetails(receiverEmailId);
+//		Friend senderFriend= new Friend();
+//		Friend receiverFirend = new Friend();
+//		senderFriend.setEmailId(senderEmailId);
+//		senderFriend.setFirstName(senderUser.getFirstName());
+//		senderFriend.setLastName(senderUser.getSecondName());
+//		friendDao.save(senderFriend);
+//		receiverFirend.setEmailId(receiverEmailId);
+//		receiverFirend.setFirstName(receiverUser.getFirstName());
+//		receiverFirend.setLastName(receiverUser.getSecondName());
+//		friendDao.save(receiverFirend);
+//		friendRequestDao.deleteRequest(senderEmailId, receiverEmailId);
+		friendRequestDao.updateStatus(senderEmailId, receiverEmailId);
 		return true;
 	}
 	@Override
@@ -55,5 +56,6 @@ public class FriendRequestImpl implements IFriendRequestServices {
 	public List<FriendRequest> showAllFriendRequest(String emailId) {
 		List<FriendRequest> friendRequests= friendRequestDao.findAllPendingRequest(emailId);	
 		return friendRequests;
-	}	
+	}
+	
 }

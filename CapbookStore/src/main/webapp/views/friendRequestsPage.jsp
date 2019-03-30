@@ -1,11 +1,11 @@
 
 
 
-	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-		pageEncoding="ISO-8859-1"%>
-		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
-<title>W3.CSS Template</title>
+<title>Friend Request</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -111,21 +111,28 @@ html, body, h1, h2, h3, h4, h5 {
 									class="avatar avatar-xl mr-3"></span>
 								<div class="media-body overflow-hidden">
 									<h5 class="card-text mb-0">${friendRequests.senderEmailId}
-										</h5>
-
+									</h5>
 									<p>
 									<table>
 										<tr>
-										<td><a href="#" class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-check"></span> Accept Request
-        </a></td>
-        <td>  <a href="#" class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-remove"></span> Decline Request
-        </a></td>
-        </tr>
-										</table>
+											<td><form action="confirmFriendRequest" method="post">
+											<input type="hidden" name=senderEmailId value="${friendRequests.senderEmailId}">
+													<button type="submit" class="btn btn-info btn-lg">
+														<span class="glyphicon glyphicon-check"></span> Accept
+														Request
+													</button>
+												</form></td>
+											<td>
+												<button type="submit" class="btn btn-info btn-lg">
+													<span class="glyphicon glyphicon-remove"></span> Decline
+													Request
+												</button>
+											</td>
+										</tr>
+									</table>
 									</p>
-									
+
+                            
 								</div>
 							</div>
 						</div>
@@ -134,7 +141,9 @@ html, body, h1, h2, h3, h4, h5 {
 			</div>
 		</c:forEach>
 	</div>
-
+   <div align="center">
+                                    <font color="green" size="5">${success }</font>
+                                    </div>
 	<footer class="container-fluid text-center">
 		<div class="a">
 			<p>@CapgeminiApp2019</p>
