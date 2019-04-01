@@ -1,5 +1,7 @@
 package com.cg.capbook.services;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class PostServicesimpl implements IPostService {
 	@Override
 	public Post createPostText(String emailId, String postContent) {
 		UserAccount user=userDao.findById(emailId).orElse(null);
-		Post post=new Post(postContent, user);
+		Post post=new Post(postContent, LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")), user);
 		return postDao.save(post);
 	}
 	@Override

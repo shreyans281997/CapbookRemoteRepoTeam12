@@ -1,4 +1,4 @@
-package com.cg.capbook.model;
+ package com.cg.capbook.model;
 import java.util.Map;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ public class Post {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="post")
 	private int postId;
 	private int totalLikeCount;
-	private String postContent,postPic;
+	private String postContent,postPic, timeOfPost;
 	@ManyToOne
 	private UserAccount user;
 	@OneToMany(mappedBy="post",cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
@@ -42,10 +42,24 @@ public class Post {
 		this.comments = comments;
 		this.notifications = notifications;
 	}
+	public Post(int postId, int totalLikeCount, String postContent, String postPic, String timeOfPost, UserAccount user,
+			Map<Integer, Likes> likes, Map<Integer, Comments> comments, Map<Integer, Notification> notifications) {
+		super();
+		this.postId = postId;
+		this.totalLikeCount = totalLikeCount;
+		this.postContent = postContent;
+		this.postPic = postPic;
+		this.timeOfPost = timeOfPost;
+		this.user = user;
+		this.likes = likes;
+		this.comments = comments;
+		this.notifications = notifications;
+	}
 	
-	public Post(String postContent, UserAccount user) {
+	public Post(String postContent, String timeOfPost, UserAccount user) {
 		super();
 		this.postContent = postContent;
+		this.timeOfPost = timeOfPost;
 		this.user = user;
 	}
 	public int getPostId() {
@@ -97,6 +111,12 @@ public class Post {
 	public void setNotifications(Map<Integer, Notification> notifications) {
 		this.notifications = notifications;
 	}
+	public String getTimeOfPost() {
+		return timeOfPost;
+	}
+	public void setTimeOfPost(String timeOfPost) {
+		this.timeOfPost = timeOfPost;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -107,6 +127,7 @@ public class Post {
 		result = prime * result + ((postContent == null) ? 0 : postContent.hashCode());
 		result = prime * result + postId;
 		result = prime * result + ((postPic == null) ? 0 : postPic.hashCode());
+		result = prime * result + ((timeOfPost == null) ? 0 : timeOfPost.hashCode());
 		result = prime * result + totalLikeCount;
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -147,6 +168,11 @@ public class Post {
 				return false;
 		} else if (!postPic.equals(other.postPic))
 			return false;
+		if (timeOfPost == null) {
+			if (other.timeOfPost != null)
+				return false;
+		} else if (!timeOfPost.equals(other.timeOfPost))
+			return false;
 		if (totalLikeCount != other.totalLikeCount)
 			return false;
 		if (user == null) {
@@ -156,13 +182,11 @@ public class Post {
 			return false;
 		return true;
 	}
-	
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", totalLikeCount=" + totalLikeCount + ", postContent=" + postContent + ", postPic=" + postPic + ", user=" + user + ", likes=" + likes
+		return "Post [postId=" + postId + ", totalLikeCount=" + totalLikeCount + ", postContent=" + postContent
+				+ ", postPic=" + postPic + ", timeOfPost=" + timeOfPost + ", user=" + user + ", likes=" + likes
 				+ ", comments=" + comments + ", notifications=" + notifications + "]";
 	}
-
-	
-	
+		
 }

@@ -157,9 +157,12 @@ div.a {
 							<div class="well">
 								<table>
 									<tr>
-										<td>
-											<p>${posts.postContent}</p>
-										</td>
+										<td align="right">${posts.timeOfPost }</td>
+										</tr>
+										<tr>
+										<td><p>${posts.postContent}</p></td>
+										</tr>
+										<tr><td></td></tr>
 									<tr>
 										<td>
 											<form action="updateLikes" method="post">
