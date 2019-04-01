@@ -146,6 +146,13 @@ public class UserServiceController {
 		posts=postService.showAllFriendsPosts(user.getEmailId());
         return new ModelAndView("homePage","posts",posts);
 	}
+	@RequestMapping("/updateLikesOnProfilePage")
+	public ModelAndView updateLikesOnProfilePage(@SessionAttribute("user") UserAccount user,@SessionAttribute("posts") List<Post> posts, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
+		likeServices.updateLikes(postId, likedBy);
+		likeServices.getLikesCount(postId);
+		posts=postService.showAllFriendsPosts(user.getEmailId());
+        return new ModelAndView("profilePage","posts",posts);
+	}
 	@RequestMapping("/delEmail")
     public ModelAndView delEmail(@RequestParam String emailId,int emailChatId) {
     	emailService.delEmail(emailId, emailChatId);
@@ -205,7 +212,6 @@ public class UserServiceController {
     public ModelAndView postComment( @RequestParam int postId, String emailId, String comment, @SessionAttribute("user") UserAccount user,@SessionAttribute("posts") Post posts) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
     	commentServices.saveComment(postId, user.getEmailId(), comment);
     	Post post=postService.showSinglePost(postId);
-    	commentServices.getPostComments(postId);
 		return new ModelAndView("postPage","post",post);
     }
     @RequestMapping("/showPost")

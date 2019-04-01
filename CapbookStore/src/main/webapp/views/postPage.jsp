@@ -33,7 +33,6 @@
 			<td>
 				<form action="postComment" method="post">
 					<input type="hidden" name="postId" value="${post.postId }">
-					<input type="hidden" name="likedBy" value="${user.emailId }">
 					<textarea rows="2" cols="50" name="comment">Write a comment......</textarea>
 					<input type="submit">
 				</form>
