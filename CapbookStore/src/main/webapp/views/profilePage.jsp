@@ -1,127 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/commentbox.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
-
-  <style>
-   footer {
-	position: bottom;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	background-color: #555;
-	color: black;
-	padding: 10px;
-	text-align: center;
-}
-
-div.a {
-	font-size: 115%;
-	color: white;
-	align: right;
-}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 div.b {
-	font-size: 15px;
-	font-color: #2E86C1;
-	align: center;
+	font-size: 120%;
+	font-weight: bold;
+	color: white;
 }
-.round_img{
-position: relative;
-margin-left: auto;
-  margin-right: auto;
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  border-radius: 50%;
- 
-}
-.round_img img {
-  width: 100%;
-  height: auto;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-table#t01 tr:nth-child(even) {
-  background-color: #eee;
-}
-table#t01 tr:nth-child(odd) {
- background-color: #fff;
-}
-#main h1 { background: #ccc;}
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
 body
 {
     font-family: 'Open Sans', sans-serif;
      background-color: #EBF5FB;
 }
+footer {
+	position: bottom;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #555;
+	color: white;
+	padding: 10px;
+	text-align: center;
+}
+.round {
+    width: 100%;
+    border-radius: 15px;
+    border: 1px #000 solid;
+    padding: 5px 5px 5px 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
 
+.corner {
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    height: 20px;
+    width: 20px;
+    z-index: 10;
+    border-radius: 10px;
+    border: none;
+    background: #000; /* Set the bg image here. with "no-repeat" */
+}
 
+.search {
+    position: relative;
+    width: 190px;
+    height: 30px;
+}
 
-  </style>
-</head>
+</style>
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-    
+<!-- Navbar -->
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a href="homePage" class="w3-bar-item w3-button w3-padding-large w3-theme-d4" title="Go to HomePage"><div class="b">CapBook</div></a>
+ 
+ <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button w3-padding-large" title="My Account"><i class="fa fa-user"></i></button>     
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+      <a href="getEmailPage" class="w3-bar-item w3-button">Show Friends</a>
+      <a href="getEditProfile" class="w3-bar-item w3-button">Edit Profile</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-      <li class="dropdown">
-           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon">&#xe012;</span>
-           </a>
-           <ul class="dropdown-menu">
-     	   <li><a href="#">Show Friends</a></li>
-      	   <li><a href="getEditProfile">Edit Profile</a></li>
-      	   </ul></li>
-        <li><a href="getHomePage">Home</a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Messages</a>
-        <ul class="dropdown-menu">
-     	   <li><a href="getEmailPage">Compose</a></li>
-      	   <li><a href="showAllEmail">Inbox</a></li>
-      	   <li><a href="#">Sent Mails</a></li>
-      	   </ul></li>
-           <li><a href="getHomePage">FriendList</a></li>
-      </ul>
-      <form class="navbar-form navbar-right" role="search">
+  </div>
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button w3-padding-large" title="Messages"><i class="fa fa-envelope"></i></button>     
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+      <a href="getEmailPage" class="w3-bar-item w3-button">Compose</a>
+      <a href="showAllEmail" class="w3-bar-item w3-button">Inbox</a>
+      <a href="showAllSentEmail" class="w3-bar-item w3-button">Sent Mails</a>
+    </div>
+  </div>
+    <form class="navbar-form navbar-right" role="search">
         <div class="form-group input-group">
           <input type="text" class="form-control" placeholder="Search..">
           <span class="input-group-btn">
@@ -130,167 +108,125 @@ body
             </button>
           </span>        
         </div>
+        
+        <div class="w3-bar-item w3-button w3-right w3-padding-small w3-theme-d1">
+        &nbsp <a href="showBirthday">Log out </a>&nbsp
+        </div>
       </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="endSession"><span class="glyphicon glyphicon-user"></span> log out</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-
-<div class="container"><br>
-  
-        <div style="background:#1B4F72   !important" class="jumbotron">
-  <div class="container text-center">
-    <div class="a"><h1>Capbook</h1>      
-    <p>My Profile</p></div>
-
-<div class="round_img">
-    <img src="http://lorempixel.com/100/100/people/9/" alt="">
-     </div>    
-  </div>
-
+         
+ </div>
 </div>
-</div> <!-- /container -->  
 
-  
-<div class="container-fluid bg-3 text-center">    
-  
-  <div class="row">
-  <div class="col-sm-1"></div>
-   
-    <div class="col-sm-4"> 
-      <div class="container text-center"> 
-      <div class="row">
-       <div class="col-sm-3">
-    <h2><b>Username</b></h2>
-    <div class="well">
-        <div class="b">Bio</div>
-        <div class="panel-body">
-       
-       </div>
-       </div>     
-      
-       
-       <div class="well">
-        <div class="b">About</div>
-        <div class="panel-body">
-       
-  <table id="t01">
-  <tr>
-    <td>City</td>
-    <td>  </td>
-  </tr>
-  <tr>
-    <td>State</td>
-    <td>  </td>
-  </tr>
-  <tr>
-    <td>Country</td>
-    <td>  </td>
-  </tr>
-  <tr>
-    <td>Zipcode</td>
-    <td>  </td>
-  </tr>
-   <tr>
-    <td>Date Of Birth</td>
-    <td>  </td>
-  </tr>
-   <tr>
-    <td>Business Profile</td>
-    <td>  </td>
-  </tr>
-    <tr>
-    <td>Work Place</td>
-    <td>  </td>
-  </tr>
-  <tr>
-    <td>Work Experience</td>
-    <td>  </td>
-  </tr>
-   <tr>
-    <td>Mobile No</td>
-    <td>  </td>
-  </tr> 
-</table>
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
+</div>
 
-       </div>
-       </div>     
-       
-       </div>
-       </div>
-    </div>
-   </div>
-<div class="col-sm-6"> 
-<c:forEach var="posts"
-				items="${posts}">
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>${user.firstName} ${user.secondName }</p>
-           <img src="${user.profilePic}" class="img-circle" height="55" width="55" alt="Avatar">
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+    
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src="/w3images/avatar_hat.jpg" style="width:100%" alt="Avatar">
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+            <h2>UserName</h2>
           </div>
         </div>
-        <div class="col-sm-9">
-          <div class="well">
-          <table>
-          <tr>
-           <td> <p>${posts.postContent}</p></td>
-            <tr>
-             <td> 
-             <form action="updateLikes" method="post">
-             <input type="hidden" name="postId" value="${posts.postId }">
-             <input type="hidden" name="likedBy" value="${user.emailId }">
-              <button type="submit" class="btn btn-primary">
-              <i class="glyphicon glyphicon-thumbs-up"></i> Like ${posts.totalLikeCount}
-                </button></form> </td>
-            <td>  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Comment
-              <i class="glyphicon glyphicon-comment"></i></button>
-              <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-           
-           <div id="wrapper" align="left">
+        <div class="w3-container">
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-grey"></i>BusinessProfile</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-grey"></i>State,Country</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-grey"></i>EmailAddress</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-grey"></i>MobileNo</p>
+          <hr>
 
-	<form id="paper" method="get" action="postComment">
-        <input type="hidden" name="postId" value="${posts.postId }">
-		<textarea placeholder="Enter something funny." id="text" name="comment" rows="1" cols="30" style="overflow: hidden; word-wrap: break-word; resize: none; height: 100px; "></textarea>  
-		<input id="button" type="submit" value="comment">
-		${comments } <!-- loop lgana hai -->
-	</form>
-
-</div>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-black"></i>Bio</b></p>
+          <p>Adobe Photoshop</p>
+          
+          <p>Photography</p>
+          
+          <p>Illustrator</p>
+         
+          <p>Media</p>
+      `
+          <hr>
+          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-black"></i>Basic Details</b></p>
+          <p>City-</p>
+          
+          <p>State-</p>
+          
+          <p>Country-</p>
+          
+           <p>Zip Code-</p>
            
+            <p>Country-</p>
+            
+             <p>Date Of Birth-</p>
+             
+              <p>Mobile No-</p>
+          <hr>
+
+          <p class="w3-large"><b><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-black"></i>Professional Info</b></p>
+          <p>Business Profile-</p>
+          
+          <p>Work Place-</p>
+          
+          <p>Work experience-</p>
+         
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
+      </div><br>
+
+    <!-- End Left Column -->
     </div>
-  </div>
-              </td>
-              </tr>
-                </table>
-                
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+    
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-paper-plane fa-fw w3-margin-right w3-xxlarge w3-text-grey"></i>My Posts</h2>
+        
+
+       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">1 min</span>
+        <h4>John Doe</h4><br>
+        <hr class="w3-clear">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-half">
+              <img src="/w3images/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+            </div>
+            <div class="w3-half">
+              <img src="/w3images/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
           </div>
         </div>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
       </div>
-       </c:forEach>
+      
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
 </div>
-</div>
+<br>
 <footer class="container-fluid text-center">
-  <div class="a"><p>@CapgeminiApp2019</p></div>
-</footer>
+			<div class="a">
+				<p>@CapgeminiApp2019</p>
+			</div>
+		</footer>
 
 </body>
 </html>

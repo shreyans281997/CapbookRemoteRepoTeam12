@@ -22,4 +22,5 @@ public interface IUserService {
 	public UserAccount searchUser(String emailId) throws UserAccountNotFoundException;
 	public List<UserAccount> findBirthday() throws UserAccountNotFoundException;
 	public List<UserAccount> users();
+	
 }

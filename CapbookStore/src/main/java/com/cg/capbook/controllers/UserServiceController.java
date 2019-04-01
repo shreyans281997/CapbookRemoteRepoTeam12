@@ -137,7 +137,7 @@ public class UserServiceController {
 	}
 	@RequestMapping("/getHomePage")
 	public ModelAndView getHomePage(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
-		List<Post> posts=postService.allPosts(user.getEmailId());
+		List<Post> posts=postService.showAllFriendsPosts(user.getEmailId());
         return new ModelAndView("homePage","posts",posts);
 	}
 	
