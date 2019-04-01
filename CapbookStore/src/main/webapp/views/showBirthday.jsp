@@ -26,7 +26,7 @@
 
 <style>
 footer {
-	position: fixed;
+	position: absolute;
 	left: 0;
 	width: 100%;
 	margin-top:100px;
@@ -67,6 +67,7 @@ html, body, h1, h2, h3, h4, h5 {
 							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
 					<li><a href="getHomePage">Home</a></li>
+					<li class="active"><a href="getUserProfile">Profile</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Messages</a>
 						<ul class="dropdown-menu">

@@ -23,7 +23,7 @@
 <style>
 /* Set black background color, white text and some padding */
 footer {
-	position: bottom;
+	position: absolute;
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -74,6 +74,7 @@ div.successMsg {
 							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
 					<li><a href="#">Home</a></li>
+                    <li class="active"><a href="getUserProfile">Profile</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"                              href="#">Messages</a>
         <ul class="dropdown-menu">
      	   <li><a href="getEmailPage">Compose</a></li>
@@ -132,8 +133,14 @@ div.successMsg {
 										${email.dateOfMail }</td>
 					</tr>
 				</c:forEach>
+               
   
   </table>
 </div>
+ <footer class="container-fluid text-center">
+			<div class="a">
+				<p>@CapgeminiApp2019</p>
+			</div>
+		</footer>
 </body>
 </html>
