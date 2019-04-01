@@ -8,7 +8,7 @@
 <title>Your friends</title>
 </head>
 <body>
-<c:forEach var="friends" items="${fr}">
+<c:forEach var="friends" items="${friends}">
 ${friends} <br>
 </c:forEach>
 </body>
