@@ -75,7 +75,18 @@ footer {
     width: 190px;
     height: 30px;
 }
-
+.button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
 </style>
 <body>
 
@@ -151,7 +162,9 @@ footer {
         <div class="w3-display-container">
           <img src="${user.profilePic }" style="width:100%" alt="Avatar">
            </div>
-            <h2><font color="#008CBA">  ${user.firstName} ${user.secondName}</font></h2>
+            <h3><font color="#008CBA">  ${user.firstName} ${user.secondName}</font><button class="button" type="submit">Send Request</button></h3>
+           <br>
+            
         <div class="w3-container">
           <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-grey"></i>BusinessProfile</p>
           <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-grey"></i>State,Country</p>

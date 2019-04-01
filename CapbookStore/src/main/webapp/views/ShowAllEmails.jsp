@@ -102,13 +102,13 @@ div.successMsg {
 		</div>
 	</nav>
 	<div class="container">
-  <h2><font color="blue">Inbox</font></h2>
+  <h2><font color="#008CBA">Inbox</font></h2>
   <p>Check your mail. May be something Important is there.</p>
   <p><font color="red">${success}</font></p>
   <p><font color="red">${errorMessage}</font></p>
   <table class="table">
   <tr><td>
-           <button type="button"><a href="delAllEmail" >
+           <button type="button" color="#008CBA"><a href="delAllEmail" >
           <span class="glyphicon glyphicon-trash"></span> Delete All Mails 
         </a></button></td></tr>
         <tr>
