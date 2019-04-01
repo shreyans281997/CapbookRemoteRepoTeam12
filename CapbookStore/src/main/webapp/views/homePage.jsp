@@ -149,8 +149,8 @@ div.a {
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="well">
-								<p>${user.firstName}${user.secondName }</p>
-								<img src="${user.profilePic}" class="img-circle" height="55"
+								<p>${posts.user.firstName } ${posts.user.secondName }</p>
+								<img src="${posts.user.profilePic}" class="img-circle" height="55"
 									width="55" alt="Avatar">
 							</div>
 						</div>

@@ -124,12 +124,12 @@ public class UserServiceController {
 	@RequestMapping("/updatePost")
 	public ModelAndView updatePost(@RequestParam String postContent ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
 		postService.createPostText(user.getEmailId(), postContent);
-		List<Post> posts=postService.allPosts(user.getEmailId());
+		List<Post> posts=postService.showAllFriendsPosts(user.getEmailId());
 		return new ModelAndView("homePage", "posts", posts);
 	}
 	@RequestMapping("/showAllPost")
 	public ModelAndView allPosts(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
-		List<Post> posts=postService.allPosts(user.getEmailId());
+		List<Post> posts=postService.showAllFriendsPosts(user.getEmailId());
 		return new ModelAndView("homePage", "posts", posts);
 	}
 	@RequestMapping("/getEditProfile")
@@ -146,7 +146,7 @@ public class UserServiceController {
 	public ModelAndView updateLikes(@SessionAttribute("user") UserAccount user,@SessionAttribute("posts") List<Post> posts, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
 		likeServices.updateLikes(postId, likedBy);
 		likeServices.getLikesCount(postId);
-		posts=postService.allPosts(user.getEmailId());
+		posts=postService.showAllFriendsPosts(user.getEmailId());
         return new ModelAndView("homePage","posts",posts);
 	}
 	@RequestMapping("/delEmail")
