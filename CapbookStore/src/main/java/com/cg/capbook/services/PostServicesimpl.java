@@ -56,11 +56,11 @@ public class PostServicesimpl implements IPostService {
 				confirmFriends.add(fr.getReceiverEmailId());
 		}
 		for(String str:confirmFriends) {
-			for(Post post: postDao.showAllPosts(emailId)) {
+			for(Post post: postDao.showAllPosts(str)) {
 			posts.add(post);	
 			}
-			 return posts;
 		}
+		return posts;
 		
 	}
 

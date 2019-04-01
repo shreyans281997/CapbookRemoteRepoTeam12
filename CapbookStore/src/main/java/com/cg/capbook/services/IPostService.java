@@ -9,4 +9,5 @@ public interface IPostService {
 	List<Post> allPosts(String emaildId);
 	public boolean deletePost(int postId);
 	public Post showSinglePost(int postId);
+	public List<Post> showAllFriendsPosts(String emailId);
 }
