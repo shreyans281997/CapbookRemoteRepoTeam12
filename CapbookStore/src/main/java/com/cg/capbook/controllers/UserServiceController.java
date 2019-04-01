@@ -1,22 +1,16 @@
 package com.cg.capbook.controllers;
 import java.io.IOException;
-import org.apache.catalina.Session;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.FieldsEmptyException;
 import com.cg.capbook.exceptions.FriendRequestAlreadySentException;
@@ -27,7 +21,6 @@ import com.cg.capbook.exceptions.LoginFieldsEmptyException;
 import com.cg.capbook.exceptions.NoMailsArePresentToDeleteException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNotAFriendException;
-import com.cg.capbook.model.Comments;
 import com.cg.capbook.model.Email;
 import com.cg.capbook.model.FriendRequest;
 import com.cg.capbook.model.Post;
@@ -132,6 +125,10 @@ public class UserServiceController {
 		List<Post> posts=postService.showAllFriendsPosts(user.getEmailId());
 		return new ModelAndView("homePage", "posts", posts);
 	}
+	@RequestMapping("/getUserProfile")
+	public ModelAndView getUserProfile(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
+		return new ModelAndView("profilePage", "user", user);
+	}
 	@RequestMapping("/getEditProfile")
 	public ModelAndView getEditProfile(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
 		return new ModelAndView("editProfilePage","user",user);
@@ -221,8 +218,6 @@ public class UserServiceController {
     	List<UserAccount> users = userService.findBirthday();
 		return new ModelAndView("showBirthday","users",users);
     }
-	
-	  
 }
 
 

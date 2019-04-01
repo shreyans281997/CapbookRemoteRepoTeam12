@@ -139,10 +139,8 @@ footer {
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
           <img src="${user.profilePic }" style="width:100%" alt="Avatar">
-          <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2>${user.firstName} ${user.secondName}</h2>
-          </div>
-        </div>
+           </div>
+            <h2><font color="#008CBA">${user.firstName} ${user.secondName}</font></h2>
         <div class="w3-container">
           <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-grey"></i>BusinessProfile</p>
           <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-grey"></i>State,Country</p>
@@ -154,25 +152,27 @@ footer {
           <p>${user.bio }</p>
           <hr>
           <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-black"></i>Basic Details</b></p>
-          <p>City- ${user.address.city}</p>
+         <p><font color="#008CBA">Gender-${user.gender }</font></p>
+         
+          <p>City- <font color="#008CBA">${user.address.city}</font></p>
           
-          <p>State-${user.address.state}</p>
+          <p>State-<font color="#008CBA">${user.address.state}</font></p>
           
-          <p>Country-${user.address.country}</p>
+          <p>Country-<font color="#008CBA">${user.address.country}</font></p>
           
-           <p>Zip Code-${user.address.zipCode}</p>
+           <p>Zip Code-<font color="#008CBA">${user.address.zipCode}</font></p>
             
-             <p>Date Of Birth-${user.dateOfBirth}</p>
+             <p>Date Of Birth-<font color="#008CBA">${user.dateOfBirth}</font></p>
              
-              <p>Mobile No-${user.mobileNo }</p>
+              <p>Mobile No-<font color="#008CBA">${user.mobileNo }</font></p>
           <hr>
 
           <p class="w3-large"><b><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-black"></i>Professional Info</b></p>
-          <p>Business Profile-${user.businessProfile }</p>
+          <p>Business Profile-<font color="#008CBA">${user.businessProfile }</font></p>
           
-          <p>Work Place-${user.workPlace }</p>
+          <p>Work Place-<font color="#008CBA">${user.workPlace }</font></p>
           
-          <p>Work experience-${user.workExperience}</p>
+          <p>Work experience-$<font color="#008CBA">{user.workExperience}</font></p>
          
         </div>
       </div><br>
