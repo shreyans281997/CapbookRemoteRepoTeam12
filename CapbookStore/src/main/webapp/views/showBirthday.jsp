@@ -129,7 +129,6 @@ html, body, h1, h2, h3, h4, h5 {
 				<p>@CapgeminiApp2019</p>
 			</div>
 		</footer>
-
 </body>
 </html>
           
