@@ -35,9 +35,11 @@ public String getChangePassword() {
 public String getReplyEmailPage() {
 	return "replyEmail";}
 
+@RequestMapping("/getProfilePage")
+public String getProfilePage() {
+	return "profilePage";}
 
-
-@ModelAttribute
+	@ModelAttribute
 public UserAccount getUserAccount() {
 	user=new UserAccount();
 	return user;}

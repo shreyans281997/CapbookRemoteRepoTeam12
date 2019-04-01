@@ -62,6 +62,7 @@ div.a {
 							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
 					<li class="active"><a href="#">Home</a></li>
+					<li class="active"><a href="getProfilePage">Profile</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Messages</a>
 						<ul class="dropdown-menu">
@@ -155,10 +156,8 @@ div.a {
 						</div>
 						<div class="col-sm-9">
 							<div class="well">
+							<p align="right">${posts.timeOfPost }</p>
 								<table>
-									<tr>
-										<td align="right">${posts.timeOfPost }</td>
-										</tr>
 										<tr>
 										<td><p>${posts.postContent}</p></td>
 										</tr>

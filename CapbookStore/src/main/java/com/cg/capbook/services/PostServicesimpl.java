@@ -5,12 +5,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cg.capbook.daoservice.FriendDAO;
+import com.cg.capbook.daoservice.FriendRequestDAO;
 import com.cg.capbook.daoservice.PostDAO;
 import com.cg.capbook.daoservice.UserDAO;
+import com.cg.capbook.model.FriendRequest;
 import com.cg.capbook.model.Likes;
 import com.cg.capbook.model.Post;
 import com.cg.capbook.model.UserAccount;
@@ -20,6 +24,8 @@ public class PostServicesimpl implements IPostService {
 	private UserDAO userDao;
 	@Autowired
 	private PostDAO postDao;
+	@Autowired
+	private FriendRequestDAO friendDao;
 	@Override
 	public Post createPostText(String emailId, String postContent) {
 		UserAccount user=userDao.findById(emailId).orElse(null);
@@ -37,6 +43,25 @@ public class PostServicesimpl implements IPostService {
 	}
 	public Post showSinglePost(int postId) {
 		return postDao.findById(postId).orElse(null);
+	}
+	@Override
+	public List<Post> showAllFriendsPosts(String emailId) {
+		List<Post> posts=new ArrayList<Post>();
+		List<String> confirmFriends=new ArrayList<>();
+		List<FriendRequest> friends=friendDao.showFriends(emailId);
+		for(FriendRequest fr: friends){
+			if(fr.getReceiverEmailId().equals(emailId))
+				confirmFriends.add(fr.getSenderEmailId());
+			if(fr.getSenderEmailId().equals(emailId))
+				confirmFriends.add(fr.getReceiverEmailId());
+		}
+		for(String str:confirmFriends) {
+			for(Post post: postDao.showAllPosts(emailId)) {
+			posts.add(post);	
+			}
+			 return posts;
+		}
+		
 	}
 
 

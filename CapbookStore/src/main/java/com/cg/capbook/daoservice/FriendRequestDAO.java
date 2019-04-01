@@ -21,6 +21,8 @@ public interface FriendRequestDAO extends JpaRepository<FriendRequest,Integer> {
      public FriendRequest findRequest(@Param("senderEmailId") String senderEmailId,@Param("receiverEmailId") String receiverEmailId);
 	@Query("from FriendRequest fr where fr.senderEmailId=:senderEmailId or fr.receiverEmailId=:senderEmailId")
     public FriendRequest findReq(String senderEmailId);
+	@Query("from FriendRequest fr where status='confirm' and (fr.senderEmailId=:senderEmailId or fr.receiverEmailId=:senderEmailId)")
+    public List<FriendRequest> showFriends(String emailId);
 	@Transactional
 	@Modifying
 	@Query("UPDATE FriendRequest fr set status = 'confirm' WHERE fr.senderEmailId=:senderEmailId and fr.receiverEmailId=:receiverEmailId")

@@ -11,4 +11,5 @@ public interface IFriendRequestServices {
 	    public boolean confirmFriendRequest(String senderEmailId,String receiverEmailId) throws UserAccountNotFoundException;
 	    public boolean declineFriendRequest(String senderEmailId, String receiverEmailId);
         public List<FriendRequest> showAllFriendRequest(String emailId);
+        public List<FriendRequest> showAllFriends(String emailId);
 }
