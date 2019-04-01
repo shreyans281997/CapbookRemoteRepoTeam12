@@ -17,13 +17,17 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <style>
+.flash-error {
+    background-color: #ffdce0;
+    color: #86181d;
+}
 .error {
 	color: red;
 	font-weight: bold;
 }
 
 .success {
-	color: red;
+	color: green;
 	font-weight: bold;
 }
 /* Add a gray background color and some padding to the footer */
@@ -133,12 +137,14 @@ div.c {
 				<br> <br>
 
 				<div class="card bg-light">
-					<form action="showLogin" method="post">
+					<form name="myform" action="showLogin" method="post" >
 
 
 						<article class="card-body mx-auto" style="max-width: 400px">
 
 							<h4 class="card-title mt-3 text-center">Login</h4>
+                            
+                            <!-- <div class="flash-error"><span id="errorMsg"></span></div> -->
 
 							<div class="form-group input-group">
 								<div class="input-group-prepend">

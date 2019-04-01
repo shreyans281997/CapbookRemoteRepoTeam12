@@ -22,6 +22,7 @@ import com.cg.capbook.exceptions.FieldsEmptyException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
+import com.cg.capbook.exceptions.LoginFieldsEmptyException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.model.UserAccount;
 @Component("userService")
@@ -31,7 +32,7 @@ public class UserServicesImpl implements IUserService{
 	private UserDAO userDao;
 	@Autowired
 	private EncryptionAndDecryption encryptionAndDecryption;
-	
+
 	@Override
 	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, String dateOfBirth, String gender, String mobileNo,String securityQue,String answer)
 			throws EmailAlreadyRegisteredException, FieldsEmptyException {
@@ -50,7 +51,9 @@ public class UserServicesImpl implements IUserService{
 		return userDao.findById(emailId).orElseThrow(()->new UserAccountNotFoundException("Sorry this user is not part of our family"));
 	}
 	@Override
-	public UserAccount loginUser(String emailId, String password) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException {
+	public UserAccount loginUser(String emailId, String password) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException, LoginFieldsEmptyException {
+		if(emailId.equals("")||password.equals(""))
+			throw new LoginFieldsEmptyException("Don't Keep the Required Fields Empty");
 		UserAccount userAccount=getUserDetails(emailId);
 		String depcryptPassword=EncryptionAndDecryption.decrypt(userAccount.getPassword());
 		System.out.println(depcryptPassword);
@@ -78,7 +81,7 @@ public class UserServicesImpl implements IUserService{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-      return user;
+		return user;
 	}
 	public UserAccount updateDetails(String emailId,String userName) throws UserAccountNotFoundException {
 		UserAccount user=getUserDetails(emailId);
@@ -105,15 +108,15 @@ public class UserServicesImpl implements IUserService{
 		ArrayList<UserAccount> userBirthday=new ArrayList<UserAccount>();
 		for ( UserAccount user : users ) 
 		{
-		String dob=user.getDateOfBirth();
-		String birthday=dob.substring(5,10);
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
-	    String date = LocalDateTime.now().format(format);  
-		String today=date.toString();
-		if(birthday.equals(today.substring(5,10))) {
-		userBirthday.add(user);}}
+			String dob=user.getDateOfBirth();
+			String birthday=dob.substring(5,10);
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+			String date = LocalDateTime.now().format(format);  
+			String today=date.toString();
+			if(birthday.equals(today.substring(5,10))) {
+				userBirthday.add(user);}}
 		return userBirthday;
-		}
+	}
 	@Override
 	public List<UserAccount> users() {
 		List<UserAccount> users= userDao.findAll();

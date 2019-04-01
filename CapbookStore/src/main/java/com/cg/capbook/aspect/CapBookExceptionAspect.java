@@ -9,6 +9,7 @@ import com.cg.capbook.exceptions.FriendRequestAlreadySentException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
+import com.cg.capbook.exceptions.LoginFieldsEmptyException;
 import com.cg.capbook.exceptions.NoMailsArePresentToDeleteException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNameAlreadyExist;
@@ -38,6 +39,10 @@ public class CapBookExceptionAspect {
 	@ExceptionHandler(FieldsEmptyException.class)
 	public ModelAndView handleFieldsEmptyException(Exception e) {
 		return new ModelAndView("getSignUp", "errorMessage", e.getMessage());
+	}
+	@ExceptionHandler(LoginFieldsEmptyException.class)
+	public ModelAndView handleLoginFieldsEmptyException(Exception e) {
+		return new ModelAndView("loginPage", "errorMessage", e.getMessage());
 	}
     @ExceptionHandler(InvalidQuestionOrAnswer.class)
      public ModelAndView handleInvalidQuestionOrAnswer(Exception e) {

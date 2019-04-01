@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Edit Profile Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -82,7 +82,7 @@ color: red;
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="showBirthday"><span class="glyphicon glyphicon-user"></span> log out</a></li>
+        <li><a href="endSession"><span class="glyphicon glyphicon-user"></span> log out</a></li>
       </ul>
     </div>
   </div>

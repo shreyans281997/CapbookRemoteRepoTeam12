@@ -23,6 +23,7 @@ import com.cg.capbook.exceptions.FriendRequestAlreadySentException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
+import com.cg.capbook.exceptions.LoginFieldsEmptyException;
 import com.cg.capbook.exceptions.NoMailsArePresentToDeleteException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNotAFriendException;
@@ -66,7 +67,7 @@ public class UserServiceController {
 		return new ModelAndView("forgotPassword","success","Password changed Successfully");
 	}
 	@RequestMapping("/showLogin") public ModelAndView login(@RequestParam String
-			emailId,String password ) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException {
+			emailId,String password ) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException, LoginFieldsEmptyException {
 		UserAccount user=userService.loginUser(emailId, password);
 		return new ModelAndView("editProfilePage","user",user);
 	}
