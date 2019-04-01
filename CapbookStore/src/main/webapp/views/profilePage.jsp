@@ -140,7 +140,7 @@ footer {
         <div class="w3-display-container">
           <img src="${user.profilePic }" style="width:100%" alt="Avatar">
            </div>
-            <h2><font color="#008CBA">${user.firstName} ${user.secondName}</font></h2>
+            <h2><font color="#008CBA">  ${user.firstName} ${user.secondName}</font></h2>
         <div class="w3-container">
           <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-grey"></i>BusinessProfile</p>
           <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-grey"></i>State,Country</p>
@@ -149,10 +149,10 @@ footer {
           <hr>
 
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-black"></i>Bio</b></p>
-          <p>${user.bio }</p>
+          <p><font color="#008CBA">${user.bio }</font></p>
           <hr>
           <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-black"></i>Basic Details</b></p>
-         <p><font color="#008CBA">Gender-${user.gender }</font></p>
+         <p>Gender-<font color="#008CBA">${user.gender }</font></p>
          
           <p>City- <font color="#008CBA">${user.address.city}</font></p>
           
@@ -172,7 +172,7 @@ footer {
           
           <p>Work Place-<font color="#008CBA">${user.workPlace }</font></p>
           
-          <p>Work experience-$<font color="#008CBA">{user.workExperience}</font></p>
+          <p>Work experience-<font color="#008CBA">${user.workExperience}</font></p>
          
         </div>
       </div><br>

@@ -1,4 +1,4 @@
-package com.cg.capbook.stepdefinitions;
+package com.cg.capbook.stepdefinition;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
