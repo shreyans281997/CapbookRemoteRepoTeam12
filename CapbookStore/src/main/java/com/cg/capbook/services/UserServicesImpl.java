@@ -104,7 +104,7 @@ public class UserServicesImpl implements IUserService{
 	}
 	@Override
 	public List<UserAccount> findBirthday() throws UserAccountNotFoundException {
-		List<UserAccount>users=users();
+		List<UserAccount> users=users();
 		ArrayList<UserAccount> userBirthday=new ArrayList<UserAccount>();
 		for ( UserAccount user : users ) 
 		{
