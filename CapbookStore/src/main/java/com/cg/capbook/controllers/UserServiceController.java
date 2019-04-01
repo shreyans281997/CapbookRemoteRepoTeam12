@@ -208,6 +208,11 @@ public class UserServiceController {
     	friendServices.confirmFriendRequest(senderEmailId, user.getEmailId());
     	return new ModelAndView("friendRequestsPage","success","Friend Request Accepted");
     }
+    @RequestMapping("/showFriendList")
+    public ModelAndView showFriendList(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
+    	List<String> friends  = friendServices.showAllFriends(user.getEmailId());
+		return new ModelAndView("friendsListPage","friends",friends);
+    }
     @RequestMapping("/postComment")
     public ModelAndView postComment( @RequestParam int postId, String emailId, String comment, @SessionAttribute("user") UserAccount user,@SessionAttribute("posts") Post posts) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
     	commentServices.saveComment(postId, user.getEmailId(), comment);
@@ -224,6 +229,7 @@ public class UserServiceController {
     	List<UserAccount> users = userService.findBirthday();
 		return new ModelAndView("showBirthday","users",users);
     }
+	  
 }
 
 

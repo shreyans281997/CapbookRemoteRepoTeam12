@@ -1,4 +1,5 @@
 package com.cg.capbook.services;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -58,8 +59,15 @@ public class FriendRequestImpl implements IFriendRequestServices {
 		return friendRequests;
 	}
 	@Override
-	public List<FriendRequest> showAllFriends(String emailId) {
-		List<FriendRequest> friends= friendRequestDao.showFriends(emailId);	
+	public List<String> showAllFriends(String emailId) {
+		List<FriendRequest> confirmfriends= friendRequestDao.showFriends(emailId);
+		List<String> friends=new ArrayList<>();
+		for(FriendRequest fr: confirmfriends){
+			if(fr.getReceiverEmailId().equals(emailId))
+				friends.add(fr.getSenderEmailId());
+			if(fr.getSenderEmailId().equals(emailId))
+				friends.add(fr.getReceiverEmailId());
+		}
 		return friends;
 	}
 
