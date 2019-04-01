@@ -1,7 +1,6 @@
 package com.cg.capbook.model;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 @Embeddable
 public class Address {
 	private String city;

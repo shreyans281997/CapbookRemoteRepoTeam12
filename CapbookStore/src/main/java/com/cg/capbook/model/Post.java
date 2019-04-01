@@ -26,7 +26,7 @@ public class Post {
 	@OneToMany(mappedBy="posts",cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
 	@MapKey
 	private Map<Integer, Comments> comments;
-	@OneToMany(mappedBy="post",cascade=CascadeType.ALL,orphanRemoval=true)
+	@OneToMany(mappedBy="post",cascade=CascadeType.ALL,orphanRemoval=true,fetch=FetchType.EAGER )
 	@MapKey
 	private Map<Integer,Notification> notifications;
 	public Post() {}

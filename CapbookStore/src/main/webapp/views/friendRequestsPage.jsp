@@ -110,7 +110,7 @@ html, body, h1, h2, h3, h4, h5 {
 									style="background-image: url(http://bootdey.com/img/Content/avatar/avatar6.png)"
 									class="avatar avatar-xl mr-3"></span>
 								<div class="media-body overflow-hidden">
-									<h5 class="card-text mb-0">${friendRequests.senderEmailId}
+									<h5 class="card-text mb-0">${friendRequests.senderEmailId} want to connect to you
 									</h5>
 									<p>
 									<table>

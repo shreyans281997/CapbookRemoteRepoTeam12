@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<title>W3.CSS Template</title>
+<title>Profile</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -137,9 +138,9 @@ footer {
     
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
-          <img src="/w3images/avatar_hat.jpg" style="width:100%" alt="Avatar">
+          <img src="${user.profilePic }" style="width:100%" alt="Avatar">
           <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2>UserName</h2>
+            <h2>${user.firstName} ${user.secondName}</h2>
           </div>
         </div>
         <div class="w3-container">
@@ -150,37 +151,28 @@ footer {
           <hr>
 
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-black"></i>Bio</b></p>
-          <p>Adobe Photoshop</p>
-          
-          <p>Photography</p>
-          
-          <p>Illustrator</p>
-         
-          <p>Media</p>
-      `
+          <p>${user.bio }</p>
           <hr>
           <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-black"></i>Basic Details</b></p>
-          <p>City-</p>
+          <p>City- ${user.address.city}</p>
           
-          <p>State-</p>
+          <p>State-${user.address.state}</p>
           
-          <p>Country-</p>
+          <p>Country-${user.address.country}</p>
           
-           <p>Zip Code-</p>
-           
-            <p>Country-</p>
+           <p>Zip Code-${user.address.zipCode}</p>
             
-             <p>Date Of Birth-</p>
+             <p>Date Of Birth-${user.dateOfBirth}</p>
              
-              <p>Mobile No-</p>
+              <p>Mobile No-${user.mobileNo }</p>
           <hr>
 
           <p class="w3-large"><b><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-black"></i>Professional Info</b></p>
-          <p>Business Profile-</p>
+          <p>Business Profile-${user.businessProfile }</p>
           
-          <p>Work Place-</p>
+          <p>Work Place-${user.workPlace }</p>
           
-          <p>Work experience-</p>
+          <p>Work experience-${user.workExperience}</p>
          
         </div>
       </div><br>
@@ -193,26 +185,52 @@ footer {
     
       <div class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-paper-plane fa-fw w3-margin-right w3-xxlarge w3-text-grey"></i>My Posts</h2>
-        
+       <c:forEach var="posts" items="${user.posts}">
+					<div class="row">
+						<div class="col-sm-3">
+							<div class="well">
+								<p><font color="#008CBA"> ${user.firstName } ${user.secondName }</font></p>
+								<img src="${user.profilePic}" class="img-circle" height="55"
+									width="55" alt="Avatar">
+							</div>
+						</div>
+						<div class="col-sm-9">
+							<div class="well">
+							<p align="right">${posts.timeOfPost }</p>
+								<table>
+										<tr>
+										<td><p>${posts.postContent}</p></td>
+										</tr>
+										<tr><td></td></tr>
+									<tr>
+										<td>
+											<form action="updateLikes" method="post">
+												<input type="hidden" name="postId" value="${posts.postId }">
+												<input type="hidden" name="likedBy" value="${user.emailId }">
+												<button type="submit" class="btn btn-default">
+													<i class="glyphicon glyphicon-thumbs-up"></i> Like
+													${posts.totalLikeCount}
+												</button>
+											</form>
+										</td>
+										<td>
+										<form action="showAllPost" method="post">
+										<input type="hidden" name="postId" value="${posts.postId }">
+											<button type="submit" class="open-homeEvents btn btn-default"
+												data-id="${posts.postId }" data-toggle="modal"
+												data-target="#myModal">
+												
+												Comment <i class="glyphicon glyphicon-comment"></i>
+											</button> </form>
+													
+										</td>
+									</tr>
+								</table>
 
-       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">1 min</span>
-        <h4>John Doe</h4><br>
-        <hr class="w3-clear">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <div class="w3-row-padding" style="margin:0 -16px">
-            <div class="w3-half">
-              <img src="/w3images/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
-            </div>
-            <div class="w3-half">
-              <img src="/w3images/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
-          </div>
-        </div>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
-      </div>
-      
+							</div>
+						</div>
+					</div>
+				</c:forEach>
     <!-- End Right Column -->
     </div>
     

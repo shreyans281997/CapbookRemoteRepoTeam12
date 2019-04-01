@@ -123,7 +123,6 @@ html, body, h1, h2, h3, h4, h5 {
 									value="${email.emailChatId }" tabindex="-1">
 							</div>
 						</div>
-				</div>
 				</form>
 				<form action="forwardEmail" method="post" id="commentform">
 					<p align="right">
@@ -145,8 +144,7 @@ html, body, h1, h2, h3, h4, h5 {
 								value="${email.emailChatId }" tabindex="-1">
 						</div>
 					</div>
-			</div>
-			</form>
+		</form>
 			<hr>
 			<h6>${email.messageBody }</h6>
             <p>
@@ -156,7 +154,7 @@ html, body, h1, h2, h3, h4, h5 {
 	</div>
 
 	<div class="col-sm-3"></div>
-	</div>
+
 	<footer class="container-fluid text-center">
 		<div class="a">
 			<p>@CapgeminiApp2019</p>
