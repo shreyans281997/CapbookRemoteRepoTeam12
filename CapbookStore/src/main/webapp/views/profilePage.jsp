@@ -80,43 +80,54 @@ footer {
 <body>
 
 <!-- Navbar -->
-<div class="w3-top">
- <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="homePage" class="w3-bar-item w3-button w3-padding-large w3-theme-d4" title="Go to HomePage"><div class="b">CapBook</div></a>
- 
- <div class="w3-dropdown-hover w3-hide-small">
-    <button class="w3-button w3-padding-large" title="My Account"><i class="fa fa-user"></i></button>     
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-      <a href="getEmailPage" class="w3-bar-item w3-button">Show Friends</a>
-      <a href="getEditProfile" class="w3-bar-item w3-button">Edit Profile</a>
-    </div>
-  </div>
-  <div class="w3-dropdown-hover w3-hide-small">
-    <button class="w3-button w3-padding-large" title="Messages"><i class="fa fa-envelope"></i></button>     
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-      <a href="getEmailPage" class="w3-bar-item w3-button">Compose</a>
-      <a href="showAllEmail" class="w3-bar-item w3-button">Inbox</a>
-      <a href="showAllSentEmail" class="w3-bar-item w3-button">Sent Mails</a>
-    </div>
-  </div>
-    <form class="navbar-form navbar-right" role="search">
-        <div class="form-group input-group">
-          <input type="text" class="form-control" placeholder="Search..">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>        
-        </div>
-        
-        <div class="w3-bar-item w3-button w3-right w3-padding-small w3-theme-d1">
-        &nbsp <a href="showBirthday">Log out </a>&nbsp
-        </div>
-      </form>
-         
- </div>
-</div>
+<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+
+
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#"><span class="glyphicon">&#xe012;</span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Show Friends</a></li>
+							<li><a href="getEditProfile">Edit Profile</a></li>
+						</ul></li>
+					<li class="active"><a href="getHomePage">Home</a></li>
+					<li class="active"><a href="getUserProfile">Profile</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Messages</a>
+						<ul class="dropdown-menu">
+							<li><a href="getEmailPage">Compose</a></li>
+							<li><a href="showAllEmail">Inbox</a></li>
+							<li><a href="showAllSentEmail">Sent Mails</a></li>
+						</ul></li>
+				</ul>
+				<form class="navbar-form navbar-right" role="search"
+					action="searchUser">
+					<div class="form-group input-group">
+						<input type="text" class="form-control" placeholder="Search.."
+							name="emailId"> <span class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</span>
+					</div>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="showBirthday"><span
+							class="glyphicon glyphicon-user"></span> log out</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
 <!-- Navbar on small screens -->
 <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">

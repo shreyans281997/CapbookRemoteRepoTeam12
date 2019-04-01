@@ -64,7 +64,7 @@ html, body, h1, h2, h3, h4, h5 {
 							<li><a href="#">Show Friends</a></li>
 							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
-					<li><a href="getHomePage">Home</a></li>
+					<li class="active"><a href="#">Home</a></li>
 					<li class="active"><a href="getUserProfile">Profile</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Messages</a>
@@ -74,24 +74,24 @@ html, body, h1, h2, h3, h4, h5 {
 							<li><a href="showAllSentEmail">Sent Mails</a></li>
 						</ul></li>
 				</ul>
-				<form class="navbar-form navbar-right" role="search">
+				<form class="navbar-form navbar-right" role="search"
+					action="searchUser">
 					<div class="form-group input-group">
-						<input type="text" class="form-control" placeholder="Search..">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button">
+						<input type="text" class="form-control" placeholder="Search.."
+							name="emailId"> <span class="input-group-btn">
+							<button class="btn btn-default" type="submit">
 								<span class="glyphicon glyphicon-search"></span>
 							</button>
 						</span>
 					</div>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="endSession"><span
+					<li><a href="showBirthday"><span
 							class="glyphicon glyphicon-user"></span> log out</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-
 	<!-- Overlay effect when opening the side navigation on small screens -->
 
 	<!-- Page content -->

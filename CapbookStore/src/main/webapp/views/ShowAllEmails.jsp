@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Bootstrap Example</title>
+<title>Email Inbox</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -73,33 +73,34 @@ div.successMsg {
 							<li><a href="#">Show Friends</a></li>
 							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
-					<li><a href="#">Home</a></li>
-                    <li class="active"><a href="getUserProfile">Profile</a></li>
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"                              href="#">Messages</a>
-        <ul class="dropdown-menu">
-     	   <li><a href="getEmailPage">Compose</a></li>
-      	   <li><a href="showAllEmail">Inbox</a></li>
-      	   <li><a href="showAllSentEmail">Sent Mails</a></li>
-      	   </ul></li>
+					<li class="active"><a href="#">Home</a></li>
+					<li class="active"><a href="getUserProfile">Profile</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Messages</a>
+						<ul class="dropdown-menu">
+							<li><a href="getEmailPage">Compose</a></li>
+							<li><a href="showAllEmail">Inbox</a></li>
+							<li><a href="showAllSentEmail">Sent Mails</a></li>
+						</ul></li>
 				</ul>
-				<form class="navbar-form navbar-right" role="search">
+				<form class="navbar-form navbar-right" role="search"
+					action="searchUser">
 					<div class="form-group input-group">
-						<input type="text" class="form-control" placeholder="Search..">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button">
+						<input type="text" class="form-control" placeholder="Search.."
+							name="emailId"> <span class="input-group-btn">
+							<button class="btn btn-default" type="submit">
 								<span class="glyphicon glyphicon-search"></span>
 							</button>
 						</span>
 					</div>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-							log out</a></li>
+					<li><a href="showBirthday"><span
+							class="glyphicon glyphicon-user"></span> log out</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-
 	<div class="container">
   <h2><font color="blue">Inbox</font></h2>
   <p>Check your mail. May be something Important is there.</p>

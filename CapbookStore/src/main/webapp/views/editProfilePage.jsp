@@ -64,6 +64,7 @@ color: red;
       	   <li><a href="getEditProfile">Edit Profile</a></li>
       	   </ul></li>
         <li><a href="getHomePage">Home</a></li>
+        <li class="active"><a href="getUserProfile">Profile</a></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Messages</a>
         <ul class="dropdown-menu">
      	   <li><a href="getEmailPage">Compose</a></li>
