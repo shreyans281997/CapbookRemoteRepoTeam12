@@ -196,16 +196,9 @@ div.a {
 						<p>Upcoming Events:</p>
 						<img src="paris.jpg" alt="Paris" width="400" height="300">
 						<p>
-							<strong>Paris</strong>
+							<strong>Wish your friends on their birthday.</strong>
 						</p>
-						<p>Fri. 27 November 2015</p>
-						<button class="btn btn-primary">Info</button>
-					</div>
-					<div class="well">
-						<p>ADS</p>
-					</div>
-					<div class="well">
-						<p>ADS</p>
+						<p><a href ="showBirthday"><font color="#008CBA">See, who has birthday today.</font></a></p>
 					</div>
 				</div>
 			</div>

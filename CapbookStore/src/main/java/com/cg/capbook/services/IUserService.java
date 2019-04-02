@@ -22,7 +22,7 @@ public interface IUserService {
 	UserAccount addProfilePic(String emailId, MultipartFile file) throws UserAccountNotFoundException, IOException;
 	public UserAccount updateDetails(String emailId, String userName) throws UserAccountNotFoundException;
 	public UserAccount searchUser(String emailId) throws UserAccountNotFoundException;
-	public List<UserAccount> findBirthday() throws UserAccountNotFoundException;
+	public List<UserAccount> findBirthday(String emailId) throws UserAccountNotFoundException;
 	public List<UserAccount> users();
 	
 }

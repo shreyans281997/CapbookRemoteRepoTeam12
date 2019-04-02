@@ -1,21 +1,15 @@
 package com.cg.capbook.services;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.hibernate.query.criteria.internal.expression.function.SubstringFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.cg.capbook.daoservice.UserDAO;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.FieldsEmptyException;
@@ -31,7 +25,7 @@ public class UserServicesImpl implements IUserService{
 	@Autowired
 	private UserDAO userDao;
 	@Autowired
-	private EncryptionAndDecryption encryptionAndDecryption;
+	private IFriendRequestServices friendRequest;
 
 	@Override
 	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, String dateOfBirth, String gender, String mobileNo,String securityQue,String answer)
@@ -103,18 +97,12 @@ public class UserServicesImpl implements IUserService{
 		return user;
 	}
 	@Override
-	public List<UserAccount> findBirthday() throws UserAccountNotFoundException {
-		List<UserAccount> users=users();
+	public List<UserAccount> findBirthday(String emailId) throws UserAccountNotFoundException {
+		List<String> friends=friendRequest.showAllFriends(emailId);
 		ArrayList<UserAccount> userBirthday=new ArrayList<UserAccount>();
-		for ( UserAccount user : users ) 
-		{
-			String dob=user.getDateOfBirth();
-			String birthday=dob.substring(5,10);
-			DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
-			String date = LocalDateTime.now().format(format);  
-			String today=date.toString();
-			if(birthday.equals(today.substring(5,10))) {
-				userBirthday.add(user);}}
+		for ( String friend : friends ) 
+		{ if(getUserDetails(friend).getDateOfBirth().substring(5,10).equals( LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString().substring(5,10))) {
+				userBirthday.add(getUserDetails(friend));}}
 		return userBirthday;
 	}
 	@Override
@@ -122,4 +110,5 @@ public class UserServicesImpl implements IUserService{
 		List<UserAccount> users= userDao.findAll();
 		return users;
 	}
+	
 }

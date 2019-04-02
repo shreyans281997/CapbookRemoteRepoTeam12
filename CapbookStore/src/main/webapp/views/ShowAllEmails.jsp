@@ -70,10 +70,10 @@ div.successMsg {
 						data-toggle="dropdown" href="#"><span class="glyphicon">&#xe012;</span>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Show Friends</a></li>
+							<li><a href="showFriendList">Show Friends</a></li>
 							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
-					<li class="active"><a href="#">Home</a></li>
+					<li class="active"><a href="getHomePage">Home</a></li>
 					<li class="active"><a href="getUserProfile">Profile</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Messages</a>
