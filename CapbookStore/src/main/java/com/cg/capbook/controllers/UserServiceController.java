@@ -230,6 +230,11 @@ public class UserServiceController {
     	List<UserAccount> users = userService.findBirthday();
 		return new ModelAndView("showBirthday","users",users);
     }
+	  @RequestMapping("/deletePost")
+	    public ModelAndView deletePost(@RequestParam int postId) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
+	    	postService.deletePost(postId);
+			return new ModelAndView("showBirthday","success","Post Deleted");
+	    }
 	  
 }
 
