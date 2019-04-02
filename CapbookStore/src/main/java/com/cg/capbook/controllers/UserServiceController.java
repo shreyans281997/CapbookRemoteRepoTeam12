@@ -1,7 +1,6 @@
 package com.cg.capbook.controllers;
 import java.io.IOException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.FieldsEmptyException;
 import com.cg.capbook.exceptions.FriendRequestAlreadySentException;
@@ -21,8 +19,6 @@ import com.cg.capbook.exceptions.LoginFieldsEmptyException;
 import com.cg.capbook.exceptions.NoMailsArePresentToDeleteException;
 import com.cg.capbook.exceptions.UserAccountNotFoundException;
 import com.cg.capbook.exceptions.UserNotAFriendException;
-import com.cg.capbook.model.Email;
-import com.cg.capbook.model.FriendRequest;
 import com.cg.capbook.model.Post;
 import com.cg.capbook.model.UserAccount;
 import com.cg.capbook.services.ICommentServices;
@@ -32,7 +28,6 @@ import com.cg.capbook.services.IFriendRequestServices;
 import com.cg.capbook.services.ILikesService;
 import com.cg.capbook.services.IPostService;
 import com.cg.capbook.services.IUserService;
-
 @Controller
 @SessionAttributes({"user","posts"})
 public class UserServiceController {
@@ -61,8 +56,7 @@ public class UserServiceController {
 	}
 	@RequestMapping("/showLogin") public ModelAndView login(@RequestParam String
 			emailId,String password ) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException, LoginFieldsEmptyException {
-		UserAccount user=userService.loginUser(emailId, password);
-		return new ModelAndView("editProfilePage","user",user);
+		return new ModelAndView("editProfilePage","user",userService.loginUser(emailId, password));
 	}
 	@RequestMapping("/updatePassword")
 	public ModelAndView changePassword(@RequestParam String oldPassword, String newPassword,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
@@ -84,10 +78,9 @@ public class UserServiceController {
 		editProfile.editWorkPlaceAndWorkExperience(user.getEmailId(), workPlace, workExperience, businessProfile, mobileNo);
 		return new ModelAndView("editProfilePage","success","Professional Information Updated Successfully");
 	}
-
-      @RequestMapping("/updatePic") public ModelAndView updatePic( @RequestParam MultipartFile file ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IOException {
+@RequestMapping("/updatePic") public ModelAndView updatePic( @RequestParam MultipartFile file ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IOException {
 		user=userService.addProfilePic(user.getEmailId(), file);
-		return new ModelAndView("editProfilePage","user",user);
+		return new ModelAndView("editProfilePage","user",userService.addProfilePic(user.getEmailId(), file));
 	}
 	@RequestMapping("/sendEmail")
 	public ModelAndView sendEmail( @SessionAttribute("user") UserAccount user,@RequestParam String toAddress, String subject, String messageBody) throws UserAccountNotFoundException, UserNotAFriendException {
@@ -96,39 +89,29 @@ public class UserServiceController {
 	}
 	@RequestMapping("/showAllEmail")
 	public ModelAndView showAllEmail( @SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
-		List<Email> email =emailService.getAllEmailsOfUser(user.getEmailId());
-		return new ModelAndView("ShowAllEmails", "email", email);
+		return new ModelAndView("ShowAllEmails", "email", emailService.getAllEmailsOfUser(user.getEmailId()));
 	}
 	@RequestMapping("/showEmail")
 	public ModelAndView showEmail(@RequestParam String emailId,int emailChatId) throws UserAccountNotFoundException, UserNotAFriendException {
-		Email email =emailService.getEmail(emailId, emailChatId);
-		return new ModelAndView("openEmailContent", "email", email);
+		return new ModelAndView("openEmailContent", "email", emailService.getEmail(emailId, emailChatId));
 	}
 	@RequestMapping("/showAllSentEmail")
 	public ModelAndView showAllSentEmail( @SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
-		List<Email> email =emailService.getAllSentEmailsOfUser(user.getEmailId());
-		return new ModelAndView("showAllSentEmails", "email", email);
+		return new ModelAndView("showAllSentEmails", "email", emailService.getAllSentEmailsOfUser(user.getEmailId()));
 	}
 	@RequestMapping("/showSentEmail")
 	public ModelAndView showSentEmail(@RequestParam String emailId,int emailChatId) throws UserAccountNotFoundException, UserNotAFriendException {
-		Email email =emailService.getSentEmail(emailId, emailChatId);
-		return new ModelAndView("openSentEmailContent", "email", email);
+		return new ModelAndView("openSentEmailContent", "email", emailService.getSentEmail(emailId, emailChatId));
 	}
 	@RequestMapping("/updatePost")
 	public ModelAndView updatePost(@RequestParam String postContent ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
 		postService.createPostText(user.getEmailId(), postContent);
-		List<Post> posts=postService.showAllFriendsPosts(user.getEmailId());
-		return new ModelAndView("homePage", "posts", posts);
-	}
-	@RequestMapping("/showAllPost")
-	public ModelAndView allPosts(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
-		List<Post> posts=postService.showAllFriendsPosts(user.getEmailId());
-		return new ModelAndView("homePage", "posts", posts);
+		return new ModelAndView("homePage", "posts", postService.showAllFriendsPosts(user.getEmailId()));
 	}
 	@RequestMapping("/getUserProfile")
 	public ModelAndView getUserProfile(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
-		 user=userService.searchUser(user.getEmailId());
-		return new ModelAndView("profilePage", "user", user);
+		user=userService.searchUser(user.getEmailId());
+		return new ModelAndView("profilePage", "posts", postService.allPosts(user.getEmailId()));
 	}
 	@RequestMapping("/getEditProfile")
 	public ModelAndView getEditProfile(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
@@ -136,23 +119,20 @@ public class UserServiceController {
 	}
 	@RequestMapping("/getHomePage")
 	public ModelAndView getHomePage(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
-		List<Post> posts=postService.showAllFriendsPosts(user.getEmailId());
-        return new ModelAndView("homePage","posts",posts);
+        return new ModelAndView("homePage","posts",postService.showAllFriendsPosts(user.getEmailId()));
 	}
-	
 	@RequestMapping("/updateLikes")
 	public ModelAndView updateLikes(@SessionAttribute("user") UserAccount user, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
 		likeServices.updateLikes(postId, likedBy);
 		likeServices.getLikesCount(postId);
-		List<Post> posts=postService.showAllFriendsPosts(user.getEmailId());
-        return new ModelAndView("homePage","posts",posts);
+        return new ModelAndView("homePage","posts",postService.showAllFriendsPosts(user.getEmailId()));
 	}
 	@RequestMapping("/updateLikesOnProfilePage")
 	public ModelAndView updateLikesOnProfilePage(@SessionAttribute("user") UserAccount user, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
 		likeServices.updateLikes(postId, likedBy);
 		likeServices.getLikesCount(postId);
-		user=userService.searchUser(user.getEmailId());
-        return new ModelAndView("profilePage","user",user);
+		List<Post> posts=postService.allPosts(user.getEmailId());
+        return new ModelAndView("profilePage","posts",posts);
 	}
 	@RequestMapping("/delEmail")
     public ModelAndView delEmail(@RequestParam String emailId,int emailChatId) {
@@ -176,18 +156,15 @@ public class UserServiceController {
     }
     @RequestMapping("/replyEmail")
 	public ModelAndView replyEmail(@RequestParam String emailId,int emailChatId) throws UserAccountNotFoundException, UserNotAFriendException {
-		Email email =emailService.getEmail(emailId, emailChatId);
-		return new ModelAndView("replyEmail", "email", email);
+		return new ModelAndView("replyEmail", "email", emailService.getEmail(emailId, emailChatId));
 	}
     @RequestMapping("/forwardEmail")
    	public ModelAndView forwardEmail(@RequestParam String emailId,int emailChatId) throws UserAccountNotFoundException, UserNotAFriendException {
-   		Email email =emailService.getEmail(emailId, emailChatId);
-   		return new ModelAndView("forwardEmail", "email", email);
+   		return new ModelAndView("forwardEmail", "email", emailService.getEmail(emailId, emailChatId));
    	}
     @RequestMapping("/showOtherUserProfile")
     public ModelAndView showOtherUserProfile (@RequestParam String emailId ,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
-    	UserAccount findUser=userService.searchUser(emailId);
-		return new ModelAndView("showOthersProfilePage","findUser",findUser);
+		return new ModelAndView("showOthersProfilePage","findUser",userService.searchUser(emailId));
     }
     @RequestMapping("/endSession")
     public ModelAndView endSession(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
@@ -202,8 +179,7 @@ public class UserServiceController {
     }
     @RequestMapping("/showFriendRequest")
     public ModelAndView showFriendRequest(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
-    	List<FriendRequest> friendRequests=friendServices.showAllFriendRequest(user.getEmailId());
-    	return new ModelAndView("friendRequestsPage","friendRequests",friendRequests);
+    	return new ModelAndView("friendRequestsPage","friendRequests",friendServices.showAllFriendRequest(user.getEmailId()));
     }
     @RequestMapping("/confirmFriendRequest")
     public ModelAndView confirmFriendRequest(@SessionAttribute("user") UserAccount user,  @RequestParam String senderEmailId ) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
@@ -217,8 +193,7 @@ public class UserServiceController {
     }
     @RequestMapping("/showFriendList")
     public ModelAndView showFriendList(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
-    	List<String> friends  = friendServices.showAllFriends(user.getEmailId());
-		return new ModelAndView("friendsListPage","friends",friends);
+		return new ModelAndView("friendsListPage","friends",friendServices.showAllFriends(user.getEmailId()));
     }
     @RequestMapping("/delFriend")
     public ModelAndView delFriend(@SessionAttribute("user") UserAccount user, @RequestParam String senderEmailId) {
@@ -226,20 +201,17 @@ public class UserServiceController {
 		return new ModelAndView("friendsListPage","success","Friend deleted successfully");
     }
     @RequestMapping("/postComment")
-    public ModelAndView postComment( @RequestParam int postId, String emailId, String comment, @SessionAttribute("user") UserAccount user,@SessionAttribute("posts") Post posts) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
+    public ModelAndView postComment( @RequestParam int postId, String emailId, String comment, @SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
     	commentServices.saveComment(postId, user.getEmailId(), comment);
-    	Post post=postService.showSinglePost(postId);
-		return new ModelAndView("postPage","post",post);
+		return new ModelAndView("postPage","post",postService.showSinglePost(postId));
     }
     @RequestMapping("/showPost")
     public ModelAndView showPost(@SessionAttribute("user") UserAccount user, @RequestParam int postId) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
-    	Post post=postService.showSinglePost(postId);
-		return new ModelAndView("postPage","post",post);
+		return new ModelAndView("postPage","post",postService.showSinglePost(postId));
     }
     @RequestMapping("/showBirthday")
     public ModelAndView showBirhtdays(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
-    	List<UserAccount> users = userService.findBirthday(user.getEmailId());
-		return new ModelAndView("showBirthday","users",users);
+		return new ModelAndView("showBirthday","users",userService.findBirthday(user.getEmailId()));
     }
 	  @RequestMapping("/deletePost")
 	    public ModelAndView deletePost(@RequestParam int postId) throws UserAccountNotFoundException, FriendRequestAlreadySentException {

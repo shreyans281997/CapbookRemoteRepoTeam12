@@ -161,7 +161,7 @@ footer {
     
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
-          <img src="${user.profilePic }" style="width:100%" alt="Avatar">
+          <img src="${findUser.profilePic }" style="width:100%" alt="Avatar">
            </div>
             <h3><font color="#008CBA">  ${findUser.firstName} ${findUser.secondName}</font></h3>
             <form action="sendFriendRequest" method="post" id="friendReq">
@@ -213,12 +213,12 @@ footer {
     
       <div class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-paper-plane fa-fw w3-margin-right w3-xxlarge w3-text-grey"></i>My Posts</h2>
-       <c:forEach var="posts" items="${user.posts}">
+       <c:forEach var="posts" items="${findUser.posts}">
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="well">
 								<p>${findUser.firstName } ${findUser.secondName }</p>
-								<img src="${user.profilePic}" class="img-circle" height="55"
+								<img src="${findUser.profilePic}" class="img-circle" height="55"
 									width="55" alt="Avatar">
 							</div>
 						</div>

@@ -209,7 +209,7 @@ footer {
     
       <div class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-paper-plane fa-fw w3-margin-right w3-xxlarge w3-text-grey"></i>My Posts</h2>
-       <c:forEach var="posts" items="${user.posts}">
+       <c:forEach var="posts" items="${posts}">
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="well">

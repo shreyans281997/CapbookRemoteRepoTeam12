@@ -152,50 +152,29 @@ footer {
     
       <div class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><font color="#008CBA"><i class="fa fa-paper-plane fa-fw w3-margin-right w3-xxlarge"></i>Post</font></h2>
-       <c:forEach var="posts" items="${user.posts}">
-					<div class="row">
-						<div class="col-sm-3">
-							<div class="well">
-								<p><font color="#008CBA"> ${user.firstName } ${user.secondName }</font></p>
-								<img src="${user.profilePic}" class="img-circle" height="55"
-									width="55" alt="Avatar">
-							</div>
-						</div>
-                        
-						<div class="col-sm-9">
-							<div class="well">
-							<p align="right">${posts.timeOfPost }</p>
-								<table>
-										<tr>
-										<td><p>${posts.postContent}</p></td>
-										</tr>
-										<tr><td></td></tr>
-									<tr>
-										<td>
-											<form action="updateLikes" method="post">
-												<input type="hidden" name="postId" value="${posts.postId }">
-												<input type="hidden" name="likedBy" value="${user.emailId }">
-												<button type="submit" class="btn btn-primary">
-													<i class="glyphicon glyphicon-thumbs-up"></i> Like
-													${posts.totalLikeCount}
-												</button>
-											</form>
-										</td>
-										<td>
-										<form action="showAllPost" method="post">&nbsp
-										<input type="hidden" name="postId" value="${posts.postId }">
-											<button type="submit" class="open-homeEvents btn btn-primary"
-												data-id="${posts.postId}" data-toggle="modal"
-												data-target="#myModal">
-												
-												Comment <i class="glyphicon glyphicon-comment"></i>
-											</button> </form>
-                                    		
-										</td>
-									</tr>
-                                   
+
+								<<table>
+		<tr>
+			<td>
+				<p>${post.postContent}</p>
+			</td>
+		<tr>
+			<td>
+				<form action="updateLikes" method="post">
+					<input type="hidden" name="postId" value="${post.postId }">
+					<input type="hidden" name="likedBy" value="${user.emailId }">
+					<button type="submit" class="btn btn-default">
+						<i class="glyphicon glyphicon-thumbs-up"></i> Like
+						${post.totalLikeCount}
+					</button>
+				</form>
+			</td>
+			<td>Share</td>
+		</tr>
 		
-            </table>
+
+	</table>
+	<table>
              <div class="w3">
             <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
 				<form action="postComment" method="post">
@@ -206,14 +185,14 @@ footer {
                     <button type="submit" class="btn btn-primary" style="float:right">Post Comment</button>
                     <br>
 				</form>
-                <table> <c:forEach var="entry" items="${post.comments}"> <tr><hr><td>${user.emailId } <td><c:out value="${entry.value.commentContent}"/> </td></tr> </c:forEach> </table>
+                 <c:forEach var="entry" items="${post.comments}"> <table><tr><td>${user.emailId }&nbsp;:- <td><c:out value="${entry.value.commentContent}"/> </td></tr></table><hr> </c:forEach> 
                 
                  </div>
 			
 							</div>
 						</div>
 					</div>
-				</c:forEach>
+				
     <!-- End Right Column -->
     </div>
     

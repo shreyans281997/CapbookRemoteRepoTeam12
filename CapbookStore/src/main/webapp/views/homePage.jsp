@@ -22,7 +22,7 @@
 <style>
 /* Set black background color, white text and some padding */
 footer {
-	position: bottom;
+	position: absolute;
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -191,18 +191,21 @@ div.a {
 						</div>
 					</div>
 				</c:forEach>
+                </div>
+               
+               
 				<div class="col-sm-2 well">
-					<div class="thumbnail">
-						<p>Upcoming Events:</p>
-						<img src="paris.jpg" alt="Paris" width="400" height="300">
-						<p>
-							<strong>Wish your friends on their birthday.</strong>
-						</p>
-						<p><a href ="showBirthday"><font color="#008CBA">See, who has birthday today.</font></a></p>
-					</div>
-				</div>
-			</div>
-		</div>
+      <div class="thumbnail">
+        <p>Today's Birthdays:</p>
+        <img src="https://previews.123rf.com/images/betelgejze/betelgejze1412/betelgejze141200393/35173481-cute-cartoon-smiling-cake-with-glass-of-champagne-vector-illustration-happy-birthday-greeting-card-.jpg" alt="Birthday" width="400" height="300">
+        <p><strong>Wish Them</strong></p>
+        <p>Happy Birthday!</p>
+        <a href="showBirthday"><button class="btn btn-primary">Send Greetings</button></a>
+      </div>      
+      
+    </div>
+  </div>
+</div>
 
 		<footer class="container-fluid text-center">
 			<div class="a">
