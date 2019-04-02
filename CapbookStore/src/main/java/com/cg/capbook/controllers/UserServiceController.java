@@ -127,6 +127,7 @@ public class UserServiceController {
 	}
 	@RequestMapping("/getUserProfile")
 	public ModelAndView getUserProfile(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
+		 user=userService.searchUser(user.getEmailId());
 		return new ModelAndView("profilePage", "user", user);
 	}
 	@RequestMapping("/getEditProfile")
@@ -140,18 +141,18 @@ public class UserServiceController {
 	}
 	
 	@RequestMapping("/updateLikes")
-	public ModelAndView updateLikes(@SessionAttribute("user") UserAccount user,@SessionAttribute("posts") List<Post> posts, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
+	public ModelAndView updateLikes(@SessionAttribute("user") UserAccount user, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
 		likeServices.updateLikes(postId, likedBy);
 		likeServices.getLikesCount(postId);
-		posts=postService.showAllFriendsPosts(user.getEmailId());
+		List<Post> posts=postService.showAllFriendsPosts(user.getEmailId());
         return new ModelAndView("homePage","posts",posts);
 	}
 	@RequestMapping("/updateLikesOnProfilePage")
-	public ModelAndView updateLikesOnProfilePage(@SessionAttribute("user") UserAccount user,@SessionAttribute("posts") List<Post> posts, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
+	public ModelAndView updateLikesOnProfilePage(@SessionAttribute("user") UserAccount user, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
 		likeServices.updateLikes(postId, likedBy);
 		likeServices.getLikesCount(postId);
-		posts=postService.showAllFriendsPosts(user.getEmailId());
-        return new ModelAndView("profilePage","posts",posts);
+		user=userService.searchUser(user.getEmailId());
+        return new ModelAndView("profilePage","user",user);
 	}
 	@RequestMapping("/delEmail")
     public ModelAndView delEmail(@RequestParam String emailId,int emailChatId) {
@@ -229,6 +230,11 @@ public class UserServiceController {
     	List<UserAccount> users = userService.findBirthday();
 		return new ModelAndView("showBirthday","users",users);
     }
+	  @RequestMapping("/deletePost")
+	    public ModelAndView deletePost(@RequestParam int postId) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
+	    	postService.deletePost(postId);
+			return new ModelAndView("profilePage","success","Post Deleted");
+	    }
 	  
 }
 

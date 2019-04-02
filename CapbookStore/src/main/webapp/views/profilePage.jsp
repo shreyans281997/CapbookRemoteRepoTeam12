@@ -213,7 +213,7 @@ footer {
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="well">
-								<p><font color="#008CBA"> ${user.firstName } ${user.secondName }</font></p>
+								<p>${user.firstName } ${user.secondName }</p>
 								<img src="${user.profilePic}" class="img-circle" height="55"
 									width="55" alt="Avatar">
 							</div>
@@ -228,7 +228,7 @@ footer {
 										<tr><td></td></tr>
 									<tr>
 										<td>
-											<form action="updateLikes" method="post">
+											<form action="updateLikesOnProfilePage" method="post">
 												<input type="hidden" name="postId" value="${posts.postId }">
 												<input type="hidden" name="likedBy" value="${user.emailId }">
 												<button type="submit" class="btn btn-default">
@@ -238,7 +238,7 @@ footer {
 											</form>
 										</td>
 										<td>
-										<form action="showAllPost" method="post">
+										<form action="showPost" method="post">
 										<input type="hidden" name="postId" value="${posts.postId }">
 											<button type="submit" class="open-homeEvents btn btn-default"
 												data-id="${posts.postId }" data-toggle="modal"
