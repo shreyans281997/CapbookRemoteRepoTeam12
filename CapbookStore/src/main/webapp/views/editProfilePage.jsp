@@ -72,16 +72,17 @@ color: red;
       	   <li><a href="showAllSentEmail">Sent Mails</a></li>
       	   </ul></li>
       </ul>
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group input-group">
-          <input type="text" class="form-control" placeholder="Search..">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>        
-        </div>
-      </form>
+      <form class="navbar-form navbar-right" role="search"
+					action="showOtherUserProfile">
+					<div class="form-group input-group">
+						<input type="text" class="form-control" placeholder="Search.."
+							name="emailId"> <span class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</span>
+					</div>
+				</form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="endSession"><span class="glyphicon glyphicon-user"></span> log out</a></li>
       </ul>

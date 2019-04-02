@@ -83,7 +83,7 @@ div.successMsg {
 						</ul></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search"
-					action="searchUser">
+					action="showOtherUserProfile">
 					<div class="form-group input-group">
 						<input type="text" class="form-control" placeholder="Search.."
 							name="emailId"> <span class="input-group-btn">

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <title>Profile</title>
@@ -162,7 +163,10 @@ footer {
         <div class="w3-display-container">
           <img src="${user.profilePic }" style="width:100%" alt="Avatar">
            </div>
-            <h3><font color="#008CBA">  ${user.firstName} ${user.secondName}</font></h3>
+            <h3><font color="#008CBA">  ${findUser.firstName} ${findUser.secondName}</font></h3>
+            <form action="sendFriendRequest" method="post" id="friendReq">
+          	<input type="hidden" name="receiverEmailId" value="${findUser.emailId }"><button class="button" type="submit">Send Request</button>
+						</form></h3>
            <br>
             
         <div class="w3-container">
@@ -173,30 +177,30 @@ footer {
           <hr>
 
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-black"></i>Bio</b></p>
-          <p><font color="#008CBA">${user.bio }</font></p>
+          <p><font color="#008CBA">${findUser.bio }</font></p>
           <hr>
           <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-black"></i>Basic Details</b></p>
-         <p>Gender-<font color="#008CBA">${user.gender }</font></p>
+         <p>Gender-<font color="#008CBA">${findUser.gender }</font></p>
          
-          <p>City- <font color="#008CBA">${user.address.city}</font></p>
+          <p>City- <font color="#008CBA">${findUser.address.city}</font></p>
           
-          <p>State-<font color="#008CBA">${user.address.state}</font></p>
+          <p>State-<font color="#008CBA">${findUser.address.state}</font></p>
           
-          <p>Country-<font color="#008CBA">${user.address.country}</font></p>
+          <p>Country-<font color="#008CBA">${findUser.address.country}</font></p>
           
-           <p>Zip Code-<font color="#008CBA">${user.address.zipCode}</font></p>
+           <p>Zip Code-<font color="#008CBA">${findUser.address.zipCode}</font></p>
             
-             <p>Date Of Birth-<font color="#008CBA">${user.dateOfBirth}</font></p>
+             <p>Date Of Birth-<font color="#008CBA">${findUser.dateOfBirth}</font></p>
              
-              <p>Mobile No-<font color="#008CBA">${user.mobileNo }</font></p>
+              <p>Mobile No-<font color="#008CBA">${findUser.mobileNo }</font></p>
           <hr>
 
           <p class="w3-large"><b><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-black"></i>Professional Info</b></p>
-          <p>Business Profile-<font color="#008CBA">${user.businessProfile }</font></p>
+          <p>Business Profile-<font color="#008CBA">${findUser.businessProfile }</font></p>
           
-          <p>Work Place-<font color="#008CBA">${user.workPlace }</font></p>
+          <p>Work Place-<font color="#008CBA">${findUser.workPlace }</font></p>
           
-          <p>Work experience-<font color="#008CBA">${user.workExperience}</font></p>
+          <p>Work experience-<font color="#008CBA">${findUser.workExperience}</font></p>
          
         </div>
       </div><br>
@@ -213,7 +217,7 @@ footer {
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="well">
-								<p>${user.firstName } ${user.secondName }</p>
+								<p>${findUser.firstName } ${findUser.secondName }</p>
 								<img src="${user.profilePic}" class="img-circle" height="55"
 									width="55" alt="Avatar">
 							</div>

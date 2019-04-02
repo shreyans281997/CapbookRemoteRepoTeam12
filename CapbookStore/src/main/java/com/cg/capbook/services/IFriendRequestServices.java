@@ -12,4 +12,5 @@ public interface IFriendRequestServices {
 	    public boolean declineFriendRequest(String senderEmailId, String receiverEmailId);
         public List<FriendRequest> showAllFriendRequest(String emailId);
         public List<String> showAllFriends(String emailId);
+        public void deleteFriendFromFriendList(String senderEmailId, String receiverEmailId);
 }

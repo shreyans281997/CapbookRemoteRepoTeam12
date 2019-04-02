@@ -13,7 +13,7 @@
 <a href="">${findUser.firstName} ${findUser.secondName } ${findUser.emailId}</a></td>
 <td><form action="sendFriendRequest" method="post" id="friendReq">
 <input type="hidden" name="receiverEmailId" value="${findUser.emailId }">
-<input type="submit"  valeu ="Send Request" id="submitButton"  disabled="disabled" />
+<input type="submit"  value ="Send Request" id="submitButton"  disabled="disabled" />
 </tr></table>
 <div>
 ${success}

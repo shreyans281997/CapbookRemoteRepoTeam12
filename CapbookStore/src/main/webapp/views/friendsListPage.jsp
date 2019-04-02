@@ -51,7 +51,7 @@ div.successMsg {
 
 body {
 	margin-top: 30px;
-	background: #3BC0C7;
+	background: White;
 }
 
 .top {
@@ -65,6 +65,18 @@ body {
 
 h2, a {
 	color: #fff;
+}
+button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
 }
 </style>
 </head>
@@ -101,7 +113,7 @@ h2, a {
 						</ul></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search"
-					action="searchUser">
+					action="showOtherUserProfile">
 					<div class="form-group input-group">
 						<input type="text" class="form-control" placeholder="Search.."
 							name="emailId"> <span class="input-group-btn">
@@ -123,17 +135,24 @@ h2, a {
 			<font color="#008CBA">Friends List</font>
 		</h2>
 		<p>See who is connected with you.</p>
+		<p>${success }</p>
 		<table class="table">
-			<c:forEach var="friend" items="${requestScope.friend}">
-				<form action="getUserProfile" method="post" id="friends">
-					<input type="hidden" name="emailId" value="${friend.receiverEmailId}">
+			<c:forEach var="friends" items="${friends}">
+				<form action="showOtherUserProfile" method="post" id="friends">
+					<input type="hidden" name="emailId" value="${friends}">
                      <tr>
 					<td>
-						<button type="submit"></button>
+						<button type="submit" class="button">See profile</button>
+						</td></form>
+						<td>
+						${friends}
 					</td>
-				</form>
-			
-					<td><img src="${friend.profilePic}" /> ${friend.emailId}</td>
+				
+					<form action="delFriend" method="post" id="friends">
+					<input type="hidden" name="senderEmailId" value="${friends}">
+                          <td>					
+						<button type="submit" class="button">Unfriend</button>
+						</td></form>
 				</tr>
 			</c:forEach>
          </table>

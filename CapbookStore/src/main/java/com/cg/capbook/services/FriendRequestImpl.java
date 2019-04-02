@@ -51,5 +51,9 @@ public class FriendRequestImpl implements IFriendRequestServices {
 		}
 		return friends;
 	}
+	@Override
+	public void deleteFriendFromFriendList(String senderEmailId, String receiverEmailId) {
+        friendRequestDao.deleteFriend(senderEmailId, receiverEmailId);
+	}
 
 }

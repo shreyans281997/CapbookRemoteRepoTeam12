@@ -76,8 +76,8 @@ html, body, h1, h2, h3, h4, h5 {
 							<li><a href="showAllSentEmail">Sent Mails</a></li>
 						</ul></li>
 				</ul>
-				<form class="navbar-form navbar-right" role="search"
-					action="searchUser">
+				<<form class="navbar-form navbar-right" role="search"
+					action="showOtherUserProfile">
 					<div class="form-group input-group">
 						<input type="text" class="form-control" placeholder="Search.."
 							name="emailId"> <span class="input-group-btn">
@@ -121,17 +121,15 @@ html, body, h1, h2, h3, h4, h5 {
 														Request
 													</button>
 												</form></td>
-											<td>
+											<td><form action="declineFriendRequest" method="post">
+											<input type="hidden" name=senderEmailId value="${friendRequests.senderEmailId}">
 												<button type="submit" class="btn btn-info btn-lg">
 													<span class="glyphicon glyphicon-remove"></span> Decline
 													Request
-												</button>
+												</button></form>
 											</td>
 										</tr>
 									</table>
-									</p>
-
-                            
 								</div>
 							</div>
 						</div>

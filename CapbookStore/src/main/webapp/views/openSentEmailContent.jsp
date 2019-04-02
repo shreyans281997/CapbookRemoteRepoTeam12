@@ -63,7 +63,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif}
 						</ul></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search"
-					action="searchUser">
+					action="showOtherUserProfile">
 					<div class="form-group input-group">
 						<input type="text" class="form-control" placeholder="Search.."
 							name="emailId"> <span class="input-group-btn">
