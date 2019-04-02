@@ -127,6 +127,7 @@ public class UserServiceController {
 	}
 	@RequestMapping("/getUserProfile")
 	public ModelAndView getUserProfile(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, UserNotAFriendException {
+		user=userService.getUserDetails(user.getEmailId());
 		return new ModelAndView("profilePage", "user", user);
 	}
 	@RequestMapping("/getEditProfile")

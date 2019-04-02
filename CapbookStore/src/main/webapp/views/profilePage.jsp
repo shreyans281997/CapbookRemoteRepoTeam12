@@ -207,6 +207,10 @@ footer {
 						</div>
 						<div class="col-sm-9">
 							<div class="well">
+							<form action="deletePost" method="post">
+							<input type="hidden" name="postId" value="posts.postsId">
+							<button type="submit" value="delete"></button>
+							</form>
 							<p align="right">${posts.timeOfPost }</p>
 								<table>
 										<tr>
