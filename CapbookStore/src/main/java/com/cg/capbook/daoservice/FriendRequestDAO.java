@@ -15,7 +15,7 @@ public interface FriendRequestDAO extends JpaRepository<FriendRequest,Integer> {
 	@Modifying
 	@Query("delete from FriendRequest fr where fr.senderEmailId=:senderEmailId and fr.receiverEmailId=:receiverEmailId")
     public void deleteRequest(@Param("senderEmailId") String senderEmailId,@Param("receiverEmailId") String receiverEmailId);
-	@Query("from FriendRequest fr where fr.receiverEmailId=:emailId")
+	@Query("from FriendRequest fr where fr.receiverEmailId=:emailId and status='pending'")
 	public List<FriendRequest> findAllPendingRequest(@Param("emailId") String emailId); 
 	@Query("from FriendRequest fr where fr.senderEmailId=:senderEmailId and fr.receiverEmailId=:receiverEmailId")
      public FriendRequest findRequest(@Param("senderEmailId") String senderEmailId,@Param("receiverEmailId") String receiverEmailId);

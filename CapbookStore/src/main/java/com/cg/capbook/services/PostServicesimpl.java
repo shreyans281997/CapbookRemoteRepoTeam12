@@ -38,7 +38,7 @@ public class PostServicesimpl implements IPostService {
 		
 	}
 	public boolean deletePost(int postId) {
-		postDao.deleteById(postId);
+		postDao.delete(showSinglePost(postId));
 		return true;
 	}
 	public Post showSinglePost(int postId) {
