@@ -97,7 +97,7 @@ footer {
 						data-toggle="dropdown" href="#"><span class="glyphicon">&#xe012;</span>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Show Friends</a></li>
+							<li><a href="">Show Friends</a></li>
 							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
 					<li><a href="getHomePage">Home</a></li>
@@ -122,7 +122,7 @@ footer {
 					</div>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="showBirthday"><span
+					<li><a href="endSession"><span
 							class="glyphicon glyphicon-user"></span> log out</a></li>
 				</ul>
 			</div>

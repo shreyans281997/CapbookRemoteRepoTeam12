@@ -3,9 +3,13 @@ package com.cg.capbook.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.support.SessionStatus;
 
-import com.cg.capbook.model.*;
+import com.cg.capbook.model.Comments;
+import com.cg.capbook.model.Friend;
+import com.cg.capbook.model.Notification;
+import com.cg.capbook.model.Photo;
+import com.cg.capbook.model.Post;
+import com.cg.capbook.model.UserAccount;
 
 @Controller
 public class URIController {

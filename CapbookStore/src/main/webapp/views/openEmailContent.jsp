@@ -86,7 +86,7 @@ html, body, h1, h2, h3, h4, h5 {
 					</div>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="showBirthday"><span
+					<li><a href="endSession"><span
 							class="glyphicon glyphicon-user"></span> log out</a></li>
 				</ul>
 			</div>

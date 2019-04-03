@@ -15,7 +15,7 @@ public class FriendRequestImpl implements IFriendRequestServices {
 	private FriendRequestDAO friendRequestDao;
 	@Override
 	public boolean sendFriendRequest(String senderEmailId, String receiverEmailId) throws FriendRequestAlreadySentException  {
-		if(friendRequestDao.findRequest(senderEmailId, receiverEmailId)!= null) {
+		if(friendRequestDao.findRequest(senderEmailId, receiverEmailId)!= null || friendRequestDao.findRequest(receiverEmailId, senderEmailId)!= null) {
 			throw new FriendRequestAlreadySentException("Friend Request Already Sent");
 		}
 		FriendRequest friendRequest = new FriendRequest();
