@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
@@ -134,6 +135,12 @@ public class UserServiceController {
 		List<Post> posts=postService.allPosts(user.getEmailId());
         return new ModelAndView("profilePage","posts",posts);
 	}
+	@RequestMapping("/updateLikesOnOthersProfilePage")
+	public ModelAndView updateLikesOnOthersProfilePage(@SessionAttribute("user") UserAccount user, @RequestParam int postId, String likedBy, String likedUser) throws UserAccountNotFoundException, IncorrectOldPassword {
+		likeServices.updateLikes(postId, likedBy);
+		likeServices.getLikesCount(postId);
+        return new ModelAndView("showOthersProfilePage","findUser",userService.searchUser(likedUser));
+	}
 	@RequestMapping("/delEmail")
     public ModelAndView delEmail(@RequestParam String emailId,int emailChatId) {
     	emailService.delEmail(emailId, emailChatId);
@@ -167,8 +174,8 @@ public class UserServiceController {
 		return new ModelAndView("showOthersProfilePage","findUser",userService.searchUser(emailId));
     }
     @RequestMapping("/endSession")
-    public ModelAndView endSession(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException {
-    	user=null;
+    public ModelAndView endSession(SessionStatus status) throws Exception {
+    	status.setComplete();
 		return new ModelAndView("loginPage","","");
     }
     @RequestMapping("/sendFriendRequest")

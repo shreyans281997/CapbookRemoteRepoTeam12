@@ -232,9 +232,10 @@ footer {
 										<tr><td></td></tr>
 									<tr>
 										<td>
-											<form action="updateLikesOnProfilePage" method="post">
+											<form action="updateLikesOnOthersProfilePage" method="post">
 												<input type="hidden" name="postId" value="${posts.postId }">
 												<input type="hidden" name="likedBy" value="${user.emailId }">
+												<input type="hidden" name="likedUser" value="${findUser.emailId }">
 												<button type="submit" class="btn btn-default">
 													<i class="glyphicon glyphicon-thumbs-up"></i> Like
 													${posts.totalLikeCount}

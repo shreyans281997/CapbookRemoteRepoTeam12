@@ -178,7 +178,7 @@ div.c {
 							<!-- form-group// -->
 							<div class="d-flex justify-content-center">
 
-								<a href="getChangePassword">Forgot your password?</a>
+								<a href="getForgotPassword">Forgot your password?</a>
 
 							</div>
 
