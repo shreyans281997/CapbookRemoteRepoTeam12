@@ -1,10 +1,7 @@
 package com.cg.capbook.model;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +22,7 @@ public class UserAccount {
 	@Embedded
 	private Address address;
 	public UserAccount() {}
-	
+
 	public UserAccount(String emailId, String profilePic) {
 		super();
 		this.emailId = emailId;
@@ -72,7 +69,7 @@ public class UserAccount {
 		this.securityQue = securityQue;
 		this.answer = answer;
 	}
-	
+
 	public UserAccount(String emailId, String businessProfile, String workPlace, String workExperience,
 			String firstName, String secondName, String bio, String status, String mobileNo, String dateOfBirth,
 			String userName, Address address) {

@@ -1,22 +1,16 @@
 package com.cg.capbook.model;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-
 @Entity
 public class Email {
 	@Id
 	@SequenceGenerator(name="email_seq",sequenceName="email_seq",initialValue=1001,allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="email_seq")
 	private int emailChatId;
-	private String fromAddress;
-	private String toAddress;
-	private String subject;
-	private String messageBody;
-	private String dateOfMail;
+	private String fromAddress,toAddress,subject,messageBody,dateOfMail;
 	public Email() {
 		super();
 	}
@@ -29,8 +23,7 @@ public class Email {
 		this.messageBody = messageBody;
 		this.dateOfMail = dateOfMail;
 	}
-
-	public Email(String fromAddress, String toAddress, String subject, String messageBody, String dateOfMail) {
+    public Email(String fromAddress, String toAddress, String subject, String messageBody, String dateOfMail) {
 		super();
 		this.fromAddress = fromAddress;
 		this.toAddress = toAddress;

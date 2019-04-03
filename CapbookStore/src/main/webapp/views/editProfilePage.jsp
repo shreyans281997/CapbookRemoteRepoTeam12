@@ -90,7 +90,7 @@ color: red;
   </div>
 </nav>
 <div class="row">
-  		<div class="center"><h3>User name</h3></div>
+  		<div class="center"><h3></h3></div>
     </div>
     <div class="successMsg">${success}</div>
 <div class="text-center">

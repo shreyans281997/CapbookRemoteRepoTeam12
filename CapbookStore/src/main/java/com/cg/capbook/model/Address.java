@@ -3,10 +3,7 @@ package com.cg.capbook.model;
 import javax.persistence.Embeddable;
 @Embeddable
 public class Address {
-	private String city;
-	private String state;
-	private String country;
-	private String zipCode;
+	private String city,state,country,zipCode;
 	public Address() {}
 	public Address(String city, String state, String country, String zipCode) {
 		super();
@@ -84,6 +81,6 @@ public class Address {
 	public String toString() {
 		return "Address [city=" + city + ", state=" + state + ", country=" + country + ", zipCode=" + zipCode + "]";
 	}
-	
+
 
 }

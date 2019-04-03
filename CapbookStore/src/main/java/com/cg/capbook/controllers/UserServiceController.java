@@ -61,8 +61,10 @@ public class UserServiceController {
 		return new ModelAndView("forgotPassword","success","Password changed Successfully");
 	}
 	@RequestMapping("/showLogin") public ModelAndView login(@RequestParam String
-			emailId,String password ) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException, LoginFieldsEmptyException {
-		return new ModelAndView("editProfilePage","user",userService.loginUser(emailId, password));
+			emailId,String password, SessionStatus status ) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException, LoginFieldsEmptyException {
+		UserAccount user=userService.loginUser(emailId, password);
+		
+		return new ModelAndView("profilePage","user",user);
 	}
 	@RequestMapping("/updatePassword")
 	public ModelAndView changePassword(@RequestParam String oldPassword, String newPassword,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
@@ -181,9 +183,7 @@ public class UserServiceController {
 		return new ModelAndView("showOthersProfilePage","findUser",userService.searchUser(emailId));
     }
     @RequestMapping("/endSession")
-    public ModelAndView endSession(@ModelAttribute("user") UserAccount user,SessionStatus status, HttpSession session) throws Exception {
-    	session.removeAttribute("user");
-    	user=null;
+   public ModelAndView endSession(@ModelAttribute("user") UserAccount user,SessionStatus status, HttpSession session) throws Exception {
     	status.setComplete();
 		return new ModelAndView("loginPage","","");
     }
