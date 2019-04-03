@@ -31,6 +31,7 @@ div.b {
 }
 body
 {
+
     font-family: 'Open Sans', sans-serif;
      background-color: #EBF5FB;
 }
