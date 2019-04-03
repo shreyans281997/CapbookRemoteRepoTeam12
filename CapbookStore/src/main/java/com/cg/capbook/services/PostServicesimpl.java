@@ -60,8 +60,9 @@ public class PostServicesimpl implements IPostService {
 			for(Post post: postDao.showAllPosts(str)) {
 			posts.add(post);	
 			}
-			posts.addAll(allPosts(emailId));
+			
 		}
+		posts.addAll(allPosts(emailId));
 		Collections.sort(posts);
 		return posts;
 		}
