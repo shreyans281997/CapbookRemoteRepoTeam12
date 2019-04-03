@@ -62,6 +62,7 @@ public class PostServicesimpl implements IPostService {
 			}
 			posts.addAll(allPosts(emailId));
 		}
+		Collections.sort(posts);
 		return posts;
 		
 	}
