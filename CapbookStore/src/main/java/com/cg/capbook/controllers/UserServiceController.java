@@ -64,7 +64,7 @@ public class UserServiceController {
 			emailId,String password, SessionStatus status ) throws InvalidUsernameOrPasswordException, UserAccountNotFoundException, LoginFieldsEmptyException {
 		UserAccount user=userService.loginUser(emailId, password);
 		
-		return new ModelAndView("profilePage","user",user);
+		return new ModelAndView("editProfilePage","user",user);
 	}
 	@RequestMapping("/updatePassword")
 	public ModelAndView changePassword(@RequestParam String oldPassword, String newPassword,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
