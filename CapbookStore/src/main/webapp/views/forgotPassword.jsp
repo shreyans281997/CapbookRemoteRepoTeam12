@@ -198,8 +198,8 @@ div.c {
 						</article>
 					</form>
 				</div>
-				<div>${success }
-				${errorMessage }</div>
+				<div><font color="green">${success }</font>
+				<font color="red">${errorMessage }</font></div>
 			</div>
 		</div>
 	</div>

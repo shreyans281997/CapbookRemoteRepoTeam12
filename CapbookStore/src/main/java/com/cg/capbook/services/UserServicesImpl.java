@@ -86,7 +86,7 @@ public class UserServicesImpl implements IUserService{
 	public boolean changePassword(String emailId, String oldPassword, String newPassword) throws UserAccountNotFoundException, IncorrectOldPassword {
 		UserAccount user=getUserDetails(emailId);
 		if(oldPassword.equals(EncryptionAndDecryption.decrypt(user.getPassword())))
-		{user.setPassword(newPassword);
+		{user.setPassword(EncryptionAndDecryption.encrypt(newPassword));
 		userDao.save(user);
 		return true;}
 		else throw new IncorrectOldPassword();
