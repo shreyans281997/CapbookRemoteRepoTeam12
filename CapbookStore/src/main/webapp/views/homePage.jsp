@@ -22,7 +22,7 @@
 <style>
 /* Set black background color, white text and some padding */
 footer {
-	position: absolute;
+	position: fixed;
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -206,6 +206,7 @@ div.a {
     </div>
   </div>
 </div>
+<br><br><br>
 
 		<footer class="container-fluid text-center">
 			<div class="a">

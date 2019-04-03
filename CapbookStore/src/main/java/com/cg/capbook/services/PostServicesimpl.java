@@ -3,6 +3,7 @@ package com.cg.capbook.services;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
@@ -59,6 +60,7 @@ public class PostServicesimpl implements IPostService {
 			for(Post post: postDao.showAllPosts(str)) {
 			posts.add(post);	
 			}
+			posts.addAll(allPosts(emailId));
 		}
 		return posts;
 		

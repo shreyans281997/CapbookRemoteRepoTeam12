@@ -11,7 +11,7 @@ import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 @Entity
-public class Post {
+public class Post implements Comparable<Post> {
 	@Id
 	@SequenceGenerator(name="post",sequenceName="post_seq",initialValue=101,allocationSize=10000)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="post")
@@ -187,6 +187,11 @@ public class Post {
 		return "Post [postId=" + postId + ", totalLikeCount=" + totalLikeCount + ", postContent=" + postContent
 				+ ", postPic=" + postPic + ", timeOfPost=" + timeOfPost + ", user=" + user + ", likes=" + likes
 				+ ", comments=" + comments + ", notifications=" + notifications + "]";
+	}
+	@Override
+	public int compareTo(Post comparePost) {
+		 int compareId=((Post)comparePost).getPostId();
+		 return compareId-this.postId;
 	}
 		
 }

@@ -1,5 +1,6 @@
 package com.cg.capbook.controllers;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -124,7 +125,10 @@ public class UserServiceController {
 	}
 	@RequestMapping("/getHomePage")
 	public ModelAndView getHomePage(@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
-        return new ModelAndView("homePage","posts",postService.showAllFriendsPosts(user.getEmailId()));
+        List<Post> posts=postService.showAllFriendsPosts(user.getEmailId());
+        Collections.sort(posts);
+		return new ModelAndView("homePage","posts",posts);
+	
 	}
 	@RequestMapping("/updateLikes")
 	public ModelAndView updateLikes(@SessionAttribute("user") UserAccount user, @RequestParam int postId, String likedBy) throws UserAccountNotFoundException, IncorrectOldPassword {
