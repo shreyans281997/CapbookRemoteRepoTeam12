@@ -64,8 +64,5 @@ public class PostServicesimpl implements IPostService {
 		}
 		Collections.sort(posts);
 		return posts;
-		
-	}
-
-
+		}
 }
