@@ -26,7 +26,7 @@
 
 <style>
 footer {
-	position: absolute;
+	position: bottom;
 	left: 0;
 	width: 100%;
 	margin-top:100px;
