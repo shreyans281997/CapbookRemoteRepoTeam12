@@ -145,7 +145,7 @@ button {
 						<button type="submit" class="button">See profile</button>
 						</td></form>
 						<td>
-						${friends}
+						<h4>${friends}</h4>
 					</td>
 				
 					<form action="delFriend" method="post" id="friends">
