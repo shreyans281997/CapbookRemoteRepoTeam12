@@ -1,8 +1,12 @@
 package com.cg.capbook.controllers;
 import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -70,7 +74,7 @@ public class UserServiceController {
 		return new ModelAndView("editProfilePage","success","Address Updated Successfully");
 	}
 	@RequestMapping("/updateBio")
-	public ModelAndView updateBio(@RequestParam String bio,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
+	public ModelAndView updateBio(@RequestParam String bio,@ModelAttribute("user") UserAccount user) throws UserAccountNotFoundException, IncorrectOldPassword {
 		editProfile.editBio(user.getEmailId(), bio);
 		return new ModelAndView("editProfilePage","success","Bio Updated Successfully");
 	}
@@ -174,7 +178,9 @@ public class UserServiceController {
 		return new ModelAndView("showOthersProfilePage","findUser",userService.searchUser(emailId));
     }
     @RequestMapping("/endSession")
-    public ModelAndView endSession(SessionStatus status) throws Exception {
+    public ModelAndView endSession(@ModelAttribute("user") UserAccount user,SessionStatus status, HttpSession session) throws Exception {
+    	session.removeAttribute("user");
+    	user=null;
     	status.setComplete();
 		return new ModelAndView("loginPage","","");
     }
@@ -221,9 +227,10 @@ public class UserServiceController {
 		return new ModelAndView("showBirthday","users",userService.findBirthday(user.getEmailId()));
     }
 	  @RequestMapping("/deletePost")
-	    public ModelAndView deletePost(@RequestParam int postId) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
+	    public ModelAndView deletePost(@RequestParam int postId,@SessionAttribute("user") UserAccount user) throws UserAccountNotFoundException, FriendRequestAlreadySentException {
 	    	postService.deletePost(postId);
-			return new ModelAndView("profilePage","success","Post Deleted");
+	    	user=userService.searchUser(user.getEmailId());
+			return new ModelAndView("profilePage", "posts", postService.allPosts(user.getEmailId()));
 	    }
 	  
 }
