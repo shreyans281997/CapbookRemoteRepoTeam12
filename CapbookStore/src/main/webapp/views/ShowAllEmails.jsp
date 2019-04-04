@@ -95,12 +95,7 @@ div.successMsg {
 					</div>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
-					<li><a href="endSession
-					"><span
-=======
 					<li><a href="endSession"><span
->>>>>>> branch 'master' of https://github.com/shreyans281997/CapbookRemoteRepoTeam12.git
 							class="glyphicon glyphicon-user"></span> log out</a></li>
 				</ul>
 			</div>
@@ -139,9 +134,7 @@ div.successMsg {
 										${email.dateOfMail }</td>
 					</tr>
 				</c:forEach>
-               
-  
-  </table>
+               </table>
 </div>
  <footer class="container-fluid text-center">
 			<div class="a">

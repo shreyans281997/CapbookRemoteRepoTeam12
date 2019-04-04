@@ -56,10 +56,6 @@ public class PostServicesimpl implements IPostService {
 			for(Post post: postDao.showAllPosts(str)) {
 			posts.add(post);	
 			}
-<<<<<<< HEAD
-			
-=======
->>>>>>> branch 'master' of https://github.com/shreyans281997/CapbookRemoteRepoTeam12.git
 		}
 		posts.addAll(allPosts(emailId));
 		Collections.sort(posts);
