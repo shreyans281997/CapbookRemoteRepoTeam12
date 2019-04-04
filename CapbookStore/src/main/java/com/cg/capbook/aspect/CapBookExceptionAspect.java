@@ -7,6 +7,7 @@ import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.FieldsEmptyException;
 import com.cg.capbook.exceptions.FriendRequestAlreadySentException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
+import com.cg.capbook.exceptions.InvalidEmailException;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.LoginFieldsEmptyException;
@@ -59,5 +60,9 @@ public class CapBookExceptionAspect {
     @ExceptionHandler(FriendRequestAlreadySentException.class)
     public ModelAndView handleFriendRequestAlreadySentException(Exception e) {
     	return new ModelAndView("ErrorPage", "errorMessage", e.getMessage());
+    }
+    @ExceptionHandler(InvalidEmailException.class)
+    public ModelAndView handleInvalidEmailException(Exception e) {
+    	return new ModelAndView("getSignUp", "errorMessage", e.getMessage());
     }
 }

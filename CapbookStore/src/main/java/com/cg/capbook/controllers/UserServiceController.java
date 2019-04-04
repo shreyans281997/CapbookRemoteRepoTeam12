@@ -19,6 +19,7 @@ import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.FieldsEmptyException;
 import com.cg.capbook.exceptions.FriendRequestAlreadySentException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
+import com.cg.capbook.exceptions.InvalidEmailException;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.LoginFieldsEmptyException;
@@ -52,7 +53,7 @@ public class UserServiceController {
 	@Autowired
 	ICommentServices commentServices;
 	@RequestMapping("/showSignup")
-	public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException {
+	public ModelAndView signUp(@RequestParam String emailId,String password,String firstName,String secondName,String dateOfBirth, String gender, String mobileNo,String securityQue,String answer) throws EmailAlreadyRegisteredException, FieldsEmptyException, InvalidEmailException {
 		userService.acceptUserDetails(emailId, password, firstName, secondName, dateOfBirth, gender, mobileNo, securityQue,answer);
 		return new ModelAndView("loginPage","register","You have registered successfully");}
 	@RequestMapping("/forgotPassword") public ModelAndView changePassword(@RequestParam String

@@ -14,6 +14,7 @@ import com.cg.capbook.daoservice.UserDAO;
 import com.cg.capbook.exceptions.EmailAlreadyRegisteredException;
 import com.cg.capbook.exceptions.FieldsEmptyException;
 import com.cg.capbook.exceptions.IncorrectOldPassword;
+import com.cg.capbook.exceptions.InvalidEmailException;
 import com.cg.capbook.exceptions.InvalidQuestionOrAnswer;
 import com.cg.capbook.exceptions.InvalidUsernameOrPasswordException;
 import com.cg.capbook.exceptions.LoginFieldsEmptyException;
@@ -29,7 +30,8 @@ public class UserServicesImpl implements IUserService{
 
 	@Override
 	public UserAccount acceptUserDetails(String emailId, String password, String firstName, String secondName, String dateOfBirth, String gender, String mobileNo,String securityQue,String answer)
-			throws EmailAlreadyRegisteredException, FieldsEmptyException {
+			throws EmailAlreadyRegisteredException, FieldsEmptyException, InvalidEmailException {
+		if(!(emailId.contains("@capgemini.com"))) throw new InvalidEmailException("You must be a  Capgemini employee");
 		if(emailId.equals("") || password.equals("") || firstName.equals("") || secondName.equals("") || dateOfBirth.equals("") || gender.equals("") || mobileNo.equals("") || securityQue.equals("") || answer.equals(""))
 			throw new FieldsEmptyException("Don't Keep the Required Fields Empty");
 		UserAccount userAccount=userDao.findById(emailId).orElse(null);
