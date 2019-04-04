@@ -185,7 +185,7 @@ footer {
                     <button type="submit" class="btn btn-primary" style="float:right">Post Comment</button>
                     <br>
 				</form>
-                 <c:forEach var="entry" items="${post.comments}"> <table><tr><td>${user.emailId }&nbsp;:- <td><c:out value="${entry.value.commentContent}"/> </td></tr></table><hr> </c:forEach> 
+                 <c:forEach var="entry" items="${post.comments}"> <table><tr><td>${entry.value.commentPerson }&nbsp;:- <td><c:out value="${entry.value.commentContent}"/> </td></tr></table><hr> </c:forEach> 
                 
                  </div>
 			

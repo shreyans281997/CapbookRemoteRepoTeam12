@@ -115,7 +115,7 @@ div.b {
                   <div class="form-group">
 				    	<label for="to" class="col-sm-1 control-label" class="required">To:</label>
 				    	<div class="col-sm-11">
-                              <input type="email" name="toAddress" value="${email.toAddress}" class="form-control select2-offscreen" id="to" placeholder="Type email address" tabindex="-1" readonly>
+                              <input type="email" name="toAddress" value="${email.fromAddress}" class="form-control select2-offscreen" id="to" placeholder="Type email address" tabindex="-1" readonly>
 				    	</div>
 				  	</div>
 					<div class="form-group">
