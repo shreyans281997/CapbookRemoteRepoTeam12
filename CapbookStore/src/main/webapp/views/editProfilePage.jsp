@@ -109,7 +109,7 @@ color: red;
      <form action="updateBio" method="post">
         <div class="panel panel-default">
             <div class="panel-heading">Bio <i class="fa fa-link fa-1x"></i></div><br>
-           <input type="text" class="form-control" name="bio" id="bio" value="${user.bio}" title="enter your bio."><br>
+           <input type="text" class="form-control" name="bio" id="bio" placeholder="Add Your Bio" title="enter your bio."><br>
             <button type="submit" class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-edit"></span> Edit
         </button><br><br>
@@ -128,9 +128,9 @@ color: red;
                           
                           <div class="col-xs-6">
                               <label for="city"><h4>City</h4></label>
-                              <input type="text" class="form-control" name="city" id="first_name" value="${user.address.city}" title="enter your city.">
+                              <input type="text" class="form-control" name="city" id="first_name" placeholder="city" title="enter your city.">
                               <label for="country"><h4>Country</h4></label>
-                              <input type="text" class="form-control" name="country" id="country" value="${user.address.country}" title="enter your country">
+                              <input type="text" class="form-control" name="country" id="country" placeholder="country" title="enter your country">
                          
                           
                       </div>
@@ -138,9 +138,9 @@ color: red;
                           
                           <div class="col-xs-6">
                             <label for="state"><h4>State</h4></label>
-                              <input type="text" class="form-control" name="state" id="state" value="${user.address.state}" title="enter your state.">
+                              <input type="text" class="form-control" name="state" id="state" placeholder="state" title="enter your state.">
                               <label for="zipCode"><h4>Zipcode</h4></label>
-                              <input type="text" class="form-control" name="zipCode" id="zipCode" value="${user.address.zipcode}" title="enter your zipCode."><br>
+                              <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="zipcode" title="enter your zipCode."><br>
                          
                       </div> 
                      
@@ -182,19 +182,19 @@ color: red;
                           
                           <div class="col-xs-6">
                             <label for="newPassword"><h4>Business Profile</h4></label>
-                              <input type="text" class="form-control" name="businessProfile" id="businessProfile" value="${user.businessProfile}" title="enter your business profile.">
+                              <input type="text" class="form-control" name="businessProfile" id="businessProfile" placeholder="business Profile" title="enter your business profile.">
                           
                               <label for="password"><h4>Work Experience</h4></label>
-                              <input type="text" class="form-control" name="workExperience" id="workExperience" value="${user.workExperience}" title="enter your work experience.">
+                              <input type="text" class="form-control" name="workExperience" id="workExperience" placeholder="workExperience" title="enter your work experience.">
                          
                       </div> 
                       <div class="form-group">
                       <div class="col-xs-6">
                        <label for="password"><h4>Work Place</h4></label>
-                              <input type="text" class="form-control" name="workPlace" id="workPlace" value="${user.workPlace}" title="enter your work place.">
+                              <input type="text" class="form-control" name="workPlace" id="workPlace" placeholder="workPlace" title="enter your work place.">
                               
                               <label for="password"><h4>Mobile Number</h4></label>
-                              <input type="text" class="form-control" name="mobileNo" id="mobileNo" value="${user.mobileNo}" title="enter your mobile number."><br>
+                              <input type="text" class="form-control" name="mobileNo" id="mobileNo" placeholder="mobileNo" title="enter your mobile number."><br>
                          </div>
                       
                       <button type="submit" class="btn btn-primary btn-sm">
@@ -210,4 +210,3 @@ color: red;
 
 </body>
 </html>
-
