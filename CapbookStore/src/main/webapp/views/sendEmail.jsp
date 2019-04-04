@@ -76,7 +76,7 @@ div.b {
 						data-toggle="dropdown" href="#"><span class="glyphicon">&#xe012;</span>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Show Friends</a></li>
+							<li><a href="showFriendList">Show Friends</a></li>
 							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
 					<li class="active"><a href="#">Home</a></li>

@@ -15,7 +15,6 @@
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
 <!------ Include the above in your HEAD tag ---------->
-
 <style>
 .flash-error {
     background-color: #ffdce0;

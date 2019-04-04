@@ -6,17 +6,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.cg.capbook.daoservice.FriendDAO;
 import com.cg.capbook.daoservice.FriendRequestDAO;
 import com.cg.capbook.daoservice.PostDAO;
 import com.cg.capbook.daoservice.UserDAO;
 import com.cg.capbook.model.FriendRequest;
-import com.cg.capbook.model.Likes;
 import com.cg.capbook.model.Post;
 import com.cg.capbook.model.UserAccount;
 @Component("postService")
@@ -60,7 +56,10 @@ public class PostServicesimpl implements IPostService {
 			for(Post post: postDao.showAllPosts(str)) {
 			posts.add(post);	
 			}
+<<<<<<< HEAD
 			
+=======
+>>>>>>> branch 'master' of https://github.com/shreyans281997/CapbookRemoteRepoTeam12.git
 		}
 		posts.addAll(allPosts(emailId));
 		Collections.sort(posts);

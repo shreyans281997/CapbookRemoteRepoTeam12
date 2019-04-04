@@ -97,7 +97,11 @@ footer {
 						data-toggle="dropdown" href="#"><span class="glyphicon">&#xe012;</span>
 					</a>
 						<ul class="dropdown-menu">
+<<<<<<< HEAD
 							<li><a href="showFriendList">Show Friends</a></li>
+=======
+							<li><a href="">Show Friends</a></li>
+>>>>>>> branch 'master' of https://github.com/shreyans281997/CapbookRemoteRepoTeam12.git
 							<li><a href="getEditProfile">Edit Profile</a></li>
 						</ul></li>
 					<li><a href="getHomePage">Home</a></li>

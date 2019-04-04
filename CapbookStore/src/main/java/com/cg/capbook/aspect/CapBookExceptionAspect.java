@@ -58,6 +58,6 @@ public class CapBookExceptionAspect {
     }
     @ExceptionHandler(FriendRequestAlreadySentException.class)
     public ModelAndView handleFriendRequestAlreadySentException(Exception e) {
-    	return new ModelAndView("showOthersProfilePage", "errorMessage", e.getMessage());
+    	return new ModelAndView("ErrorPage", "errorMessage", e.getMessage());
     }
 }

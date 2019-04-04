@@ -1,15 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Email Inbox</title>
-<meta charset="utf-8">
+<title>Birthdays</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -20,39 +17,35 @@
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href='https://fonts.googleapis.com/css?family=RobotoDraft'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
-/* Set black background color, white text and some padding */
 footer {
-	position: absolute;
+	position: fixed;
 	left: 0;
-	bottom: 0;
 	width: 100%;
+	margin-top:100px;
 	background-color: #555;
 	color: white;
 	padding: 10px;
 	text-align: center;
 }
 
-div.a {
-	font-size: 115%;
-	color: white;
-	align: right;
+html, body, h1, h2, h3, h4, h5 {
+	font-family: "RobotoDraft", "Roboto", sans-serif
 }
 
-div.center {
-	text-align: center;
-	color: black;
+.w3-bar-block .w3-bar-item {
+	padding: 16px
 }
-
-div.successMsg {
-	text-align: center;
-	color: red;
-}
-
 </style>
-</head>
-<body>
 
+<body>
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -95,58 +88,23 @@ div.successMsg {
 					</div>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
-					<li><a href="endSession
-					"><span
-=======
 					<li><a href="endSession"><span
->>>>>>> branch 'master' of https://github.com/shreyans281997/CapbookRemoteRepoTeam12.git
 							class="glyphicon glyphicon-user"></span> log out</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="container">
-  <h2><font color="#008CBA">Inbox</font></h2>
-  <p>Check your mail. May be something Important is there.</p>
-  <p><font color="red">${success}</font></p>
-  <p><font color="red">${errorMessage}</font></p>
-  <table class="table">
-  <tr><td>
-           <button type="button" color="#008CBA"><a href="delAllEmail" >
-          <span class="glyphicon glyphicon-trash"></span> Delete All Mails 
-        </a></button></td></tr>
-        <tr>
-    <c:forEach var="email" items="${requestScope.email}">
-				<form action="showEmail" method="post" id="emails">
-					<input type="hidden" name="emailChatId"
-						value="${email.emailChatId}"> <input type="hidden"
-						name="emailId" value="${email.toAddress}">
-					
-           <td> <button type="submit"><a href="#">
-          <span class="glyphicon glyphicon-envelope"></span></a></button></td>
-          	</form>
-          	
-          	<form action="delEmail" method="post" id="delEmail">
-          	<input type="hidden" name="emailChatId"
-						value="${email.emailChatId}"> <input type="hidden"
-						name="emailId" value="${email.toAddress}">
-          	<td> <button type="submit"><a href="#">
-          <span class="glyphicon glyphicon-trash"></span></td></form>
-						<td>
-								ID-: ${email.emailChatId} From-:
-										${email.fromAddress} Subject-:${email.subject } Date-:
-										${email.dateOfMail }</td>
-					</tr>
-				</c:forEach>
-               
+<div class="container" align="center">
+ <h2><font color="#008CBA">${errorMessage}</font></h2>
   
-  </table>
-</div>
- <footer class="container-fluid text-center">
+    </div>
+    
+<footer class="container-fluid text-center">
 			<div class="a">
 				<p>@CapgeminiApp2019</p>
 			</div>
 		</footer>
 </body>
 </html>
+          
+						

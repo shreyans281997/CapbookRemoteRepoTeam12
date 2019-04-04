@@ -15,7 +15,11 @@ public class FriendRequestImpl implements IFriendRequestServices {
 	private FriendRequestDAO friendRequestDao;
 	@Override
 	public boolean sendFriendRequest(String senderEmailId, String receiverEmailId) throws FriendRequestAlreadySentException  {
+<<<<<<< HEAD
 		if((friendRequestDao.findRequest(senderEmailId, receiverEmailId)!= null)||( friendRequestDao.findRequest( receiverEmailId,senderEmailId)!= null) ) {
+=======
+		if(friendRequestDao.findRequest(senderEmailId, receiverEmailId)!= null || friendRequestDao.findRequest(receiverEmailId, senderEmailId)!= null) {
+>>>>>>> branch 'master' of https://github.com/shreyans281997/CapbookRemoteRepoTeam12.git
 			throw new FriendRequestAlreadySentException("Friend Request Already Sent");
 		}
 		FriendRequest friendRequest = new FriendRequest();
